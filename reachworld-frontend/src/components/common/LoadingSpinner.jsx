@@ -9,7 +9,7 @@ const LoadingSpinner = () => {
         <div className="logo-container-custom">
           <div className="logo-wrapper-custom">
             <img
-              className="logo-image-custom logo-masked-custom"
+              className="logo-image-custom logo-masked-custom rounded-xl"
               src="/logo-white-black.png"
               alt="ReachworldNation Logo"
             />

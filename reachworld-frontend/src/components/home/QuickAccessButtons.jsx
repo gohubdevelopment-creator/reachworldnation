@@ -8,28 +8,28 @@ const QuickAccessButtons = () => {
       title: 'Prayer Request',
       description: 'Submit Your Need',
       link: '/prayer',
-      color: 'from-purple-600 to-purple-800'
+      color: 'from-royal-blue-600 to-royal-blue-800'
     },
     {
       icon: FaHeart,
       title: 'Share Testimony',
       description: 'Tell Your Story',
       link: '/testimonies',
-      color: 'from-red-500 to-red-700'
+      color: 'from-royal-blue-500 to-royal-blue-700'
     },
     {
       icon: FaBible,
       title: 'Daily Devotional',
       description: 'Feed Your Spirit',
       link: '/devotional',
-      color: 'from-blue-600 to-blue-800'
+      color: 'from-accent-blue to-royal-blue-600'
     },
     {
       icon: FaHandsHelping,
       title: 'Partner With Us',
       description: 'Support The Work',
       link: '/partner',
-      color: 'from-brand-gold to-yellow-600'
+      color: 'from-brand-gold-500 to-brand-gold-700'
     }
   ];
 

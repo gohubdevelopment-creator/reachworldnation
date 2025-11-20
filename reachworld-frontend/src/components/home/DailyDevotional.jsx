@@ -18,7 +18,7 @@ const DailyDevotional = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-royal-blue via-blue-900 to-deep-charcoal text-white">
+    <section className="py-20 bg-gradient-to-br from-royal-blue via-blue-900 to-deep-charcoal text-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Image Column */}

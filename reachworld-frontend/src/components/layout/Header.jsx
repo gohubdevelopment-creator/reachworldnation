@@ -35,7 +35,7 @@ const Header = () => {
             <img
               src="/logo-white-black.png"
               alt="ReachworldNation Logo"
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain rounded-xl"
             />
             <div>
               <h1 className="text-xl font-bold">ReachworldNation</h1>

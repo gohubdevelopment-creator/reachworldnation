@@ -78,9 +78,9 @@ const Testimonies = () => {
               {/* Category Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                  testimony.category === 'Miracle' ? 'bg-purple-100 text-purple-700' :
-                  testimony.category === 'Healing' ? 'bg-green-100 text-green-700' :
-                  'bg-blue-100 text-blue-700'
+                  testimony.category === 'Miracle' ? 'bg-royal-blue-100 text-royal-blue-700' :
+                  testimony.category === 'Healing' ? 'bg-brand-gold-100 text-brand-gold-700' :
+                  'bg-royal-blue-100 text-royal-blue-700'
                 }`}>
                   {testimony.category}
                 </span>

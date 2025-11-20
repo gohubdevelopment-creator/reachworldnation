@@ -54,7 +54,7 @@ const Footer = () => {
                 <img
                   src="/logo-white-black.png"
                   alt="ReachworldNation Logo"
-                  className="h-12 w-auto object-contain"
+                  className="h-12 w-auto object-contain rounded-xl"
                 />
                 <div>
                   <h3 className="text-xl font-bold">ReachworldNation</h3>
@@ -70,15 +70,15 @@ const Footer = () => {
               <div className="space-y-2 text-sm">
                 <div className="flex items-center space-x-2 text-gray-400">
                   <FaEnvelope className="text-brand-gold" />
-                  <span>info@reachworldnation.org</span>
+                  <span>info@Temnix.com</span>
                 </div>
                 <div className="flex items-center space-x-2 text-gray-400">
                   <FaPhone className="text-brand-gold" />
-                  <span>+234 (0) 800 000 0000</span>
+                  <span>+234 (0) 912 861 8084</span>
                 </div>
                 <div className="flex items-center space-x-2 text-gray-400">
                   <FaMapMarkerAlt className="text-brand-gold" />
-                  <span>Lagos, Nigeria</span>
+                  <span>Enugu, Nigeria</span>
                 </div>
               </div>
             </motion.div>

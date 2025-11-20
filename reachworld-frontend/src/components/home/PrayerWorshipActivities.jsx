@@ -9,7 +9,7 @@ const PrayerWorshipActivities = () => {
       time: 'Daily - 6:00 AM',
       location: 'Online & In-Person',
       description: 'Start your day with powerful intercession and praise',
-      color: 'from-purple-500 to-purple-700',
+      color: 'from-royal-blue-500 to-royal-blue-700',
       participants: '500+ believers',
       status: 'Happening Now'
     },
@@ -19,7 +19,7 @@ const PrayerWorshipActivities = () => {
       time: 'Every Friday - 7:00 PM',
       location: 'Church Headquarters',
       description: 'Experience God\'s presence through worship and the Word',
-      color: 'from-blue-500 to-blue-700',
+      color: 'from-royal-blue-600 to-royal-blue-800',
       participants: '1,200+ believers',
       status: 'This Friday'
     },
@@ -29,7 +29,7 @@ const PrayerWorshipActivities = () => {
       time: 'Wednesday - 6:30 PM',
       location: 'Multiple Locations',
       description: 'Dive deep into the Word with interactive teaching',
-      color: 'from-green-500 to-green-700',
+      color: 'from-accent-blue to-royal-blue-600',
       participants: '800+ believers',
       status: 'Tomorrow'
     },
@@ -39,7 +39,7 @@ const PrayerWorshipActivities = () => {
       time: 'Saturday - 5:00 AM',
       location: 'Prayer Mountain',
       description: 'Join us in fervent prayer for nations and families',
-      color: 'from-red-500 to-red-700',
+      color: 'from-brand-gold-500 to-brand-gold-700',
       participants: '300+ intercessors',
       status: 'This Saturday'
     }

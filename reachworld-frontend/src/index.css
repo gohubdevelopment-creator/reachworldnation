@@ -10,10 +10,10 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-brand-gold text-deep-charcoal font-semibold px-6 py-3 rounded-lg hover:bg-royal-blue hover:text-white transition-all duration-300 shadow-lg;
+    @apply bg-brand-gold text-deep-charcoal font-semibold px-6 py-3 rounded-lg hover:bg-royal-blue hover:text-white transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-royal-blue text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-gold hover:text-deep-charcoal transition-all duration-300 shadow-lg;
+    @apply bg-royal-blue text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-gold hover:text-deep-charcoal transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-royal-blue focus:ring-offset-2;
   }
 }
