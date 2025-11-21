@@ -1,5 +1,7 @@
 import LiveServiceIndicator from '../components/home/LiveServiceIndicator';
 import HeroBanner from '../components/home/HeroBanner';
+import StorySection from '../components/home/StorySection';
+import MinistryMoments from '../components/home/MinistryMoments';
 import QuickAccessButtons from '../components/home/QuickAccessButtons';
 import PrayerWorshipActivities from '../components/home/PrayerWorshipActivities';
 import DailyDevotional from '../components/home/DailyDevotional';
@@ -16,6 +18,12 @@ const HomePage = () => {
 
       {/* Hero Banner - Ministry-focused rotating slides */}
       <HeroBanner />
+
+      {/* Story Section - Visual journey of transformation */}
+      <StorySection />
+
+      {/* Ministry Moments - Real photos of worship, healing, ministry */}
+      <MinistryMoments />
 
       {/* Quick Actions - Prayer, Testimony, Devotional, Partner */}
       <QuickAccessButtons />

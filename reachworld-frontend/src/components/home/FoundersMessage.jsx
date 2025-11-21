@@ -22,7 +22,7 @@ const FoundersMessage = () => {
                 {/* Founder's Image */}
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[500px]">
                   <img
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=1000&fit=crop"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop"
                     alt="David S. Okeke - Founder"
                     className="w-full h-full object-cover"
                   />

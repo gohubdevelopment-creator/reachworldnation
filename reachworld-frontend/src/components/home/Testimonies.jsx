@@ -13,7 +13,7 @@ const Testimonies = () => {
       date: "2 days ago",
       testimony: "After years of struggling with anxiety, I attended the Divinity Life Conference. The message on divine peace transformed my life. Today, I walk in complete peace and joy!",
       category: "Healing",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop"
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop"
     },
     {
       name: "Emmanuel Adeyemi",
@@ -21,7 +21,7 @@ const Testimonies = () => {
       date: "5 days ago",
       testimony: "God used Pastor David's teaching on financial stewardship to break me free from debt. Within 6 months, all my debts were cleared. Glory to God!",
       category: "Breakthrough",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop"
+      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop"
     },
     {
       name: "Blessing Nwosu",
@@ -29,7 +29,7 @@ const Testimonies = () => {
       date: "1 week ago",
       testimony: "I was diagnosed with a chronic illness. During the prayer meeting, I felt God's healing power. My doctors confirmed I'm completely healed!",
       category: "Miracle",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop"
     }
   ];
 

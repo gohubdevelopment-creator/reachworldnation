@@ -6,30 +6,42 @@ const QuickAccessButtons = () => {
     {
       icon: FaPrayingHands,
       title: 'Prayer Request',
-      description: 'Submit Your Need',
+      description: 'God Hears You',
+      story: 'Your breakthrough starts here',
       link: '/prayer',
-      color: 'from-royal-blue-600 to-royal-blue-800'
+      gradient: 'from-electric-purple via-electric-purple-dark to-royal-blue-700',
+      iconBg: 'bg-white/20',
+      glow: 'shadow-[0_0_40px_rgba(139,92,246,0.4)]'
     },
     {
       icon: FaHeart,
       title: 'Share Testimony',
-      description: 'Tell Your Story',
+      description: 'Inspire Others',
+      story: 'Your story changes lives',
       link: '/testimonies',
-      color: 'from-royal-blue-500 to-royal-blue-700'
+      gradient: 'from-holy-fire via-vibrant-orange to-holy-fire-dark',
+      iconBg: 'bg-white/20',
+      glow: 'shadow-[0_0_40px_rgba(220,38,38,0.4)]'
     },
     {
       icon: FaBible,
       title: 'Daily Devotional',
       description: 'Feed Your Spirit',
+      story: 'Fresh word every morning',
       link: '/devotional',
-      color: 'from-accent-blue to-royal-blue-600'
+      gradient: 'from-royal-blue-600 via-accent-blue to-royal-blue-800',
+      iconBg: 'bg-white/20',
+      glow: 'shadow-[0_0_40px_rgba(0,51,160,0.4)]'
     },
     {
       icon: FaHandsHelping,
       title: 'Partner With Us',
-      description: 'Support The Work',
+      description: 'Transform Nations',
+      story: 'Impact lives globally',
       link: '/partner',
-      color: 'from-brand-gold-500 to-brand-gold-700'
+      gradient: 'from-brand-gold-400 via-vibrant-orange to-brand-gold-600',
+      iconBg: 'bg-white/20',
+      glow: 'shadow-[0_0_40px_rgba(212,175,55,0.4)]'
     }
   ];
 
@@ -70,22 +82,41 @@ const QuickAccessButtons = () => {
             <motion.a
               key={index}
               href={button.link}
-              className="group block"
+              className="group block relative"
               variants={itemVariants}
-              whileHover={{ y: -10 }}
+              whileHover={{ y: -15, scale: 1.02 }}
             >
-              <div className={`bg-gradient-to-br ${button.color} rounded-xl p-8 text-white shadow-lg hover:shadow-2xl transition-shadow duration-300 h-full`}>
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="bg-white/20 p-4 rounded-full group-hover:scale-110 transition-transform duration-300">
-                    <button.icon className="text-4xl" />
+              <div className={`relative bg-gradient-to-br ${button.gradient} rounded-2xl p-8 text-white h-full overflow-hidden ${button.glow} hover:shadow-2xl transition-all duration-500`}>
+                {/* Animated Background Orbs */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700"></div>
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+                  <motion.div
+                    className={`${button.iconBg} p-6 rounded-2xl group-hover:rotate-12 group-hover:scale-125 transition-all duration-500 backdrop-blur-sm`}
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <button.icon className="text-5xl drop-shadow-lg" />
+                  </motion.div>
+
+                  <div className="space-y-2">
+                    <h3 className="text-3xl font-black tracking-tight">{button.title}</h3>
+                    <p className="text-xl font-semibold text-white/90">{button.description}</p>
+                    <p className="text-sm text-white/70 italic">{button.story}</p>
                   </div>
-                  <h3 className="text-2xl font-bold">{button.title}</h3>
-                  <p className="text-white/90">{button.description}</p>
-                  <div className="pt-2">
-                    <span className="inline-flex items-center space-x-2 text-sm font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                      <span>Learn More</span>
-                      <span>→</span>
-                    </span>
+
+                  <div className="pt-4 w-full">
+                    <div className="inline-flex items-center space-x-2 text-lg font-bold bg-white/20 px-6 py-3 rounded-lg backdrop-blur-sm group-hover:bg-white group-hover:text-gray-900 group-hover:translate-x-2 transition-all duration-300">
+                      <span>Take Action</span>
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.5 }}
+                      >
+                        →
+                      </motion.span>
+                    </div>
                   </div>
                 </div>
               </div>

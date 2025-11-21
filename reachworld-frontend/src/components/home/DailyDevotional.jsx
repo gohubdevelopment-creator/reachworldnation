@@ -14,7 +14,7 @@ const DailyDevotional = () => {
     verse: "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future.",
     reference: "Jeremiah 29:11",
     excerpt: "Today, God wants to remind you that every step you take is guided by His divine purpose. You are not wandering aimlessly; you are walking in the path He has prepared for you...",
-    image: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=800&h=600&fit=crop"
+    image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=800&h=600&fit=crop"
   };
 
   return (

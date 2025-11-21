@@ -130,15 +130,19 @@ const ImpactStats = () => {
               className="text-center"
               variants={itemVariants}
             >
-              <div className="flex justify-center mb-4">
-                <div className="bg-brand-gold/20 p-6 rounded-full backdrop-blur-sm">
-                  <stat.icon className="text-5xl text-brand-gold" />
+              <motion.div
+                className="flex justify-center mb-4"
+                whileHover={{ scale: 1.2, rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="bg-gradient-to-br from-brand-gold/30 to-vibrant-orange/30 p-8 rounded-full backdrop-blur-sm shadow-[0_0_40px_rgba(212,175,55,0.3)]">
+                  <stat.icon className="text-6xl text-brand-gold drop-shadow-lg" />
                 </div>
-              </div>
-              <div className="text-4xl md:text-5xl font-bold mb-2">
+              </motion.div>
+              <div className="text-5xl md:text-6xl font-black mb-3 text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-gold to-white">
                 <AnimatedNumber target={stat.number} suffix={stat.suffix} />
               </div>
-              <p className="text-lg text-white/90">{stat.label}</p>
+              <p className="text-xl font-semibold text-white/95">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>

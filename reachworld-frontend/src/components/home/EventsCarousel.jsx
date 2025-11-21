@@ -16,7 +16,7 @@ const EventsCarousel = () => {
       time: '9:00 AM - 6:00 PM',
       location: 'Lagos, Nigeria',
       description: 'Experience powerful teachings on divine revelation and kingdom principles.',
-      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=600&h=400&fit=crop',
       featured: true
     },
     {
@@ -34,7 +34,7 @@ const EventsCarousel = () => {
       time: '10:00 AM - 4:00 PM',
       location: 'Abuja, Nigeria',
       description: 'Equipping the next generation with purpose and leadership skills.',
-      image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&h=400&fit=crop',
       featured: false
     },
     {
@@ -43,7 +43,7 @@ const EventsCarousel = () => {
       time: '6:00 PM - 9:00 PM',
       location: 'Virtual Event',
       description: 'Exclusive launch of the latest transformational book.',
-      image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop',
       featured: false
     }
   ];

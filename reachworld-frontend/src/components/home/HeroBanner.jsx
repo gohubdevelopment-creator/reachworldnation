@@ -9,25 +9,25 @@ const HeroBanner = () => {
     {
       title: 'Join Us in Worship This Sunday',
       subtitle: 'Experience God\'s presence through powerful praise and worship',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop',
+      image: 'https://images.unsplash.com/photo-1510674485131-d4b499a30f4b?w=1920&h=1080&fit=crop',
       cta: 'Join Live Service'
     },
     {
       title: 'Prayer Changes Everything',
       subtitle: 'Submit your prayer request and join our intercessory team',
-      image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&h=1080&fit=crop',
+      image: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=1920&h=1080&fit=crop',
       cta: 'Send Prayer Request'
     },
     {
       title: 'Lives Being Transformed Daily',
       subtitle: 'Read amazing testimonies of healing, breakthrough, and miracles',
-      image: 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=1920&h=1080&fit=crop',
+      image: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=1920&h=1080&fit=crop',
       cta: 'Read Testimonies'
     },
     {
       title: 'Divinity Life Conference 2025',
       subtitle: 'Three days of powerful ministry, worship, and divine encounters',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&h=1080&fit=crop',
+      image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1920&h=1080&fit=crop',
       cta: 'Register Now'
     }
   ];
@@ -71,41 +71,64 @@ const HeroBanner = () => {
               backgroundImage: `url(${slides[currentSlide].image})`,
             }}
           >
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-royal-blue/90 via-blue-900/85 to-deep-charcoal/90"></div>
+            {/* Bold Cinematic Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal/95 via-royal-blue-900/90 to-deep-charcoal/95"></div>
+            {/* Accent Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-holy-fire/20 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-electric-purple/10 to-vibrant-orange/10"></div>
           </div>
 
           {/* Content */}
           <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center text-center text-white">
-            <div>
+            <div className="max-w-6xl">
               <motion.h1
-                className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
+                className="text-hero-mobile md:text-hero font-display font-black mb-8 leading-none tracking-tighter"
+                initial={{ y: 100, opacity: 0, scale: 0.9 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                transition={{
+                  delay: 0.2,
+                  duration: 0.8,
+                  type: "spring",
+                  stiffness: 100
+                }}
               >
-                {slides[currentSlide].title}
+                <span className="inline-block">{slides[currentSlide].title.split(' ').slice(0, -2).join(' ')}</span>{' '}
+                <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-vibrant-orange-light to-brand-gold-300 animate-glow">
+                  {slides[currentSlide].title.split(' ').slice(-2).join(' ')}
+                </span>
               </motion.h1>
 
               <motion.p
-                className="text-xl md:text-2xl lg:text-3xl mb-8 text-brand-gold max-w-4xl mx-auto"
+                className="text-2xl md:text-4xl mb-10 font-light text-gray-200 max-w-4xl mx-auto leading-relaxed"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
               >
                 {slides[currentSlide].subtitle}
               </motion.p>
 
-              <motion.button
-                className="btn-primary text-lg px-8 py-4"
+              <motion.div
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
-                {slides[currentSlide].cta}
-              </motion.button>
+                <motion.button
+                  className="group relative bg-gradient-to-r from-vibrant-orange to-holy-fire text-white text-xl font-bold px-10 py-5 rounded-xl overflow-hidden shadow-2xl"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="relative z-10">{slides[currentSlide].cta}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-holy-fire to-vibrant-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.button>
+                <motion.button
+                  className="text-xl font-semibold px-10 py-5 rounded-xl border-2 border-white/30 backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Learn More
+                </motion.button>
+              </motion.div>
             </div>
           </div>
         </motion.div>
