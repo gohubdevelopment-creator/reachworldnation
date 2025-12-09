@@ -84,7 +84,6 @@ Must Include:
 * **Online Community Portal:** members can sign up, get ID, join prayer groups.
 * **Nation Chapters Page:** list of ReachworldNation hubs worldwide.
 * **Volunteer Registration Form**
-* **Ambassador Directory**
 
 9. **MESSAGES / BLOG**
 
