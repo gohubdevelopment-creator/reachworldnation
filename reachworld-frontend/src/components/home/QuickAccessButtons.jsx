@@ -1,34 +1,34 @@
 import { motion } from 'framer-motion';
-import { FaPrayingHands, FaHeart, FaBible, FaHandsHelping } from 'react-icons/fa';
+import { FaHandsHelping, FaUsers, FaPlayCircle, FaBookOpen, FaShoppingCart } from 'react-icons/fa';
 
 const QuickAccessButtons = () => {
   const buttons = [
     {
-      icon: FaPrayingHands,
-      title: 'Prayer Request',
-      description: 'God Hears You',
-      story: 'Your breakthrough starts here',
-      link: '/prayer',
+      icon: FaPlayCircle,
+      title: 'Watch Messages',
+      description: 'Transformational Teachings',
+      story: 'Fresh revelations await',
+      link: '/media',
       gradient: 'from-electric-purple via-electric-purple-dark to-royal-blue-700',
       iconBg: 'bg-white/20',
       glow: 'shadow-[0_0_40px_rgba(139,92,246,0.4)]'
     },
     {
-      icon: FaHeart,
-      title: 'Share Testimony',
-      description: 'Inspire Others',
-      story: 'Your story changes lives',
-      link: '/testimonies',
+      icon: FaBookOpen,
+      title: 'Download Books',
+      description: 'Free Resources',
+      story: 'Transform your mind',
+      link: '/books',
       gradient: 'from-holy-fire via-vibrant-orange to-holy-fire-dark',
       iconBg: 'bg-white/20',
       glow: 'shadow-[0_0_40px_rgba(220,38,38,0.4)]'
     },
     {
-      icon: FaBible,
-      title: 'Daily Devotional',
-      description: 'Feed Your Spirit',
-      story: 'Fresh word every morning',
-      link: '/devotional',
+      icon: FaShoppingCart,
+      title: 'Buy Books',
+      description: 'Premium Collection',
+      story: 'Invest in your growth',
+      link: '/books',
       gradient: 'from-royal-blue-600 via-accent-blue to-royal-blue-800',
       iconBg: 'bg-white/20',
       glow: 'shadow-[0_0_40px_rgba(0,51,160,0.4)]'
@@ -42,6 +42,16 @@ const QuickAccessButtons = () => {
       gradient: 'from-brand-gold-400 via-vibrant-orange to-brand-gold-600',
       iconBg: 'bg-white/20',
       glow: 'shadow-[0_0_40px_rgba(212,175,55,0.4)]'
+    },
+    {
+      icon: FaUsers,
+      title: 'Join ReachworldNation',
+      description: 'Become Part of Us',
+      story: 'Global community awaits',
+      link: '/community',
+      gradient: 'from-sky-blue via-accent-blue to-electric-purple',
+      iconBg: 'bg-white/20',
+      glow: 'shadow-[0_0_40px_rgba(74,144,226,0.4)]'
     }
   ];
 
@@ -72,7 +82,7 @@ const QuickAccessButtons = () => {
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

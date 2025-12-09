@@ -8,10 +8,11 @@ const Header = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Ministry Programs', path: '/programs' },
-    { name: 'Books & Resources', path: '/books' },
+    { name: 'Books', path: '/books' },
     { name: 'Media', path: '/media' },
     { name: 'Events', path: '/events' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'Prayer', path: '/prayer' },
     { name: 'Partner', path: '/partner' },
     { name: 'Contact', path: '/contact' }
   ];
@@ -57,14 +58,15 @@ const Header = () => {
                 {link.name}
               </motion.a>
             ))}
-            <motion.button
+            <motion.a
+              href="/community"
               className="btn-primary"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               Join Us
-            </motion.button>
+            </motion.a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -96,9 +98,9 @@ const Header = () => {
                   {link.name}
                 </a>
               ))}
-              <button className="btn-primary w-full mt-4">
+              <a href="/community" className="btn-primary w-full mt-4 block text-center">
                 Join Us
-              </button>
+              </a>
             </motion.nav>
           )}
         </AnimatePresence>
