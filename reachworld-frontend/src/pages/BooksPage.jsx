@@ -1,267 +1,339 @@
 import { motion } from 'framer-motion';
-import { FaBook, FaDownload, FaShoppingCart, FaSearch, FaHeadphones, FaFilePdf } from 'react-icons/fa';
-import { useState } from 'react';
+import { FaBook, FaDownload, FaShoppingCart, FaCheckCircle } from 'react-icons/fa';
 
 const BooksPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const categories = ['All', 'Faith', 'Leadership', 'Mindset', 'Kingdom', 'Purpose', 'Transformation'];
-
-  const books = [
+  const readerStories = [
     {
-      title: 'The Power of Divine Revelation',
-      category: 'Faith',
-      price: 'Free',
-      isPaid: false,
-      formats: ['PDF', 'Audio'],
-      description: 'Unlock supernatural insights and walk in divine understanding',
-      image: '📖'
+      name: 'Sarah Okonkwo',
+      location: 'Lagos, Nigeria',
+      bookRead: 'The Kingdom Mindset',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800',
+      before: 'Business failing, ₦5 million in debt, no hope',
+      after: 'Applied kingdom principles from the book. Revenue increased 400% in 6 months. Now employs 15 people.',
+      quote: '"This book didn\'t just change my mindset—it transformed my entire business model. Every chapter was a breakthrough!"'
     },
     {
-      title: 'Kingdom Mindset Revolution',
-      category: 'Kingdom',
-      price: '$15.99',
-      isPaid: true,
-      formats: ['PDF', 'Audio', 'Hardcover'],
-      description: 'Transform your thinking and operate from heaven\'s perspective',
-      image: '👑'
+      name: 'Michael Chen',
+      location: 'Singapore',
+      bookRead: 'Breaking Free',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800',
+      before: '12 years of addiction, broken marriage, lost career',
+      after: 'The book\'s teachings on deliverance set him free. Now leads recovery ministry reaching 200+ annually.',
+      quote: '"I read it in one night. By morning, chains that held me for 12 years were broken. This book saved my life!"'
     },
     {
-      title: 'Leadership Excellence',
-      category: 'Leadership',
-      price: '$12.99',
-      isPaid: true,
-      formats: ['PDF', 'Audio'],
-      description: 'Biblical principles for becoming an influential leader',
-      image: '⭐'
-    },
-    {
-      title: 'Faith That Moves Mountains',
-      category: 'Faith',
-      price: 'Free',
-      isPaid: false,
-      formats: ['PDF'],
-      description: 'Activate mountain-moving faith in your life',
-      image: '⛰️'
-    },
-    {
-      title: 'Transformation Journey',
-      category: 'Transformation',
-      price: '$18.99',
-      isPaid: true,
-      formats: ['PDF', 'Audio', 'Hardcover'],
-      description: 'Your 90-day guide to complete life transformation',
-      image: '✨'
-    },
-    {
-      title: 'Discovering Your Purpose',
-      category: 'Purpose',
-      price: 'Free',
-      isPaid: false,
-      formats: ['PDF', 'Audio'],
-      description: 'Find and fulfill your God-given purpose',
-      image: '🎯'
+      name: 'Grace Mensah',
+      location: 'Accra, Ghana',
+      bookRead: 'Divine Purpose Unlocked',
+      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800',
+      before: 'Dead-end job, living paycheck to paycheck, no vision',
+      after: 'Discovered her God-given purpose. Started consulting firm now impacting 50+ African businesses.',
+      quote: '"Chapter 3 on \'Finding Your Kingdom Assignment\' changed everything. I finally understood why I was created!"'
     }
   ];
 
-  const filteredBooks = books.filter(book => {
-    const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         book.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || book.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const books = [
+    {
+      title: 'The Kingdom Mindset',
+      description: 'Transform your thinking from earthly limitations to heavenly possibilities. Learn to operate from God\'s perspective in business, relationships, and life.',
+      gradient: 'from-brand-gold to-vibrant-orange',
+      category: 'Mindset',
+      pages: 280,
+      transformed: '50K+ Readers',
+      keyBenefit: 'Break mental barriers and unlock divine strategies'
+    },
+    {
+      title: 'Breaking Free',
+      description: 'Complete deliverance from addiction, bondage, and spiritual strongholds. Discover the power of the Holy Spirit to set captives free.',
+      gradient: 'from-holy-fire to-vibrant-orange',
+      category: 'Deliverance',
+      pages: 210,
+      transformed: '30K+ Readers',
+      keyBenefit: 'Experience instant freedom from chains'
+    },
+    {
+      title: 'Divine Purpose Unlocked',
+      description: 'Stop wandering aimlessly. This book reveals God\'s specific calling for your life and how to walk in it with confidence and authority.',
+      gradient: 'from-royal-blue to-electric-purple',
+      category: 'Purpose',
+      pages: 320,
+      transformed: '75K+ Readers',
+      keyBenefit: 'Discover your unique kingdom assignment'
+    },
+    {
+      title: 'Faith That Moves Mountains',
+      description: 'Practical steps to activate supernatural faith. Learn how to pray, declare, and receive breakthrough in impossible situations.',
+      gradient: 'from-electric-purple to-sky-blue',
+      category: 'Faith',
+      pages: 250,
+      transformed: '100K+ Readers',
+      keyBenefit: 'See miracles manifest in your circumstances'
+    },
+    {
+      title: 'Kingdom Business Mastery',
+      description: 'God\'s blueprint for marketplace success. Biblical principles for building businesses that honor God and impact nations.',
+      gradient: 'from-vibrant-orange to-brand-gold',
+      category: 'Business',
+      pages: 360,
+      transformed: '40K+ Readers',
+      keyBenefit: 'Build profitable, God-glorifying enterprises'
+    },
+    {
+      title: 'The Power of Declaration',
+      description: 'Words create worlds. Master the art of prophetic declarations that shift atmospheres and manifest divine promises.',
+      gradient: 'from-sky-blue to-royal-blue',
+      category: 'Spiritual Warfare',
+      pages: 190,
+      transformed: '60K+ Readers',
+      keyBenefit: 'Speak life and watch transformation happen'
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-royal-blue via-electric-purple to-vibrant-orange text-white py-20">
-        <div className="container mx-auto px-4">
+      <section className="relative min-h-[600px] flex items-center">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1600"
+            alt="Books and reading"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/95 via-vibrant-orange/90 to-deep-charcoal/95" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+            className="max-w-4xl mx-auto text-center text-white"
           >
-            <h1 className="text-5xl md:text-6xl font-black mb-6">Books & Resources</h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-8">
-              Transform your life with powerful teachings and divine revelation
+            <FaBook className="text-7xl mx-auto mb-6" />
+            <motion.h1
+              className="text-5xl md:text-7xl font-black mb-6 leading-tight"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              Books That <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-gold-300 to-white">Transform Lives</span>
+            </motion.h1>
+            <p className="text-2xl md:text-3xl text-white/90 mb-8">
+              500,000+ books distributed. Thousands of testimonies. Read the book that will change your story.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="text-2xl font-bold">500K+</span> Books Distributed
-              </div>
-              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full">
-                <span className="text-2xl font-bold">50+</span> Titles Available
-              </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+              {[
+                { number: '500K+', label: 'Books Distributed' },
+                { number: '50+', label: 'Titles Published' },
+                { number: '150+', label: 'Nations Reached' },
+                { number: '100K+', label: 'Lives Changed' }
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + i * 0.1 }}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
+                >
+                  <div className="text-4xl font-black text-white mb-2">{stat.number}</div>
+                  <div className="text-sm text-white/80">{stat.label}</div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Search & Filter Section */}
-      <section className="py-8 bg-gray-50 sticky top-0 z-10 shadow-md">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            {/* Search Bar */}
-            <div className="mb-6">
-              <div className="relative">
-                <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search books by title or topic..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-royal-blue focus:outline-none text-lg"
-                />
-              </div>
-            </div>
-
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                    selectedCategory === category
-                      ? 'bg-royal-blue text-white shadow-lg'
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Books Grid */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            {filteredBooks.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-2xl text-gray-500">No books found matching your criteria</p>
-              </div>
-            ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredBooks.map((book, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow group"
-                  >
-                    {/* Book Cover */}
-                    <div className="bg-gradient-to-br from-royal-blue to-electric-purple h-64 flex items-center justify-center text-9xl group-hover:scale-105 transition-transform">
-                      {book.image}
-                    </div>
-
-                    {/* Book Details */}
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-semibold text-royal-blue bg-royal-blue/10 px-3 py-1 rounded-full">
-                          {book.category}
-                        </span>
-                        <span className={`text-lg font-black ${book.isPaid ? 'text-brand-gold' : 'text-green-600'}`}>
-                          {book.price}
-                        </span>
-                      </div>
-
-                      <h3 className="text-2xl font-black text-gray-900 mb-3">{book.title}</h3>
-                      <p className="text-gray-600 mb-4">{book.description}</p>
-
-                      {/* Available Formats */}
-                      <div className="flex gap-2 mb-4">
-                        {book.formats.map((format) => (
-                          <span
-                            key={format}
-                            className="flex items-center gap-1 text-xs bg-gray-100 px-2 py-1 rounded"
-                          >
-                            {format === 'PDF' && <FaFilePdf />}
-                            {format === 'Audio' && <FaHeadphones />}
-                            {format === 'Hardcover' && <FaBook />}
-                            {format}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Action Buttons */}
-                      <div className="space-y-2">
-                        {!book.isPaid && (
-                          <button className="w-full bg-gradient-to-r from-royal-blue to-electric-purple text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                            <FaDownload />
-                            Download Free
-                          </button>
-                        )}
-                        {book.isPaid && (
-                          <>
-                            <button className="w-full bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                              <FaShoppingCart />
-                              Buy on Amazon
-                            </button>
-                            <button className="w-full bg-gray-100 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-200 transition-all">
-                              Buy on Selar
-                            </button>
-                          </>
-                        )}
-                        <button className="w-full bg-white border-2 border-royal-blue text-royal-blue py-3 rounded-xl font-bold hover:bg-royal-blue hover:text-white transition-all">
-                          Preview Book
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Book Download Process */}
-      <section className="py-20 bg-gray-50">
+      {/* Reader Transformation Stories */}
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-black text-royal-blue mb-4">How to Get Your Free Books</h2>
-            <p className="text-xl text-gray-600">Simple steps to access life-changing resources</p>
+            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Books That Changed Lives</h2>
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
+              Real readers. Real transformations. See what happened when they applied what they read.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {[
-              { step: '1', title: 'Select Book', description: 'Choose from our free book collection', icon: '📚' },
-              { step: '2', title: 'Enter Email', description: 'Provide your email for verification', icon: '✉️' },
-              { step: '3', title: 'Verify', description: 'Check your email and verify', icon: '✅' },
-              { step: '4', title: 'Download', description: 'Receive instant download link', icon: '⬇️' }
-            ].map((item, index) => (
+          <div className="max-w-7xl mx-auto space-y-16">
+            {readerStories.map((story, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white p-6 rounded-2xl shadow-lg text-center"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-gray-50 to-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all"
               >
-                <div className="text-6xl mb-4">{item.icon}</div>
-                <div className="text-4xl font-black text-royal-blue mb-2">{item.step}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <div className="grid md:grid-cols-5 gap-8 p-8">
+                  <div className="md:col-span-2">
+                    <div className="relative group mb-6">
+                      <img
+                        src={story.image}
+                        alt={story.name}
+                        className="w-full h-64 object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2">
+                        <FaCheckCircle /> Transformed
+                      </div>
+                    </div>
+                    <h3 className="text-3xl font-black text-gray-900 mb-2">{story.name}</h3>
+                    <p className="text-gray-600 mb-4">{story.location}</p>
+                    <span className="inline-block bg-brand-gold text-white px-4 py-2 rounded-full font-semibold text-sm">
+                      Read: {story.bookRead}
+                    </span>
+                  </div>
+
+                  <div className="md:col-span-3">
+                    <div className="mb-6">
+                      <h4 className="text-xl font-black text-gray-900 mb-3 flex items-center gap-2">
+                        <FaBook className="text-brand-gold" /> The Transformation:
+                      </h4>
+                    </div>
+
+                    <div className="space-y-4 mb-6">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-20 text-sm font-bold text-red-600 uppercase">Before:</div>
+                        <p className="text-gray-700 flex-1">{story.before}</p>
+                      </div>
+                      <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-20 text-sm font-bold text-green-600 uppercase">After:</div>
+                        <p className="text-gray-900 font-semibold flex-1">{story.after}</p>
+                      </div>
+                    </div>
+
+                    <blockquote className="border-l-4 border-brand-gold bg-brand-gold/5 pl-6 py-4 italic text-gray-700 text-lg mb-6">
+                      {story.quote}
+                    </blockquote>
+
+                    <button className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white px-8 py-4 rounded-xl font-black hover:shadow-2xl transition-all flex items-center gap-2">
+                      <FaDownload /> Download "{story.bookRead}" Now
+                    </button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-royal-blue to-electric-purple text-white">
+      {/* Books Library */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Transformation Library</h2>
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
+              Each book is a journey from where you are to where God is calling you
+            </p>
+          </motion.div>
+
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {books.map((book, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group"
+              >
+                <div className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all h-full flex flex-col">
+                  <div className={`bg-gradient-to-br ${book.gradient} h-64 flex items-center justify-center relative overflow-hidden`}>
+                    <div className="absolute inset-0 opacity-10">
+                      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHptMC0xMGMwLTIuMjEtMS43OS00LTQtNHMtNCAxLjc5LTQgNCAxLjc5IDQgNCA0IDQtMS43OSA0LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+                    </div>
+                    <FaBook className="text-8xl text-white relative z-10 group-hover:scale-110 transition-transform" />
+                  </div>
+
+                  <div className="p-6 flex-1 flex flex-col">
+                    <span className="inline-block bg-royal-blue text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 self-start">
+                      {book.category}
+                    </span>
+                    <h3 className="text-2xl font-black text-gray-900 mb-3">{book.title}</h3>
+                    <p className="text-gray-600 mb-4 flex-1">{book.description}</p>
+
+                    <div className="bg-gray-50 rounded-xl p-4 mb-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm text-gray-600">Pages:</span>
+                        <span className="font-bold text-gray-900">{book.pages}</span>
+                      </div>
+                      <div className="border-t border-gray-200 pt-2">
+                        <div className="text-sm text-green-600 font-bold">{book.transformed}</div>
+                        <div className="text-xs text-gray-500">Lives Transformed</div>
+                      </div>
+                    </div>
+
+                    <div className="bg-brand-gold/10 rounded-xl p-3 mb-4">
+                      <p className="text-sm font-semibold text-gray-900 text-center">{book.keyBenefit}</p>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <button className="bg-gradient-to-r from-royal-blue to-electric-purple text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <FaDownload className="text-sm" /> Free
+                      </button>
+                      <button className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                        <FaShoppingCart className="text-sm" /> Buy
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Author's Heart */}
+      <section className="py-24 bg-gradient-to-br from-royal-blue via-electric-purple to-deep-charcoal text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800"
+                alt="Pastor David S. Okeke"
+                className="rounded-2xl shadow-2xl"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-5xl font-black mb-6">Why I Write</h2>
+              <p className="text-xl text-white/90 mb-6 leading-relaxed">
+                "Every book I write comes from a personal battle I've fought and won. I don't write theory—I write
+                transformation. When I was financially broken, God taught me kingdom mindset. When I battled doubt,
+                He showed me faith that moves mountains."
+              </p>
+              <p className="text-xl text-white/90 mb-6 leading-relaxed">
+                "These books aren't just information. They're impartation. They carry the anointing that broke chains
+                in my life and will break chains in yours. Read them with expectation—your breakthrough is in these pages."
+              </p>
+              <p className="text-2xl font-black text-brand-gold">
+                - Pastor David S. Okeke
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -269,13 +341,18 @@ const BooksPage = () => {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-black mb-6">Start Your Transformation Today</h2>
-            <p className="text-xl text-white/90 mb-8">
-              Join thousands of readers worldwide who have experienced life-changing breakthroughs
+            <h2 className="text-4xl md:text-5xl font-black text-royal-blue mb-6">Your Transformation Starts with One Book</h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Download any book free or order physical copies. Your breakthrough is waiting in these pages.
             </p>
-            <button className="bg-brand-gold text-royal-blue px-8 py-4 rounded-xl font-black text-lg hover:bg-white transition-all shadow-lg">
-              Browse All Books
-            </button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="bg-gradient-to-r from-royal-blue to-electric-purple text-white px-10 py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all">
+                Browse All Books
+              </button>
+              <button className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white px-10 py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all">
+                Order Physical Copies
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>
