@@ -17,7 +17,7 @@ const MediaPage = () => {
       transformation: 'Watched sermon series on kingdom principles, applied faith-based strategies',
       after: 'Revenue increased 400% in 6 months, debt cleared, now employs 15 people',
       quote: 'That sermon didn\'t just teach me—it transformed my entire approach to business. I went from survival to thriving.',
-      gradient: 'from-brand-gold to-vibrant-orange',
+      gradient: 'from-primary-gold to-primary-gold-light',
       livesImpacted: '2,400+'
     },
     {
@@ -30,7 +30,7 @@ const MediaPage = () => {
       transformation: 'Encountered God\'s power through this message, applied deliverance principles',
       after: 'Completely free from addiction, marriage restored, now leads recovery ministry reaching 200+ annually',
       quote: 'I watched this sermon at 3 AM in my darkest hour. By morning, I was a different person. God\'s power broke every chain.',
-      gradient: 'from-electric-purple to-royal-blue',
+      gradient: 'from-accent-purple to-primary-blue',
       livesImpacted: '1,800+'
     },
     {
@@ -43,7 +43,7 @@ const MediaPage = () => {
       transformation: 'Message revealed her kingdom calling, shifted from employee to entrepreneur mindset',
       after: 'Started consulting firm, now impacting 50+ African businesses, mentoring young entrepreneurs',
       quote: 'This teaching unlocked a version of myself I didn\'t know existed. My whole life trajectory changed in 52 minutes.',
-      gradient: 'from-holy-fire to-vibrant-orange',
+      gradient: 'from-accent-red to-primary-gold',
       livesImpacted: '950+'
     }
   ];
@@ -56,7 +56,7 @@ const MediaPage = () => {
       sermons: 5,
       duration: '4 hours',
       completions: '12,000+',
-      gradient: 'from-sky-blue to-electric-purple',
+      gradient: 'from-primary-blue-light to-accent-purple',
       icon: '🌱',
       outcome: 'Sarah from UK: "Went from confusion to clarity. Now leading a small group!"'
     },
@@ -66,7 +66,7 @@ const MediaPage = () => {
       sermons: 7,
       duration: '6 hours',
       completions: '8,500+',
-      gradient: 'from-brand-gold to-vibrant-orange',
+      gradient: 'from-primary-gold to-primary-gold-light',
       icon: '⚡',
       outcome: 'John from Nigeria: "My business went from failing to flourishing. Faith works!"'
     },
@@ -76,7 +76,7 @@ const MediaPage = () => {
       sermons: 10,
       duration: '8 hours',
       completions: '5,200+',
-      gradient: 'from-royal-blue to-electric-purple',
+      gradient: 'from-primary-blue to-accent-purple',
       icon: '👑',
       outcome: 'Pastor James: "These teachings took my church from 30 to 2,000 members."'
     },
@@ -86,7 +86,7 @@ const MediaPage = () => {
       sermons: 6,
       duration: '5 hours',
       completions: '6,800+',
-      gradient: 'from-electric-purple to-holy-fire',
+      gradient: 'from-accent-purple to-accent-red',
       icon: '🔥',
       outcome: 'Grace from Ghana: "Now operating in prophecy, seeing lives transformed weekly."'
     }
@@ -103,7 +103,7 @@ const MediaPage = () => {
       livesChanged: '2,400+',
       category: 'Authority',
       testimonial: '"This message gave me authority over my circumstances" - Sarah O.',
-      gradient: 'from-royal-blue to-electric-purple'
+      gradient: 'from-primary-blue to-accent-purple'
     },
     {
       title: 'Walking in Divine Revelation',
@@ -114,7 +114,7 @@ const MediaPage = () => {
       livesChanged: '1,800+',
       category: 'Revelation',
       testimonial: '"God spoke directly to me through this teaching" - Michael C.',
-      gradient: 'from-electric-purple to-vibrant-orange'
+      gradient: 'from-accent-purple to-primary-gold'
     },
     {
       title: 'Faith That Moves Mountains',
@@ -125,7 +125,7 @@ const MediaPage = () => {
       livesChanged: '3,100+',
       category: 'Faith',
       testimonial: '"My impossible situation became possible after this sermon" - Grace M.',
-      gradient: 'from-brand-gold to-holy-fire'
+      gradient: 'from-primary-gold to-accent-red'
     },
     {
       title: 'Breaking Generational Curses',
@@ -136,7 +136,7 @@ const MediaPage = () => {
       livesChanged: '2,700+',
       category: 'Deliverance',
       testimonial: '"Patterns that plagued my family for decades—broken!" - David A.',
-      gradient: 'from-holy-fire to-vibrant-orange'
+      gradient: 'from-accent-red to-primary-gold'
     },
     {
       title: 'Kingdom Mindset for Wealth',
@@ -147,7 +147,7 @@ const MediaPage = () => {
       livesChanged: '4,200+',
       category: 'Prosperity',
       testimonial: '"Changed how I see money. Business exploded!" - Sarah O.',
-      gradient: 'from-brand-gold to-vibrant-orange'
+      gradient: 'from-primary-gold to-primary-gold-light'
     },
     {
       title: 'The Anointing for Ministry',
@@ -158,7 +158,7 @@ const MediaPage = () => {
       livesChanged: '1,900+',
       category: 'Anointing',
       testimonial: '"Stepped into my calling after this message" - Pastor John A.',
-      gradient: 'from-electric-purple to-sky-blue'
+      gradient: 'from-accent-purple to-primary-blue-light'
     }
   ];
 
@@ -213,7 +213,7 @@ const MediaPage = () => {
       thumbnail: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800',
       story: '15,000 attendees. 8,200 salvations. 3,400 healings. Lives forever changed.',
       highlight: 'This is the moment 500 people rushed the altar for breakthrough prayer',
-      gradient: 'from-royal-blue to-electric-purple'
+      gradient: 'from-primary-blue to-accent-purple'
     },
     {
       title: 'Global Outreach - Nigeria 2024',
@@ -221,7 +221,7 @@ const MediaPage = () => {
       thumbnail: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=800',
       story: 'Kano village crusade: 5,000 attended, 2,300 salvations, 3 churches planted',
       highlight: 'Sarah receiving prayer that led to her business breakthrough',
-      gradient: 'from-brand-gold to-vibrant-orange'
+      gradient: 'from-primary-gold to-primary-gold-light'
     },
     {
       title: 'Youth Empowerment Summit 2024',
@@ -229,7 +229,7 @@ const MediaPage = () => {
       thumbnail: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800',
       story: '2,000 young people equipped. 400 found their calling. Next generation rising.',
       highlight: 'The moment Grace discovered her entrepreneurial calling',
-      gradient: 'from-sky-blue to-electric-purple'
+      gradient: 'from-primary-blue-light to-accent-purple'
     },
     {
       title: 'Book Launch & Signing Events',
@@ -237,7 +237,7 @@ const MediaPage = () => {
       thumbnail: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800',
       story: '50,000 books distributed. Lives transformed through written word.',
       highlight: 'Michael receiving the book that started his freedom journey',
-      gradient: 'from-holy-fire to-vibrant-orange'
+      gradient: 'from-accent-red to-primary-gold'
     }
   ];
 
@@ -251,7 +251,9 @@ const MediaPage = () => {
             alt="Worship gathering"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal/95 via-royal-blue-900/90 to-electric-purple/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/90 via-primary-blue-dark/85 to-primary-blue/90"></div>
+          {/* Subtle accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-gold/10 via-transparent to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -266,7 +268,7 @@ const MediaPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Watch <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-vibrant-orange to-brand-gold-300 animate-glow">Lives Change</span>
+              Watch <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-gold via-primary-gold-light to-primary-gold animate-glow">Lives Change</span>
             </motion.h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8">
               Every sermon, every podcast, every message—designed to transform your life
@@ -287,7 +289,7 @@ const MediaPage = () => {
                   transition={{ delay: 0.4 + i * 0.1 }}
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
                 >
-                  <div className="text-4xl font-black text-brand-gold mb-2">{stat.number}</div>
+                  <div className="text-4xl font-black text-primary-gold mb-2">{stat.number}</div>
                   <div className="text-sm text-white/80">{stat.label}</div>
                 </motion.div>
               ))}
@@ -297,7 +299,7 @@ const MediaPage = () => {
       </section>
 
       {/* Live Stream Banner */}
-      <section className="bg-holy-fire text-white py-6">
+      <section className="bg-accent-red text-white py-6">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0 }}
@@ -308,7 +310,7 @@ const MediaPage = () => {
               <div className="w-4 h-4 bg-white rounded-full animate-pulse"></div>
               <p className="text-xl font-bold">LIVE STREAM: Sunday Service at 9:00 AM WAT</p>
             </div>
-            <button className="bg-white text-holy-fire px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition-all">
+            <button className="bg-white text-accent-red px-6 py-2 rounded-full font-bold hover:bg-neutral-cream transition-all">
               Watch Live
             </button>
           </motion.div>
@@ -324,7 +326,7 @@ const MediaPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Sermons That Changed Everything</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Sermons That Changed Everything</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               These aren't just viewers—they're lives forever transformed by the power of God's word
             </p>
@@ -348,7 +350,7 @@ const MediaPage = () => {
                       alt={story.name}
                       className="w-full h-64 object-cover rounded-2xl shadow-lg mb-6"
                     />
-                    <div className="bg-gradient-to-r from-royal-blue to-electric-purple text-white p-6 rounded-2xl">
+                    <div className="bg-gradient-to-r from-primary-blue to-accent-purple text-white p-6 rounded-2xl">
                       <h3 className="text-2xl font-black mb-2">{story.name}</h3>
                       <p className="text-white/80 mb-4">{story.location}</p>
                       <div className="pt-4 border-t border-white/30">
@@ -357,7 +359,7 @@ const MediaPage = () => {
                         <p className="text-sm text-white/60">{story.watchedDate}</p>
                       </div>
                       <div className="mt-4 pt-4 border-t border-white/30">
-                        <p className="text-3xl font-black text-brand-gold">{story.livesImpacted}</p>
+                        <p className="text-3xl font-black text-primary-gold">{story.livesImpacted}</p>
                         <p className="text-sm text-white/70">Lives impacted by this sermon</p>
                       </div>
                     </div>
@@ -400,7 +402,7 @@ const MediaPage = () => {
                       </div>
 
                       {/* Watch CTA */}
-                      <button className="w-full bg-gradient-to-r from-royal-blue to-electric-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                      <button className="w-full bg-gradient-to-r from-primary-blue to-accent-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
                         <FaPlay />
                         Watch "{story.sermon}" That Transformed {story.name}
                       </button>
@@ -422,7 +424,7 @@ const MediaPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Your Transformation Journey</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Your Transformation Journey</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               Curated sermon paths designed to take you from where you are to where God wants you to be
             </p>
@@ -463,7 +465,7 @@ const MediaPage = () => {
                     <p className="italic text-white/95">"{path.outcome}"</p>
                   </div>
 
-                  <button className="w-full bg-white text-royal-blue py-4 rounded-xl font-black text-lg hover:bg-gray-100 transition-all flex items-center justify-center gap-3 group-hover:scale-105 duration-300">
+                  <button className="w-full bg-white text-primary-blue py-4 rounded-xl font-black text-lg hover:bg-neutral-cream transition-all flex items-center justify-center gap-3 group-hover:scale-105 duration-300">
                     <FaPlay />
                     Start This Journey
                   </button>
@@ -483,7 +485,7 @@ const MediaPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Recent Teachings</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Recent Teachings</h2>
             <p className="text-2xl text-gray-600">Life-changing messages available now</p>
           </motion.div>
 
@@ -511,14 +513,14 @@ const MediaPage = () => {
                         <FaPlay className="text-white text-2xl ml-1" />
                       </div>
                     </div>
-                    <div className="absolute top-4 right-4 bg-brand-gold text-royal-blue px-3 py-1 rounded-full text-sm font-bold">
+                    <div className="absolute top-4 right-4 bg-primary-gold text-neutral-dark px-3 py-1 rounded-full text-sm font-bold">
                       {sermon.category}
                     </div>
                   </div>
 
                   {/* Sermon Details */}
                   <div className="p-6">
-                    <h3 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-royal-blue transition-colors">
+                    <h3 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-primary-blue transition-colors">
                       {sermon.title}
                     </h3>
 
@@ -550,7 +552,7 @@ const MediaPage = () => {
 
           {/* Load More */}
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-royal-blue to-electric-purple text-white px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all">
+            <button className="bg-gradient-to-r from-primary-blue to-accent-purple text-white px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all">
               Load More Sermons
             </button>
           </div>
@@ -558,7 +560,7 @@ const MediaPage = () => {
       </section>
 
       {/* Podcast Guest Transformation Stories */}
-      <section className="py-24 bg-gradient-to-br from-royal-blue via-electric-purple to-deep-charcoal text-white">
+      <section className="py-24 bg-gradient-to-br from-primary-blue via-accent-purple to-neutral-dark text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -589,10 +591,10 @@ const MediaPage = () => {
                     <img
                       src={episode.guestImage}
                       alt={episode.guest}
-                      className="w-40 h-40 rounded-full object-cover mx-auto mb-4 border-4 border-brand-gold"
+                      className="w-40 h-40 rounded-full object-cover mx-auto mb-4 border-4 border-primary-gold"
                     />
                     <h3 className="text-2xl font-black mb-2">{episode.guest}</h3>
-                    <p className="text-brand-gold font-semibold mb-4">{episode.episode}</p>
+                    <p className="text-primary-gold font-semibold mb-4">{episode.episode}</p>
                     <div className="text-sm text-white/70">
                       <p>{episode.date}</p>
                       <p>{episode.duration}</p>
@@ -606,25 +608,25 @@ const MediaPage = () => {
 
                     <div className="space-y-4 mb-6">
                       <div>
-                        <p className="text-sm font-bold text-brand-gold mb-2">THE JOURNEY:</p>
+                        <p className="text-sm font-bold text-primary-gold mb-2">THE JOURNEY:</p>
                         <p className="text-white/90">{episode.journey}</p>
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-brand-gold mb-2">THE BREAKTHROUGH:</p>
+                        <p className="text-sm font-bold text-primary-gold mb-2">THE BREAKTHROUGH:</p>
                         <p className="text-white/90">{episode.breakthrough}</p>
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-brand-gold mb-2">NOW:</p>
+                        <p className="text-sm font-bold text-primary-gold mb-2">NOW:</p>
                         <p className="text-white font-semibold">{episode.now}</p>
                       </div>
                     </div>
 
                     <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 mb-6 border border-white/30">
-                      <FaQuoteLeft className="text-2xl text-brand-gold mb-2" />
+                      <FaQuoteLeft className="text-2xl text-primary-gold mb-2" />
                       <p className="italic text-lg">{episode.quote}</p>
                     </div>
 
-                    <button className="w-full bg-brand-gold text-royal-blue py-4 rounded-xl font-black text-lg hover:bg-white transition-all flex items-center justify-center gap-3">
+                    <button className="w-full bg-primary-gold text-neutral-dark py-4 rounded-xl font-black text-lg hover:bg-primary-gold-light transition-all flex items-center justify-center gap-3">
                       <FaHeadphones />
                       Listen to {episode.guest}'s Story
                     </button>
@@ -646,7 +648,7 @@ const MediaPage = () => {
               {['Spotify', 'Apple Podcasts', 'Google Podcasts', 'YouTube Music'].map((platform) => (
                 <button
                   key={platform}
-                  className="bg-white text-royal-blue px-8 py-4 rounded-xl font-bold hover:bg-brand-gold transition-all"
+                  className="bg-white text-primary-blue px-8 py-4 rounded-xl font-bold hover:bg-primary-gold hover:text-neutral-dark transition-all"
                 >
                   {platform}
                 </button>
@@ -665,8 +667,8 @@ const MediaPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <FaImages className="text-7xl text-royal-blue mx-auto mb-6" />
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Ministry Moments</h2>
+            <FaImages className="text-7xl text-primary-blue mx-auto mb-6" />
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Ministry Moments</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               Capturing transformation as it happens—see the moments that changed lives forever
             </p>
@@ -695,7 +697,7 @@ const MediaPage = () => {
                     {/* Album Info Overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <div className="flex items-center gap-3 mb-3">
-                        <FaImages className="text-brand-gold text-2xl" />
+                        <FaImages className="text-primary-gold text-2xl" />
                         <span className="text-white font-bold">{album.images} Photos</span>
                       </div>
                       <h3 className="text-3xl font-black text-white mb-3">{album.title}</h3>
@@ -712,7 +714,7 @@ const MediaPage = () => {
                         <p className="text-gray-900 font-semibold">{album.highlight}</p>
                       </div>
                     </div>
-                    <button className="w-full bg-gradient-to-r from-royal-blue to-electric-purple text-white py-4 rounded-xl font-black hover:shadow-2xl transition-all">
+                    <button className="w-full bg-gradient-to-r from-primary-blue to-accent-purple text-white py-4 rounded-xl font-black hover:shadow-2xl transition-all">
                       View Full Gallery
                     </button>
                   </div>
@@ -724,7 +726,7 @@ const MediaPage = () => {
       </section>
 
       {/* Subscribe CTA */}
-      <section className="py-20 bg-gradient-to-br from-holy-fire to-vibrant-orange text-white">
+      <section className="py-20 bg-gradient-to-br from-accent-red to-primary-gold text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -738,11 +740,11 @@ const MediaPage = () => {
               Subscribe to get notified when new life-changing messages are uploaded
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-holy-fire px-10 py-5 rounded-xl font-black text-lg hover:bg-gray-100 transition-all shadow-2xl flex items-center justify-center gap-3">
+              <button className="bg-white text-accent-red px-10 py-5 rounded-xl font-black text-lg hover:bg-neutral-cream transition-all shadow-2xl flex items-center justify-center gap-3">
                 <FaYoutube className="text-3xl" />
                 Subscribe on YouTube
               </button>
-              <button className="bg-royal-blue text-white px-10 py-5 rounded-xl font-black text-lg hover:bg-electric-purple transition-all shadow-2xl">
+              <button className="bg-primary-blue text-white px-10 py-5 rounded-xl font-black text-lg hover:bg-accent-purple transition-all shadow-2xl">
                 Join Email List
               </button>
             </div>
