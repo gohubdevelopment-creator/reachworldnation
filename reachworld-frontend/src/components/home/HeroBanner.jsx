@@ -71,18 +71,17 @@ const HeroBanner = () => {
               backgroundImage: `url(${slides[currentSlide].image})`,
             }}
           >
-            {/* Bold Cinematic Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal/95 via-royal-blue-900/90 to-deep-charcoal/95"></div>
-            {/* Accent Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-t from-holy-fire/20 via-transparent to-transparent"></div>
-            <div className="absolute inset-0 bg-gradient-to-br from-electric-purple/10 to-vibrant-orange/10"></div>
+            {/* Dark Overlay for Text Contrast - 60-30-10 rule: 60% primary blue overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/90 via-primary-blue-dark/85 to-primary-blue/90"></div>
+            {/* Subtle accent overlay - 10% gold accent */}
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-gold/10 via-transparent to-transparent"></div>
           </div>
 
           {/* Content */}
-          <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center text-center text-white">
+          <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-center text-center text-neutral-white">
             <div className="max-w-6xl">
               <motion.h1
-                className="text-hero-mobile md:text-hero font-display font-black mb-8 leading-none tracking-tighter"
+                className="text-5xl md:text-7xl font-display font-black mb-8 leading-none tracking-tight"
                 initial={{ y: 100, opacity: 0, scale: 0.9 }}
                 animate={{ y: 0, opacity: 1, scale: 1 }}
                 transition={{
@@ -92,14 +91,14 @@ const HeroBanner = () => {
                   stiffness: 100
                 }}
               >
-                <span className="inline-block">{slides[currentSlide].title.split(' ').slice(0, -2).join(' ')}</span>{' '}
-                <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-vibrant-orange-light to-brand-gold-300 animate-glow">
+                <span className="inline-block text-neutral-white">{slides[currentSlide].title.split(' ').slice(0, -2).join(' ')}</span>{' '}
+                <span className="inline-block text-primary-gold">
                   {slides[currentSlide].title.split(' ').slice(-2).join(' ')}
                 </span>
               </motion.h1>
 
               <motion.p
-                className="text-2xl md:text-4xl mb-10 font-light text-gray-200 max-w-4xl mx-auto leading-relaxed"
+                className="text-xl md:text-3xl mb-10 font-light text-neutral-cream max-w-4xl mx-auto leading-relaxed"
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
@@ -114,15 +113,14 @@ const HeroBanner = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
               >
                 <motion.button
-                  className="group relative bg-gradient-to-r from-vibrant-orange to-holy-fire text-white text-xl font-bold px-10 py-5 rounded-xl overflow-hidden shadow-2xl"
+                  className="bg-primary-gold text-neutral-dark text-xl font-bold px-10 py-5 rounded-xl shadow-2xl hover:bg-primary-gold-light transition-all duration-300"
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="relative z-10">{slides[currentSlide].cta}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-holy-fire to-vibrant-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </motion.button>
                 <motion.button
-                  className="text-xl font-semibold px-10 py-5 rounded-xl border-2 border-white/30 backdrop-blur-sm hover:bg-white/10 hover:border-white transition-all duration-300"
+                  className="bg-neutral-white text-primary-blue text-xl font-semibold px-10 py-5 rounded-xl hover:bg-neutral-cream transition-all duration-300 shadow-lg"
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -134,17 +132,17 @@ const HeroBanner = () => {
         </motion.div>
       </AnimatePresence>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Now visible with solid backgrounds */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-primary-gold hover:bg-primary-gold-light text-neutral-dark p-4 rounded-full transition-all duration-300 shadow-lg"
       >
         <FaChevronLeft className="text-xl" />
       </button>
 
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-primary-gold hover:bg-primary-gold-light text-neutral-dark p-4 rounded-full transition-all duration-300 shadow-lg"
       >
         <FaChevronRight className="text-xl" />
       </button>
@@ -155,10 +153,10 @@ const HeroBanner = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`h-3 rounded-full transition-all duration-300 ${
               index === currentSlide
-                ? 'bg-brand-gold w-8'
-                : 'bg-white/50 hover:bg-white/75'
+                ? 'bg-primary-gold w-8'
+                : 'bg-neutral-white/70 hover:bg-neutral-white w-3'
             }`}
           />
         ))}
