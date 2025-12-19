@@ -1,5 +1,6 @@
 import LiveServiceIndicator from '../components/home/LiveServiceIndicator';
 import HeroBanner from '../components/home/HeroBanner';
+import WhatWeDo from '../components/home/WhatWeDo';
 import StorySection from '../components/home/StorySection';
 import MinistryMoments from '../components/home/MinistryMoments';
 import QuickAccessButtons from '../components/home/QuickAccessButtons';
@@ -18,6 +19,9 @@ const HomePage = () => {
 
       {/* Hero Banner - Ministry-focused rotating slides */}
       <HeroBanner />
+
+      {/* What We Do - Three Strategic Arms */}
+      <WhatWeDo />
 
       {/* Story Section - Visual journey of transformation */}
       <StorySection />

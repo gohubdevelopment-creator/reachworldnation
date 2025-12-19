@@ -7,13 +7,12 @@ const Header = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Books', path: '/books' },
+    { name: 'About Reachworld', path: '/about' },
+    { name: 'Our Arms', path: '/our-arms' },
     { name: 'Media', path: '/media' },
-    { name: 'Events', path: '/events' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'Prayer', path: '/prayer' },
-    { name: 'Partner', path: '/partner' },
+    { name: 'Programs & Events', path: '/events' },
+    { name: 'Impact', path: '/impact' },
+    { name: 'Partner With Us', path: '/partner' },
     { name: 'Contact', path: '/contact' }
   ];
 

@@ -3,6 +3,11 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import OurArmsPage from './pages/OurArmsPage';
+import SpiritualArmPage from './pages/SpiritualArmPage';
+import MediaEducationArmPage from './pages/MediaEducationArmPage';
+import SocialImpactArmPage from './pages/SocialImpactArmPage';
+import ImpactPage from './pages/ImpactPage';
 import BooksPage from './pages/BooksPage';
 import MediaPage from './pages/MediaPage';
 import PrayerPage from './pages/PrayerPage';
@@ -21,6 +26,11 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/our-arms" element={<OurArmsPage />} />
+            <Route path="/arms/spiritual" element={<SpiritualArmPage />} />
+            <Route path="/arms/media-education" element={<MediaEducationArmPage />} />
+            <Route path="/arms/social-impact" element={<SocialImpactArmPage />} />
+            <Route path="/impact" element={<ImpactPage />} />
             <Route path="/books" element={<BooksPage />} />
             <Route path="/media" element={<MediaPage />} />
             <Route path="/prayer" element={<PrayerPage />} />
