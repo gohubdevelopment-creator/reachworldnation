@@ -7,52 +7,57 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary Brand Colors
+        // Primary Palette
+        'primary-blue': {
+          DEFAULT: '#1e3a8a',  // Deep royal blue - main brand color
+          light: '#3b82f6',    // Lighter blue for hover states
+          dark: '#1e293b',     // Darker variant
+        },
+        'primary-gold': {
+          DEFAULT: '#d4af37',  // Warm gold - accent & CTAs
+          light: '#e0c694',
+          dark: '#b8972d',
+        },
+
+        // Neutral Palette
+        'neutral-white': '#ffffff',
+        'neutral-cream': '#fefaf6',
+        'neutral-light': '#f8fafc',
+        'neutral-gray': '#64748b',
+        'neutral-dark': '#1e293b',
+
+        // Accent Colors
+        'accent-teal': '#0d9488',
+        'accent-purple': '#7c3aed',
+        'accent-red': '#dc2626',
+
+        // Legacy support (mapped to new colors)
         'royal-blue': {
-          DEFAULT: '#0033A0',
-          50: '#E6EBF5',
-          100: '#C2D1E8',
-          200: '#99B3D9',
-          300: '#7095CA',
-          400: '#4D7DBF',
-          500: '#0033A0',
-          600: '#002D8C',
-          700: '#002573',
-          800: '#001D5A',
-          900: '#001242',
+          DEFAULT: '#1e3a8a',
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#1e3a8a',
+          600: '#1e293b',
+          700: '#0f172a',
+          800: '#020617',
+          900: '#020617',
         },
         'brand-gold': {
-          DEFAULT: '#D4AF37',
-          50: '#FAF7EF',
-          100: '#F4ECDB',
-          200: '#EAD9B8',
-          300: '#E0C694',
-          400: '#D9BA65',
-          500: '#D4AF37',
-          600: '#B8972D',
+          DEFAULT: '#d4af37',
+          50: '#fefaf6',
+          100: '#fef3e2',
+          200: '#fde8c5',
+          300: '#e0c694',
+          400: '#d4af37',
+          500: '#d4af37',
+          600: '#b8972d',
           700: '#947923',
-          800: '#6F5B1A',
-          900: '#4A3D11',
+          800: '#6f5b1a',
+          900: '#4a3d11',
         },
-        // Bold Accent Colors for Storytelling
-        'vibrant-orange': {
-          DEFAULT: '#FF6B35',
-          light: '#FF8C5E',
-          dark: '#E64D1C',
-        },
-        'electric-purple': {
-          DEFAULT: '#8B5CF6',
-          light: '#A78BFA',
-          dark: '#7C3AED',
-        },
-        'holy-fire': {
-          DEFAULT: '#DC2626',
-          light: '#EF4444',
-          dark: '#B91C1C',
-        },
-        'accent-blue': '#4A90E2',
-        'deep-charcoal': '#0D0D0D',
-        'soft-gray': '#F8F9FA',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

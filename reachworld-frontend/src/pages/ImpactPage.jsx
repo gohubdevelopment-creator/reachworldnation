@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaUsers, FaPrayingHands, FaBook, FaHeart, FaGlobeAmericas, FaHandsHelping, FaGraduationCap, FaChurch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { BarChart, Bar, PieChart, Pie, LineChart, Line, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 
 const ImpactPage = () => {
   const navigate = useNavigate();
@@ -30,6 +31,38 @@ const ImpactPage = () => {
       label: 'Events & Gatherings',
       description: 'Conferences, retreats, and outreaches'
     }
+  ];
+
+  // Data for Impact Distribution Pie Chart
+  const impactDistributionData = [
+    { name: 'Spiritual Formation', value: 3500, color: '#9333ea' },
+    { name: 'Media & Education', value: 4000, color: '#2563eb' },
+    { name: 'Social Impact', value: 2500, color: '#059669' }
+  ];
+
+  // Data for Growth Over Time Line Chart
+  const growthData = [
+    { year: '2020', spiritual: 800, media: 500, social: 300 },
+    { year: '2021', spiritual: 1500, media: 1200, social: 700 },
+    { year: '2022', spiritual: 2300, media: 2000, social: 1200 },
+    { year: '2023', spiritual: 3000, media: 3200, social: 1800 },
+    { year: '2024', spiritual: 3500, media: 4000, social: 2500 }
+  ];
+
+  // Data for Arm Performance Radar
+  const performanceData = [
+    { category: 'Reach', spiritual: 90, media: 95, social: 85 },
+    { category: 'Engagement', spiritual: 95, media: 85, social: 90 },
+    { category: 'Impact', spiritual: 88, media: 92, social: 95 },
+    { category: 'Growth', spiritual: 85, media: 90, social: 80 },
+    { category: 'Sustainability', spiritual: 92, media: 88, social: 87 }
+  ];
+
+  // Data for Programs Bar Chart
+  const programsData = [
+    { arm: 'Spiritual', prayers: 200, discipleship: 1500, conferences: 30, teachings: 100 },
+    { arm: 'Media', books: 15, courses: 2000, films: 10, podcasts: 500 },
+    { arm: 'Social', families: 500, students: 150, outreaches: 50, relief: 20 }
   ];
 
   const armImpacts = [
@@ -116,6 +149,22 @@ const ImpactPage = () => {
     return colors[color];
   };
 
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-4 border-2 border-gray-200 rounded-lg shadow-lg">
+          <p className="font-semibold text-royal-blue mb-2">{label}</p>
+          {payload.map((entry, index) => (
+            <p key={index} style={{ color: entry.color }} className="text-sm">
+              {entry.name}: <span className="font-bold">{entry.value}</span>
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -167,59 +216,147 @@ const ImpactPage = () => {
         </div>
       </section>
 
-      {/* Impact by Arms */}
+      {/* Impact Distribution & Growth Charts */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-royal-blue mb-4">Impact Across Our Arms</h2>
+            <h2 className="text-4xl font-bold text-royal-blue mb-4">Impact Analytics</h2>
             <div className="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Each strategic arm contributes uniquely to transforming lives and advancing God's kingdom.
+              Data-driven insights into our ministry's reach and effectiveness across all three arms.
             </p>
           </div>
 
-          <div className="space-y-8 max-w-6xl mx-auto">
-            {armImpacts.map((arm, index) => {
-              const Icon = arm.icon;
-              const colors = getColorClasses(arm.color);
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className={`${colors.bg} border-2 ${colors.border} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300`}
-                >
-                  <div className="flex items-center mb-6">
-                    <Icon className={`text-5xl ${colors.text} mr-4`} />
-                    <h3 className="text-3xl font-bold text-royal-blue">{arm.arm}</h3>
-                  </div>
-
-                  <div className="grid md:grid-cols-4 gap-6 mb-6">
-                    {arm.stats.map((stat, idx) => (
-                      <div key={idx} className="text-center">
-                        <p className="text-2xl font-bold text-royal-blue mb-1">{stat.value}</p>
-                        <p className="text-sm text-gray-600">{stat.label}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => navigate(arm.path)}
-                    className={`bg-gradient-to-r ${colors.gradient} text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
+          <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {/* Impact Distribution Pie Chart */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-2xl font-bold text-royal-blue mb-6 text-center">Lives Transformed by Arm</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={impactDistributionData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                    outerRadius={100}
+                    fill="#8884d8"
+                    dataKey="value"
                   >
-                    Explore {arm.arm}
-                  </button>
-                </motion.div>
-              );
-            })}
+                    {impactDistributionData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+              <div className="mt-6 flex justify-center gap-6">
+                {impactDistributionData.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded" style={{ backgroundColor: item.color }}></div>
+                    <span className="text-sm text-gray-600">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Growth Over Time Line Chart */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-2xl font-bold text-royal-blue mb-6 text-center">Growth Trajectory (2020-2024)</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={growthData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="year" />
+                  <YAxis />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Legend />
+                  <Line type="monotone" dataKey="spiritual" stroke="#9333ea" strokeWidth={3} name="Spiritual" />
+                  <Line type="monotone" dataKey="media" stroke="#2563eb" strokeWidth={3} name="Media & Education" />
+                  <Line type="monotone" dataKey="social" stroke="#059669" strokeWidth={3} name="Social Impact" />
+                </LineChart>
+              </ResponsiveContainer>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Performance Radar & Programs Bar Chart */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            {/* Arm Performance Radar */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-2xl font-bold text-royal-blue mb-6 text-center">Arm Performance Metrics</h3>
+              <ResponsiveContainer width="100%" height={350}>
+                <RadarChart data={performanceData}>
+                  <PolarGrid />
+                  <PolarAngleAxis dataKey="category" />
+                  <PolarRadiusAxis angle={90} domain={[0, 100]} />
+                  <Radar name="Spiritual" dataKey="spiritual" stroke="#9333ea" fill="#9333ea" fillOpacity={0.3} />
+                  <Radar name="Media" dataKey="media" stroke="#2563eb" fill="#2563eb" fillOpacity={0.3} />
+                  <Radar name="Social" dataKey="social" stroke="#059669" fill="#059669" fillOpacity={0.3} />
+                  <Legend />
+                  <Tooltip />
+                </RadarChart>
+              </ResponsiveContainer>
+            </motion.div>
+
+            {/* Impact by Numbers */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-2xl font-bold text-royal-blue mb-6 text-center">Impact Breakdown by Arm</h3>
+              <div className="space-y-6">
+                {armImpacts.map((arm, index) => {
+                  const Icon = arm.icon;
+                  const colors = getColorClasses(arm.color);
+                  return (
+                    <div key={index} className={`${colors.bg} rounded-lg p-4 border ${colors.border}`}>
+                      <div className="flex items-center mb-3">
+                        <Icon className={`text-2xl ${colors.text} mr-3`} />
+                        <h4 className="font-bold text-royal-blue">{arm.arm}</h4>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        {arm.stats.map((stat, idx) => (
+                          <div key={idx} className="text-center">
+                            <p className={`text-xl font-bold ${colors.text}`}>{stat.value}</p>
+                            <p className="text-xs text-gray-600">{stat.label}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-royal-blue mb-4">Stories of Transformation</h2>

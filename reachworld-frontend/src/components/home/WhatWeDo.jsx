@@ -12,10 +12,7 @@ const WhatWeDo = () => {
       subtitle: 'Kingdom Life',
       description: 'Establishing believers through Christ-centered teachings, discipleship, prayer gatherings, and transformative conferences.',
       path: '/arms/spiritual',
-      gradient: 'from-purple-600 to-indigo-600',
-      bgGradient: 'from-purple-50 to-indigo-50',
-      iconBg: 'bg-purple-100',
-      iconColor: 'text-purple-600'
+      accentColor: 'accent-teal' // Subtle differentiation
     },
     {
       icon: FaBook,
@@ -23,10 +20,7 @@ const WhatWeDo = () => {
       subtitle: 'Knowledge Systems',
       description: 'Communicating truth and equipping leaders through books, films, online courses, and creative digital resources.',
       path: '/arms/media-education',
-      gradient: 'from-blue-600 to-cyan-600',
-      bgGradient: 'from-blue-50 to-cyan-50',
-      iconBg: 'bg-blue-100',
-      iconColor: 'text-blue-600'
+      accentColor: 'accent-purple' // Subtle differentiation
     },
     {
       icon: FaHandsHelping,
@@ -34,15 +28,12 @@ const WhatWeDo = () => {
       subtitle: 'Human Development',
       description: 'Addressing real-life needs through community outreach, scholarships, relief efforts, and mindset transformation.',
       path: '/arms/social-impact',
-      gradient: 'from-green-600 to-emerald-600',
-      bgGradient: 'from-green-50 to-emerald-50',
-      iconBg: 'bg-green-100',
-      iconColor: 'text-green-600'
+      accentColor: 'primary-gold' // Subtle differentiation
     }
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 bg-neutral-cream">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -52,9 +43,9 @@ const WhatWeDo = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-royal-blue mb-4">What We Do</h2>
-          <div className="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
-          <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-blue mb-4">What We Do</h2>
+          <div className="w-24 h-1 bg-primary-gold mx-auto mb-6"></div>
+          <p className="text-lg md:text-xl text-neutral-gray max-w-3xl mx-auto leading-relaxed">
             Reachworld Nation operates through three strategic arms designed to transform lives
             spiritually, intellectually, and socially—raising a people grounded in Christ, truth, and impact.
           </p>
@@ -74,28 +65,28 @@ const WhatWeDo = () => {
                 className="group cursor-pointer"
                 onClick={() => navigate(arm.path)}
               >
-                <div className={`bg-gradient-to-br ${arm.bgGradient} rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full border-2 border-gray-100 hover:border-gray-200`}>
+                <div className="bg-neutral-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full border-2 border-neutral-light hover:border-primary-blue">
                   {/* Icon Header */}
-                  <div className="p-8 text-center">
-                    <div className={`${arm.iconBg} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className={`text-4xl ${arm.iconColor}`} />
+                  <div className="p-8 text-center bg-gradient-to-br from-neutral-light to-neutral-white">
+                    <div className={`bg-primary-blue w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="text-4xl text-neutral-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-royal-blue mb-2">{arm.title}</h3>
-                    <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
+                    <h3 className="text-2xl font-bold text-primary-blue mb-2">{arm.title}</h3>
+                    <p className={`text-sm font-semibold text-${arm.accentColor} uppercase tracking-wide mb-4`}>
                       {arm.subtitle}
                     </p>
                   </div>
 
                   {/* Description */}
                   <div className="px-8 pb-8">
-                    <p className="text-gray-700 leading-relaxed mb-6 text-center">
+                    <p className="text-neutral-gray leading-relaxed mb-6 text-center">
                       {arm.description}
                     </p>
 
                     {/* Learn More Button */}
                     <button
                       onClick={() => navigate(arm.path)}
-                      className={`w-full bg-gradient-to-r ${arm.gradient} text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
+                      className="w-full bg-primary-gold text-neutral-dark py-3 px-6 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-primary-gold-light hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                     >
                       Learn More
                       <FaArrowRight className="text-sm" />
@@ -117,7 +108,7 @@ const WhatWeDo = () => {
         >
           <button
             onClick={() => navigate('/our-arms')}
-            className="bg-royal-blue text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            className="bg-primary-blue text-neutral-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-blue-light transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             Explore All Our Arms
           </button>

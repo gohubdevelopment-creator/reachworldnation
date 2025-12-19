@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-royal-blue text-white shadow-lg sticky top-0 z-50">
+    <header className="bg-primary-blue text-neutral-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -38,8 +38,8 @@ const Header = () => {
               className="h-12 w-auto object-contain rounded-xl"
             />
             <div>
-              <h1 className="text-xl font-bold">ReachworldNation</h1>
-              <p className="text-xs text-brand-gold">Transforming Lives Globally</p>
+              <h1 className="text-xl font-bold text-neutral-white">ReachworldNation</h1>
+              <p className="text-xs text-primary-gold">Transforming Lives Globally</p>
             </div>
           </motion.a>
 
@@ -49,7 +49,7 @@ const Header = () => {
               <motion.a
                 key={link.name}
                 href={link.path}
-                className="hover:text-brand-gold transition-colors duration-300 font-medium"
+                className="text-neutral-cream hover:text-primary-gold transition-colors duration-300 font-medium"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -59,7 +59,7 @@ const Header = () => {
             ))}
             <motion.a
               href="/community"
-              className="btn-primary"
+              className="bg-primary-gold text-neutral-dark px-6 py-2 rounded-lg font-semibold hover:bg-primary-gold-light transition-all duration-300"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
@@ -91,13 +91,13 @@ const Header = () => {
                 <a
                   key={link.name}
                   href={link.path}
-                  className="block py-2 hover:text-brand-gold transition-colors duration-300"
+                  className="block py-2 text-neutral-cream hover:text-primary-gold transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}
                 </a>
               ))}
-              <a href="/community" className="btn-primary w-full mt-4 block text-center">
+              <a href="/community" className="bg-primary-gold text-neutral-dark px-6 py-3 rounded-lg font-semibold hover:bg-primary-gold-light transition-all duration-300 w-full mt-4 block text-center">
                 Join Us
               </a>
             </motion.nav>

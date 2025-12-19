@@ -4,16 +4,16 @@
 
 @layer base {
   body {
-    @apply font-sans text-deep-charcoal bg-white;
+    @apply font-sans text-neutral-dark bg-neutral-white;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-brand-gold text-deep-charcoal font-semibold px-6 py-3 rounded-lg hover:bg-royal-blue hover:text-white transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-gold focus:ring-offset-2;
+    @apply bg-primary-gold text-neutral-dark font-semibold px-6 py-3 rounded-lg hover:bg-primary-gold-light hover:shadow-lg transition-all duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-gold focus:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply bg-royal-blue text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-gold hover:text-deep-charcoal transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-royal-blue focus:ring-offset-2;
+    @apply bg-primary-blue text-neutral-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-blue-light transition-all duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-blue focus:ring-offset-2;
   }
 }

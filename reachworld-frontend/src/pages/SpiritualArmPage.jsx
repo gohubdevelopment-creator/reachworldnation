@@ -57,9 +57,9 @@ const SpiritualArmPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-neutral-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-900 via-indigo-900 to-purple-900 text-white py-20">
+      <section className="bg-gradient-to-r from-primary-blue to-primary-blue-light text-neutral-white py-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,10 +67,10 @@ const SpiritualArmPage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <FaPrayingHands className="text-7xl mb-6 mx-auto text-brand-gold" />
+            <FaPrayingHands className="text-7xl mb-6 mx-auto text-primary-gold" />
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Spiritual Formation & Kingdom Life</h1>
-            <div className="w-24 h-1 bg-brand-gold mx-auto mb-8"></div>
-            <p className="text-xl md:text-2xl leading-relaxed text-gray-100">
+            <div className="w-24 h-1 bg-primary-gold mx-auto mb-8"></div>
+            <p className="text-xl md:text-2xl leading-relaxed text-neutral-cream">
               Establishing believers in Christ-centered truth, spiritual maturity, and kingdom identity through discipleship, teaching, prayer, and transformative gatherings.
             </p>
           </motion.div>
@@ -78,7 +78,7 @@ const SpiritualArmPage = () => {
       </section>
 
       {/* Vision Section */}
-      <section className="py-20 bg-purple-50">
+      <section className="py-20 bg-neutral-cream">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,12 +87,12 @@ const SpiritualArmPage = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-4xl font-bold text-royal-blue mb-6">Vision of This Arm</h2>
-            <div className="w-20 h-1 bg-brand-gold mx-auto mb-8"></div>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <h2 className="text-4xl font-bold text-primary-blue mb-6">Vision of This Arm</h2>
+            <div className="w-20 h-1 bg-primary-gold mx-auto mb-8"></div>
+            <p className="text-lg text-neutral-gray leading-relaxed mb-6">
               The Spiritual Arm exists to cultivate deep, authentic relationship with God and establish believers in biblical truth. We create environments where individuals encounter Christ, grow in spiritual maturity, and develop kingdom mindsets that transform how they live, lead, and influence their world.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-neutral-gray leading-relaxed">
               Through systematic teaching, intentional discipleship, corporate prayer, and strategic gatherings, we raise a generation grounded in the Word, empowered by the Spirit, and committed to advancing God's kingdom on earth.
             </p>
           </motion.div>
@@ -100,11 +100,11 @@ const SpiritualArmPage = () => {
       </section>
 
       {/* Key Programs Section */}
-      <section className="py-20">
+      <section className="py-20 bg-neutral-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-royal-blue mb-4">Key Programs</h2>
-            <div className="w-20 h-1 bg-brand-gold mx-auto"></div>
+            <h2 className="text-4xl font-bold text-primary-blue mb-4">Key Programs</h2>
+            <div className="w-20 h-1 bg-primary-gold mx-auto"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -117,16 +117,16 @@ const SpiritualArmPage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white border-2 border-purple-200 rounded-xl p-8 shadow-lg hover:shadow-2xl hover:border-purple-400 transition-all duration-300"
+                  className="bg-neutral-light border-2 border-neutral-light hover:border-accent-teal rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
                 >
-                  <Icon className="text-5xl text-purple-600 mb-4" />
-                  <h3 className="text-2xl font-bold text-royal-blue mb-3">{program.title}</h3>
-                  <p className="text-gray-700 mb-6">{program.description}</p>
+                  <Icon className="text-5xl text-accent-teal mb-4" />
+                  <h3 className="text-2xl font-bold text-primary-blue mb-3">{program.title}</h3>
+                  <p className="text-neutral-gray mb-6">{program.description}</p>
                   <ul className="space-y-2">
                     {program.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="text-brand-gold mr-2">✓</span>
-                        <span className="text-gray-600">{feature}</span>
+                        <span className="text-primary-gold mr-2">✓</span>
+                        <span className="text-neutral-gray">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -138,11 +138,11 @@ const SpiritualArmPage = () => {
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-neutral-cream">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-royal-blue mb-4">Upcoming Events</h2>
-            <div className="w-20 h-1 bg-brand-gold mx-auto"></div>
+            <h2 className="text-4xl font-bold text-primary-blue mb-4">Upcoming Events</h2>
+            <div className="w-20 h-1 bg-primary-gold mx-auto"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -153,14 +153,14 @@ const SpiritualArmPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-600"
+                className="bg-neutral-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-accent-teal"
               >
                 <div className="flex items-center mb-4">
-                  <FaCalendar className="text-2xl text-purple-600 mr-3" />
-                  <span className="text-sm font-semibold text-purple-600 uppercase">{event.type}</span>
+                  <FaCalendar className="text-2xl text-accent-teal mr-3" />
+                  <span className="text-sm font-semibold text-accent-teal uppercase">{event.type}</span>
                 </div>
-                <h3 className="text-xl font-bold text-royal-blue mb-3">{event.title}</h3>
-                <div className="space-y-2 text-gray-600">
+                <h3 className="text-xl font-bold text-primary-blue mb-3">{event.title}</h3>
+                <div className="space-y-2 text-neutral-gray">
                   <p><strong>Date:</strong> {event.date}</p>
                   <p><strong>Time:</strong> {event.time}</p>
                   <p><strong>Location:</strong> {event.location}</p>
@@ -172,12 +172,12 @@ const SpiritualArmPage = () => {
       </section>
 
       {/* Gallery Placeholder */}
-      <section className="py-20">
+      <section className="py-20 bg-neutral-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-royal-blue mb-4">Ministry Moments</h2>
-            <div className="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-primary-blue mb-4">Ministry Moments</h2>
+            <div className="w-20 h-1 bg-primary-gold mx-auto mb-6"></div>
+            <p className="text-neutral-gray max-w-2xl mx-auto">
               Witness the transformative power of spiritual formation through prayer, worship, and teaching.
             </p>
           </div>
@@ -190,9 +190,9 @@ const SpiritualArmPage = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: item * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-xl h-64 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-neutral-light rounded-xl h-64 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <p className="text-purple-600 font-semibold">Gallery Image {item}</p>
+                <p className="text-neutral-gray font-semibold">Gallery Image {item}</p>
               </motion.div>
             ))}
           </div>
@@ -200,7 +200,7 @@ const SpiritualArmPage = () => {
       </section>
 
       {/* Get Involved Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-900 to-indigo-900 text-white">
+      <section className="py-20 bg-gradient-to-r from-primary-blue to-primary-blue-light text-neutral-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -209,19 +209,19 @@ const SpiritualArmPage = () => {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center"
           >
-            <FaHandHoldingHeart className="text-6xl mb-6 mx-auto text-brand-gold" />
+            <FaHandHoldingHeart className="text-6xl mb-6 mx-auto text-primary-gold" />
             <h2 className="text-4xl font-bold mb-6">Get Involved</h2>
-            <p className="text-xl mb-10 text-gray-100">
+            <p className="text-xl mb-10 text-neutral-cream">
               Join us in cultivating spiritual depth and kingdom transformation. There are multiple ways to engage with this arm of our ministry.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <h3 className="text-xl font-bold mb-3">Join a Program</h3>
-                <p className="text-gray-200 mb-4">Participate in discipleship, prayer meetings, or upcoming conferences.</p>
+                <p className="text-neutral-cream mb-4">Participate in discipleship, prayer meetings, or upcoming conferences.</p>
                 <button
                   onClick={() => navigate('/events')}
-                  className="bg-brand-gold text-royal-blue px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-all duration-300"
+                  className="bg-primary-gold text-neutral-dark px-6 py-3 rounded-lg font-semibold hover:bg-primary-gold-light transition-all duration-300"
                 >
                   View Programs
                 </button>
@@ -229,10 +229,10 @@ const SpiritualArmPage = () => {
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <h3 className="text-xl font-bold mb-3">Volunteer</h3>
-                <p className="text-gray-200 mb-4">Serve in prayer teams, event coordination, or discipleship mentoring.</p>
+                <p className="text-neutral-cream mb-4">Serve in prayer teams, event coordination, or discipleship mentoring.</p>
                 <button
                   onClick={() => navigate('/community')}
-                  className="bg-white text-royal-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
+                  className="bg-neutral-white text-primary-blue px-6 py-3 rounded-lg font-semibold hover:bg-neutral-light transition-all duration-300"
                 >
                   Join Team
                 </button>
@@ -240,10 +240,10 @@ const SpiritualArmPage = () => {
 
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
                 <h3 className="text-xl font-bold mb-3">Support This Arm</h3>
-                <p className="text-gray-200 mb-4">Partner financially to sustain spiritual formation initiatives.</p>
+                <p className="text-neutral-cream mb-4">Partner financially to sustain spiritual formation initiatives.</p>
                 <button
                   onClick={() => navigate('/partner')}
-                  className="bg-white text-royal-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
+                  className="bg-neutral-white text-primary-blue px-6 py-3 rounded-lg font-semibold hover:bg-neutral-light transition-all duration-300"
                 >
                   Partner Now
                 </button>
