@@ -9,9 +9,9 @@ export default {
       colors: {
         // Primary Palette
         'primary-blue': {
-          DEFAULT: '#1e3a8a',  // Deep royal blue - main brand color
-          light: '#3b82f6',    // Lighter blue for hover states
-          dark: '#1e293b',     // Darker variant
+          DEFAULT: '#3248a8',  // Main brand blue
+          light: '#4a5ec4',    // Lighter variant
+          dark: '#273a85',     // Darker for hover states
         },
         'primary-gold': {
           DEFAULT: '#d4af37',  // Warm gold - accent & CTAs
@@ -30,6 +30,8 @@ export default {
         'accent-teal': '#0d9488',
         'accent-purple': '#7c3aed',
         'accent-red': '#dc2626',
+        'accent-gold-dark': '#b8941e',
+        'accent-blue-subtle': '#5a6fd4',
 
         // Legacy support (mapped to new colors)
         'royal-blue': {

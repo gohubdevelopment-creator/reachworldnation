@@ -12,7 +12,9 @@ const AboutPage = () => {
             alt="Worship gathering"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal/95 via-royal-blue-900/90 to-deep-charcoal/95" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/90 via-primary-blue-dark/85 to-primary-blue/90"></div>
+          {/* Subtle accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-gold/10 via-transparent to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -27,7 +29,7 @@ const AboutPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              From Broken to <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-vibrant-orange to-brand-gold-300">Beloved</span>
+              From Broken to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-gold via-primary-gold-light to-primary-gold animate-glow">Beloved</span>
             </motion.h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8">
               The story of a man called by God to transform 2 million lives across 150 nations
@@ -48,7 +50,7 @@ const AboutPage = () => {
                   transition={{ delay: 0.4 + i * 0.1 }}
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
                 >
-                  <div className="text-4xl font-black text-brand-gold mb-2">{stat.number}</div>
+                  <div className="text-4xl font-black text-primary-gold mb-2">{stat.number}</div>
                   <div className="text-sm text-white/80">{stat.label}</div>
                 </motion.div>
               ))}
@@ -68,8 +70,8 @@ const AboutPage = () => {
               className="bg-white p-8 rounded-2xl shadow-lg"
             >
               <div className="flex items-center mb-4">
-                <FaGlobe className="text-4xl text-royal-blue mr-4" />
-                <h2 className="text-3xl font-black text-royal-blue">Our Vision</h2>
+                <FaGlobe className="text-4xl text-primary-blue mr-4" />
+                <h2 className="text-3xl font-black text-primary-blue">Our Vision</h2>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">
                 To reach every nation with the transforming power of God's word, raising a generation
@@ -85,8 +87,8 @@ const AboutPage = () => {
               className="bg-white p-8 rounded-2xl shadow-lg"
             >
               <div className="flex items-center mb-4">
-                <FaGlobe className="text-4xl text-brand-gold mr-4" />
-                <h2 className="text-3xl font-black text-royal-blue">Our Mission</h2>
+                <FaGlobe className="text-4xl text-primary-gold mr-4" />
+                <h2 className="text-3xl font-black text-primary-blue">Our Mission</h2>
               </div>
               <p className="text-lg text-gray-700 leading-relaxed">
                 To empower believers worldwide through transformational teachings, impactful books,
@@ -99,7 +101,7 @@ const AboutPage = () => {
       </section>
 
       {/* Pastor David's Journey Timeline */}
-      <section className="py-24 bg-gradient-to-br from-deep-charcoal via-royal-blue-900 to-deep-charcoal text-white overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-primary-blue via-accent-purple to-neutral-dark text-white overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -122,7 +124,7 @@ const AboutPage = () => {
                 subtitle: 'Broken but Chosen',
                 story: 'In the depths of personal struggle and financial ruin, David encountered God in a way that would forever change his destiny. "I had nothing," he recalls, "but God showed me I was called to reach the unreachable."',
                 image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
-                gradient: 'from-holy-fire to-vibrant-orange',
+                gradient: 'from-accent-red to-primary-gold',
                 icon: '🔥'
               },
               {
@@ -131,7 +133,7 @@ const AboutPage = () => {
                 subtitle: 'From Doubt to Divine Authority',
                 story: 'Seven years of discipleship, study, and spiritual refinement transformed David from a broken man into a vessel of divine authority. His first sermon reached 50 people. Within months, hundreds were being transformed.',
                 image: 'https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=800',
-                gradient: 'from-electric-purple to-royal-blue-700',
+                gradient: 'from-accent-purple to-primary-blue',
                 icon: '✨'
               },
               {
@@ -140,7 +142,7 @@ const AboutPage = () => {
                 subtitle: 'Sent to the Nations',
                 story: 'God spoke clearly: "You will reach nations with My word." That year, ReachworldNation was born. The first international outreach to Ghana saw 10,000 salvations in one crusade. The mandate was undeniable.',
                 image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800',
-                gradient: 'from-vibrant-orange to-brand-gold-500',
+                gradient: 'from-primary-gold to-primary-gold-light',
                 icon: '🌍'
               },
               {
@@ -149,7 +151,7 @@ const AboutPage = () => {
                 subtitle: 'A Global Movement',
                 story: 'Today, 2 million lives transformed. 150 nations impacted. 5,000 churches planted. 500,000 books changing mindsets globally. The mission continues: every nation, every tribe, every tongue will hear the message of transformation.',
                 image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800',
-                gradient: 'from-royal-blue-600 to-accent-blue',
+                gradient: 'from-primary-blue to-primary-blue-light',
                 icon: '👑'
               }
             ].map((milestone, index) => (
@@ -206,7 +208,7 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="text-center mt-16"
           >
-            <button className="group relative bg-gradient-to-r from-brand-gold to-vibrant-orange text-royal-blue px-10 py-6 rounded-xl font-black text-xl shadow-2xl hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] transition-all duration-300 hover:scale-105">
+            <button className="group relative bg-gradient-to-r from-primary-gold to-primary-gold-light text-primary-blue px-10 py-6 rounded-xl font-black text-xl shadow-2xl hover:shadow-[0_0_60px_rgba(212,175,55,0.6)] transition-all duration-300 hover:scale-105">
               <span className="relative z-10 flex items-center gap-3">
                 Watch Pastor David's Full Story
                 <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,7 +229,7 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Core Beliefs Lived Out</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Core Beliefs Lived Out</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               These aren't just principles we teach—they're transformations we've witnessed in thousands of lives
             </p>
@@ -238,7 +240,7 @@ const AboutPage = () => {
               {
                 belief: 'Faith',
                 principle: 'Unwavering trust in God\'s word and promises for supernatural breakthroughs',
-                gradient: 'from-royal-blue to-electric-purple',
+                gradient: 'from-primary-blue to-accent-purple',
                 story: {
                   name: 'Sarah Okonkwo',
                   location: 'Lagos, Nigeria',
@@ -252,7 +254,7 @@ const AboutPage = () => {
               {
                 belief: 'Transformation',
                 principle: 'Complete renewal of mind, spirit, and life through divine revelation',
-                gradient: 'from-vibrant-orange to-holy-fire',
+                gradient: 'from-accent-red to-primary-gold',
                 story: {
                   name: 'Michael Chen',
                   location: 'Singapore',
@@ -266,7 +268,7 @@ const AboutPage = () => {
               {
                 belief: 'Kingdom Mindset',
                 principle: 'Operating from heaven\'s perspective in every area of life',
-                gradient: 'from-brand-gold to-vibrant-orange',
+                gradient: 'from-primary-gold to-primary-gold-light',
                 story: {
                   name: 'Grace Mensah',
                   location: 'Accra, Ghana',
@@ -280,7 +282,7 @@ const AboutPage = () => {
               {
                 belief: 'Global Influence',
                 principle: 'Impacting nations with Christ-like excellence and authority',
-                gradient: 'from-sky-blue to-electric-purple',
+                gradient: 'from-accent-teal to-accent-purple',
                 story: {
                   name: 'Pastor John Adeyemi',
                   location: 'Ibadan, Nigeria',
@@ -358,7 +360,7 @@ const AboutPage = () => {
       </section>
 
       {/* Global Impact Stories */}
-      <section className="py-24 bg-gradient-to-br from-royal-blue via-electric-purple to-deep-charcoal text-white">
+      <section className="py-24 bg-gradient-to-br from-primary-blue via-accent-purple to-neutral-dark text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -439,11 +441,11 @@ const AboutPage = () => {
                   <div className="p-6">
                     <div className="flex gap-4 mb-4">
                       <div className="text-center">
-                        <div className="text-2xl font-black text-brand-gold">{region.nations}</div>
+                        <div className="text-2xl font-black text-primary-gold">{region.nations}</div>
                         <div className="text-xs text-white/60">Reached</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-black text-brand-gold">{region.lives}</div>
+                        <div className="text-2xl font-black text-primary-gold">{region.lives}</div>
                         <div className="text-xs text-white/60">Transformed</div>
                       </div>
                     </div>
@@ -451,7 +453,7 @@ const AboutPage = () => {
                     <p className="text-white/90 leading-relaxed mb-4">{region.story.impact}</p>
 
                     <div className="pt-4 border-t border-white/20">
-                      <div className="text-brand-gold font-bold text-lg">{region.story.metric}</div>
+                      <div className="text-primary-gold font-bold text-lg">{region.story.metric}</div>
                     </div>
                   </div>
                 </div>
@@ -467,7 +469,7 @@ const AboutPage = () => {
             className="text-center mt-16"
           >
             <p className="text-2xl mb-8">Want to see transformation in your nation?</p>
-            <button className="bg-brand-gold text-royal-blue px-10 py-5 rounded-xl font-black text-xl hover:bg-white transition-all duration-300 shadow-2xl">
+            <button className="bg-primary-gold text-primary-blue px-10 py-5 rounded-xl font-black text-xl hover:bg-white transition-all duration-300 shadow-2xl">
               Bring ReachworldNation to Your City
             </button>
           </motion.div>
@@ -483,7 +485,7 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">What We Believe & Why It Matters</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">What We Believe & Why It Matters</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               Our theology isn't just doctrine—it's the foundation for transformation in 2 million lives
             </p>
@@ -530,15 +532,15 @@ const AboutPage = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-royal-blue"
+                className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-primary-blue"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 bg-royal-blue rounded-full flex items-center justify-center text-white font-black">
+                  <div className="flex-shrink-0 w-10 h-10 bg-primary-blue rounded-full flex items-center justify-center text-white font-black">
                     {index + 1}
                   </div>
                   <div className="flex-1">
                     <p className="text-lg text-gray-900 font-semibold mb-3 leading-relaxed">{item.belief}</p>
-                    <p className="text-base text-brand-gold italic font-medium">{item.outcome}</p>
+                    <p className="text-base text-primary-gold italic font-medium">{item.outcome}</p>
                   </div>
                 </div>
               </motion.div>
@@ -553,7 +555,7 @@ const AboutPage = () => {
             className="text-center mt-16"
           >
             <p className="text-xl text-gray-600 mb-6">Experience these truths transforming your life</p>
-            <button className="bg-gradient-to-r from-royal-blue to-electric-purple text-white px-10 py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all duration-300">
+            <button className="bg-gradient-to-r from-primary-blue to-accent-purple text-white px-10 py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all duration-300">
               Join a Community Near You
             </button>
           </motion.div>
@@ -569,7 +571,7 @@ const AboutPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Transformed Leaders Transforming Nations</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Transformed Leaders Transforming Nations</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               Each leader carries a testimony of God's transforming power in their own life
             </p>
@@ -587,7 +589,7 @@ const AboutPage = () => {
                 },
                 image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600',
                 quote: '"God doesn\'t call the qualified—He qualifies the called."',
-                gradient: 'from-brand-gold to-vibrant-orange'
+                gradient: 'from-primary-gold to-primary-gold-light'
               },
               {
                 name: 'Rev. Elizabeth Okeke',
@@ -599,7 +601,7 @@ const AboutPage = () => {
                 },
                 image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600',
                 quote: '"Every woman has a God-sized purpose waiting to be unlocked."',
-                gradient: 'from-electric-purple to-royal-blue'
+                gradient: 'from-accent-purple to-primary-blue'
               },
               {
                 name: 'Pastor James Nwosu',
@@ -611,7 +613,7 @@ const AboutPage = () => {
                 },
                 image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600',
                 quote: '"The nations are waiting—will you answer the call?"',
-                gradient: 'from-holy-fire to-vibrant-orange'
+                gradient: 'from-accent-red to-primary-gold'
               },
               {
                 name: 'Minister Grace Adebayo',
@@ -623,7 +625,7 @@ const AboutPage = () => {
                 },
                 image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600',
                 quote: '"This generation will shake nations for the kingdom."',
-                gradient: 'from-sky-blue to-electric-purple'
+                gradient: 'from-accent-teal to-accent-purple'
               },
               {
                 name: 'Pastor Michael Obi',
@@ -635,7 +637,7 @@ const AboutPage = () => {
                 },
                 image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600',
                 quote: '"Every platform is a pulpit for kingdom impact."',
-                gradient: 'from-brand-gold to-accent-blue'
+                gradient: 'from-primary-gold to-primary-blue-light'
               },
               {
                 name: 'Dr. Favour Chioma',
@@ -647,7 +649,7 @@ const AboutPage = () => {
                 },
                 image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600',
                 quote: '"Leaders aren\'t born—they\'re forged through transformation."',
-                gradient: 'from-vibrant-orange to-holy-fire'
+                gradient: 'from-primary-gold to-accent-red'
               }
             ].map((leader, index) => (
               <motion.div
@@ -671,7 +673,7 @@ const AboutPage = () => {
                     {/* Name overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h3 className="text-3xl font-black text-white mb-1">{leader.name}</h3>
-                      <p className={`text-lg font-semibold text-brand-gold`}>
+                      <p className={`text-lg font-semibold text-primary-gold`}>
                         {leader.role}
                       </p>
                     </div>
@@ -695,7 +697,7 @@ const AboutPage = () => {
                     </div>
 
                     {/* Quote */}
-                    <blockquote className={`border-l-4 border-royal-blue pl-4 py-3 italic text-gray-700 bg-gray-50 rounded-r-xl`}>
+                    <blockquote className={`border-l-4 border-primary-blue pl-4 py-3 italic text-gray-700 bg-gray-50 rounded-r-xl`}>
                       {leader.quote}
                     </blockquote>
                   </div>

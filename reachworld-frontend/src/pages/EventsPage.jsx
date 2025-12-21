@@ -14,7 +14,7 @@ const EventsPage = () => {
       during: 'Received prayer for business breakthrough on Day 2, prophetic word about divine provision',
       after: 'Business revenue increased 400% in 6 months, debt cleared, marriage restored',
       quote: 'I came broken and left empowered. That conference didn\'t just inspire me—it transformed my entire life trajectory.',
-      gradient: 'from-brand-gold to-vibrant-orange',
+      gradient: 'from-primary-gold to-primary-gold-light',
       keyMoment: 'Prayer for business breakthrough during prophetic session'
     },
     {
@@ -27,7 +27,7 @@ const EventsPage = () => {
       during: 'Encountered God\'s power during altar call, received deliverance prayer from Pastor David',
       after: 'Completely free from addiction, marriage restored, now leads recovery ministry reaching 200+ annually',
       quote: 'The power of God hit me like lightning during that altar call. In one moment, 12 years of bondage broke. I\'ve been free ever since.',
-      gradient: 'from-electric-purple to-royal-blue',
+      gradient: 'from-primary-blue to-primary-blue-light',
       keyMoment: 'Personal deliverance prayer from Pastor David at altar'
     },
     {
@@ -40,7 +40,7 @@ const EventsPage = () => {
       during: 'Discovered entrepreneurial calling during breakout session on kingdom business',
       after: 'Started consulting firm, now impacting 50+ African businesses, mentoring young entrepreneurs',
       quote: 'I walked into that summit as an employee and walked out as an entrepreneur. The teaching on divine purpose unlocked everything.',
-      gradient: 'from-holy-fire to-vibrant-orange',
+      gradient: 'from-accent-red to-primary-gold',
       keyMoment: 'Calling discovery during kingdom business breakout session'
     },
     {
@@ -53,7 +53,7 @@ const EventsPage = () => {
       during: 'Received impartation for church growth during leadership session',
       after: 'Church grew to 2,000 members, planted 15 daughter churches across Nigeria, impacting 10,000+ weekly',
       quote: 'That summit expanded my vision from my city to nations. I learned God\'s plan for me was bigger than I ever imagined.',
-      gradient: 'from-royal-blue to-sky-blue',
+      gradient: 'from-primary-blue to-primary-blue-light',
       keyMoment: 'Impartation for church growth during leadership prayer'
     }
   ];
@@ -70,7 +70,7 @@ const EventsPage = () => {
       type: 'Conference',
       status: 'Early Bird Registration',
       image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200',
-      color: 'from-royal-blue to-electric-purple',
+      color: 'from-primary-blue to-primary-blue-dark',
       expectedAttendees: '20,000+',
       nations: '60+',
       dayByDay: [
@@ -104,7 +104,7 @@ const EventsPage = () => {
       type: 'Summit',
       status: 'Registration Open',
       image: 'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=1200',
-      color: 'from-brand-gold to-vibrant-orange',
+      color: 'from-primary-gold to-accent-red',
       expectedAttendees: '8,000+',
       nations: '35+',
       dayByDay: [
@@ -138,7 +138,7 @@ const EventsPage = () => {
       type: 'Bootcamp',
       status: 'Coming Soon',
       image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1200',
-      color: 'from-holy-fire to-vibrant-orange',
+      color: 'from-accent-red to-primary-gold',
       expectedAttendees: '3,000+',
       nations: '20+',
       dayByDay: [
@@ -223,7 +223,9 @@ const EventsPage = () => {
             alt="Conference worship"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal/95 via-royal-blue-900/90 to-electric-purple/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/90 via-primary-blue-dark/85 to-primary-blue/90"></div>
+          {/* Subtle accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-gold/10 via-transparent to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -239,7 +241,7 @@ const EventsPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Life-Changing <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-vibrant-orange to-brand-gold-300 animate-glow">Gatherings</span>
+              Life-Changing <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-gold via-primary-gold-light to-primary-gold animate-glow">Gatherings</span>
             </motion.h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8">
               Where broken people become empowered believers—one event at a time
@@ -260,7 +262,7 @@ const EventsPage = () => {
                   transition={{ delay: 0.4 + i * 0.1 }}
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
                 >
-                  <div className="text-4xl font-black text-brand-gold mb-2">{stat.number}</div>
+                  <div className="text-4xl font-black text-primary-gold mb-2">{stat.number}</div>
                   <div className="text-sm text-white/80">{stat.label}</div>
                 </motion.div>
               ))}
@@ -278,7 +280,7 @@ const EventsPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Last Year, 15,000 Lives Changed</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Last Year, 15,000 Lives Changed</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               Meet the people who came broken and left empowered—their stories will inspire yours
             </p>
@@ -302,7 +304,7 @@ const EventsPage = () => {
                       alt={story.name}
                       className="w-full h-64 object-cover rounded-2xl shadow-lg mb-6"
                     />
-                    <div className="bg-gradient-to-r from-royal-blue to-electric-purple text-white p-6 rounded-2xl">
+                    <div className="bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white p-6 rounded-2xl">
                       <h3 className="text-2xl font-black mb-2">{story.name}</h3>
                       <p className="text-white/80 mb-4">{story.location}</p>
                       <div className="pt-4 border-t border-white/30">
@@ -354,7 +356,7 @@ const EventsPage = () => {
                       </div>
 
                       {/* Register CTA */}
-                      <button className="w-full bg-gradient-to-r from-royal-blue to-electric-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                      <button className="w-full bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
                         <FaTicketAlt />
                         Register for 2025 & Experience Your Own Transformation
                       </button>
@@ -376,7 +378,7 @@ const EventsPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Upcoming Transformation Events</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Upcoming Transformation Events</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               Your breakthrough is waiting—register now and secure your spot
             </p>
@@ -402,7 +404,7 @@ const EventsPage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-8">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="text-sm font-bold text-white bg-brand-gold px-4 py-2 rounded-full">
+                      <span className="text-sm font-bold text-neutral-dark bg-primary-gold px-4 py-2 rounded-full">
                         {event.type}
                       </span>
                       <span className="text-sm font-bold text-white bg-green-500 px-4 py-2 rounded-full">
@@ -412,19 +414,19 @@ const EventsPage = () => {
                     <h3 className="text-5xl font-black text-white mb-4">{event.title}</h3>
                     <div className="grid md:grid-cols-2 gap-4 text-white/90">
                       <div className="flex items-center gap-3">
-                        <FaCalendarAlt className="text-brand-gold text-xl" />
+                        <FaCalendarAlt className="text-primary-gold text-xl" />
                         <span className="font-bold">{event.date}</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <FaClock className="text-brand-gold text-xl" />
+                        <FaClock className="text-primary-gold text-xl" />
                         <span className="font-bold">{event.time}</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <FaMapMarkerAlt className="text-brand-gold text-xl" />
+                        <FaMapMarkerAlt className="text-primary-gold text-xl" />
                         <span className="font-bold">{event.location}</span>
                       </div>
                       <div className="flex items-center gap-3">
-                        <FaUsers className="text-brand-gold text-xl" />
+                        <FaUsers className="text-primary-gold text-xl" />
                         <span className="font-bold">{event.expectedAttendees} Expected</span>
                       </div>
                     </div>
@@ -437,7 +439,7 @@ const EventsPage = () => {
 
                   {/* Day-by-Day Transformation Journey */}
                   <div className="mb-8">
-                    <h4 className="text-3xl font-black text-royal-blue mb-6">What to Expect Each Day</h4>
+                    <h4 className="text-3xl font-black text-primary-blue mb-6">What to Expect Each Day</h4>
                     <div className="space-y-6">
                       {event.dayByDay.map((day, dayIndex) => (
                         <motion.div
@@ -446,21 +448,21 @@ const EventsPage = () => {
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}
                           transition={{ delay: dayIndex * 0.1 }}
-                          className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border-l-4 border-royal-blue"
+                          className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border-l-4 border-primary-blue"
                         >
                           <div className="flex items-start gap-6">
-                            <div className="flex-shrink-0 w-16 h-16 bg-royal-blue rounded-full flex items-center justify-center text-white font-black text-2xl">
+                            <div className="flex-shrink-0 w-16 h-16 bg-primary-blue rounded-full flex items-center justify-center text-white font-black text-2xl">
                               {dayIndex + 1}
                             </div>
                             <div className="flex-1">
                               <h5 className="text-2xl font-black text-gray-900 mb-2">{day.day}</h5>
-                              <p className="text-lg text-royal-blue font-semibold mb-3">{day.focus}</p>
+                              <p className="text-lg text-primary-blue font-semibold mb-3">{day.focus}</p>
                               <div className="bg-white rounded-xl p-4 mb-3 shadow-sm">
                                 <p className="text-sm font-bold text-gray-700 mb-2">LAST YEAR'S OUTCOME:</p>
                                 <p className="text-gray-900 font-semibold">{day.outcome}</p>
                               </div>
-                              <div className="bg-brand-gold/10 rounded-xl p-4">
-                                <FaQuoteLeft className="text-brand-gold mb-2" />
+                              <div className="bg-primary-gold/10 rounded-xl p-4">
+                                <FaQuoteLeft className="text-primary-gold mb-2" />
                                 <p className="text-gray-700 italic">{day.testimonial}</p>
                               </div>
                             </div>
@@ -472,7 +474,7 @@ const EventsPage = () => {
 
                   {/* Registration Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <button className="flex-1 bg-gradient-to-r from-royal-blue to-electric-purple text-white py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                    <button className="flex-1 bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3">
                       <FaTicketAlt />
                       Register Now
                     </button>
@@ -488,7 +490,7 @@ const EventsPage = () => {
       </section>
 
       {/* First-Timer's Transformation Guide */}
-      <section className="py-24 bg-gradient-to-br from-royal-blue via-electric-purple to-deep-charcoal text-white">
+      <section className="py-24 bg-gradient-to-br from-primary-blue via-primary-blue-dark to-neutral-dark text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -513,14 +515,14 @@ const EventsPage = () => {
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center text-royal-blue font-black text-xl">
+                  <div className="w-12 h-12 bg-primary-gold rounded-full flex items-center justify-center text-primary-blue font-black text-xl">
                     {index + 1}
                   </div>
                   <h3 className="text-2xl font-black">{step.step}</h3>
                 </div>
                 <p className="text-white/90 text-lg mb-4">{step.description}</p>
                 <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/30">
-                  <FaQuoteLeft className="text-brand-gold mb-2" />
+                  <FaQuoteLeft className="text-primary-gold mb-2" />
                   <p className="italic text-white/95">{step.story}</p>
                 </div>
               </motion.div>
@@ -538,7 +540,7 @@ const EventsPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Our Event Journey</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Our Event Journey</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               From 500 attendees to 15,000 transformed lives—see how God has multiplied the impact
             </p>
@@ -561,12 +563,12 @@ const EventsPage = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <div className="absolute top-4 left-4 bg-brand-gold text-royal-blue px-4 py-2 rounded-full font-black text-2xl">
+                  <div className="absolute top-4 left-4 bg-primary-gold text-primary-blue px-4 py-2 rounded-full font-black text-2xl">
                     {milestone.year}
                   </div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-2xl font-black text-white mb-2">{milestone.event}</h3>
-                    <p className="text-4xl font-black text-brand-gold">{milestone.attendees}</p>
+                    <p className="text-4xl font-black text-primary-gold">{milestone.attendees}</p>
                     <p className="text-sm text-white/80">Attendees</p>
                   </div>
                 </div>
@@ -581,7 +583,7 @@ const EventsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-holy-fire to-vibrant-orange text-white">
+      <section className="py-20 bg-gradient-to-br from-accent-red to-primary-gold text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

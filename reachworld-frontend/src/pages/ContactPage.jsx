@@ -27,7 +27,7 @@ const ContactPage = () => {
       response: 'Team prayed within 2 hours, Pastor David sent prophetic encouragement',
       outcome: 'Business transformed, revenue increased 400%, debt cleared',
       quote: 'I contacted in desperation. The team\'s immediate prayer and Pastor David\'s personal response changed everything.',
-      gradient: 'from-brand-gold to-vibrant-orange'
+      gradient: 'from-primary-gold to-primary-gold-light'
     },
     {
       name: 'Michael Chen',
@@ -38,7 +38,7 @@ const ContactPage = () => {
       response: 'Care team connected him to mentorship program and prayer warriors',
       outcome: 'Free from addiction, marriage restored, now leads recovery ministry',
       quote: 'That contact form saved my life. Within hours, I had a prayer team and mentor walking with me.',
-      gradient: 'from-electric-purple to-royal-blue'
+      gradient: 'from-accent-purple to-primary-blue'
     },
     {
       name: 'Grace Mensah',
@@ -49,7 +49,7 @@ const ContactPage = () => {
       response: 'Invited to mentorship session, received career prophecy',
       outcome: 'Started consulting firm, now impacting 50+ African businesses',
       quote: 'I reached out confused about my purpose. They responded with a clear path that unlocked my calling.',
-      gradient: 'from-holy-fire to-vibrant-orange'
+      gradient: 'from-accent-red to-primary-gold'
     }
   ];
 
@@ -127,7 +127,9 @@ const ContactPage = () => {
             alt="Communication and connection"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-charcoal/95 via-royal-blue-900/90 to-electric-purple/90" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/90 via-primary-blue-dark/85 to-primary-blue/90"></div>
+          {/* Subtle accent overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-gold/10 via-transparent to-transparent"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -143,7 +145,7 @@ const ContactPage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              You're Not <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-vibrant-orange to-brand-gold-300 animate-glow">Alone</span>
+              You're Not <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-gold via-primary-gold-light to-primary-gold animate-glow">Alone</span>
             </motion.h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8">
               Thousands have contacted us in crisis and found transformation—your breakthrough starts here
@@ -164,7 +166,7 @@ const ContactPage = () => {
                   transition={{ delay: 0.4 + i * 0.1 }}
                   className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20"
                 >
-                  <div className="text-4xl font-black text-brand-gold mb-2">{stat.number}</div>
+                  <div className="text-4xl font-black text-primary-gold mb-2">{stat.number}</div>
                   <div className="text-sm text-white/80">{stat.label}</div>
                 </motion.div>
               ))}
@@ -182,7 +184,7 @@ const ContactPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Here's How We Helped</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Here's How We Helped</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               Real people who contacted us in their darkest moments and found hope, healing, and transformation
             </p>
@@ -205,7 +207,7 @@ const ContactPage = () => {
                       alt={story.name}
                       className="w-full h-64 object-cover rounded-2xl shadow-lg mb-6"
                     />
-                    <div className="bg-gradient-to-r from-royal-blue to-electric-purple text-white p-6 rounded-2xl">
+                    <div className="bg-gradient-to-r from-primary-blue to-accent-purple text-white p-6 rounded-2xl">
                       <h3 className="text-2xl font-black mb-2">{story.name}</h3>
                       <p className="text-white/80 mb-4">{story.location}</p>
                       <div className="pt-4 border-t border-white/30">
@@ -242,7 +244,7 @@ const ContactPage = () => {
                         <p className="text-right mt-4 font-bold">— {story.name}</p>
                       </div>
 
-                      <button className="w-full bg-gradient-to-r from-royal-blue to-electric-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                      <button className="w-full bg-gradient-to-r from-primary-blue to-accent-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
                         <FaEnvelope />
                         Contact Us & Experience Your Own Breakthrough
                       </button>
@@ -256,7 +258,7 @@ const ContactPage = () => {
       </section>
 
       {/* Care Team Introduction */}
-      <section className="py-24 bg-gradient-to-br from-royal-blue via-electric-purple to-deep-charcoal text-white">
+      <section className="py-24 bg-gradient-to-br from-primary-blue via-accent-purple to-neutral-dark text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -287,7 +289,7 @@ const ContactPage = () => {
                 />
                 <div className="p-6">
                   <h3 className="text-2xl font-black mb-2">{member.name}</h3>
-                  <p className="text-brand-gold font-semibold mb-4">{member.role}</p>
+                  <p className="text-primary-gold font-semibold mb-4">{member.role}</p>
                   <p className="text-white/90 mb-4 italic">"{member.story}"</p>
                   <div className="pt-4 border-t border-white/30">
                     <p className="text-sm font-bold text-white/70 mb-2">COMMITMENT:</p>
@@ -305,7 +307,7 @@ const ContactPage = () => {
             className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
           >
             <p className="text-2xl mb-4">
-              <span className="font-black text-brand-gold">Pastor David personally reads</span> every urgent prayer request
+              <span className="font-black text-primary-gold">Pastor David personally reads</span> every urgent prayer request
             </p>
             <p className="text-xl text-white/80">
               You're not just filling out a form—you're connecting with people who genuinely care about your transformation
@@ -324,14 +326,14 @@ const ContactPage = () => {
                 title: 'Email Us',
                 content: 'info@reachworldnation.org',
                 subContent: 'support@reachworldnation.org',
-                color: 'from-royal-blue to-electric-purple'
+                color: 'from-primary-blue to-accent-purple'
               },
               {
                 icon: FaPhone,
                 title: 'Call Us',
                 content: '+234 XXX XXX XXXX',
                 subContent: 'Mon-Fri: 9AM - 5PM WAT',
-                color: 'from-brand-gold to-vibrant-orange'
+                color: 'from-primary-gold to-primary-gold-light'
               },
               {
                 icon: FaWhatsapp,
@@ -368,7 +370,7 @@ const ContactPage = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-black text-royal-blue mb-6">Send Us a Message</h2>
+              <h2 className="text-4xl font-black text-primary-blue mb-6">Send Us a Message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-gray-700 font-bold mb-2">Full Name *</label>
@@ -377,7 +379,7 @@ const ContactPage = () => {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-royal-blue focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-blue focus:outline-none"
                     placeholder="Your name"
                   />
                 </div>
@@ -389,7 +391,7 @@ const ContactPage = () => {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-royal-blue focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-blue focus:outline-none"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -400,7 +402,7 @@ const ContactPage = () => {
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-royal-blue focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-blue focus:outline-none"
                     placeholder="+234 XXX XXX XXXX"
                   />
                 </div>
@@ -412,7 +414,7 @@ const ContactPage = () => {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-royal-blue focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-blue focus:outline-none"
                     placeholder="What is this about?"
                   />
                 </div>
@@ -424,14 +426,14 @@ const ContactPage = () => {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows="5"
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-royal-blue focus:outline-none"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-blue focus:outline-none"
                     placeholder="Your message..."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-royal-blue to-electric-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all"
+                  className="w-full bg-gradient-to-r from-primary-blue to-accent-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all"
                 >
                   Send Message
                 </button>
@@ -449,7 +451,7 @@ const ContactPage = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-4xl font-black text-royal-blue mb-6">We're Here to Help</h2>
+                <h2 className="text-4xl font-black text-primary-blue mb-6">We're Here to Help</h2>
                 <p className="text-lg text-gray-700 mb-6">
                   Whether you have questions about our ministry, need prayer support, want to partner with us,
                   or simply want to connect, we're here for you.
@@ -485,9 +487,9 @@ const ContactPage = () => {
                   <input
                     type="email"
                     placeholder="Your email"
-                    className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-royal-blue focus:outline-none"
+                    className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-primary-blue focus:outline-none"
                   />
-                  <button className="bg-royal-blue text-white px-6 py-3 rounded-xl font-bold hover:bg-electric-purple transition-all">
+                  <button className="bg-primary-blue text-white px-6 py-3 rounded-xl font-bold hover:bg-accent-purple transition-all">
                     Subscribe
                   </button>
                 </div>
@@ -506,7 +508,7 @@ const ContactPage = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-black text-royal-blue mb-4">Our Global Offices</h2>
+            <h2 className="text-4xl font-black text-primary-blue mb-4">Our Global Offices</h2>
             <p className="text-xl text-gray-600">Find us in these locations—each transforming their nation</p>
           </motion.div>
 
@@ -529,7 +531,7 @@ const ContactPage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <h3 className="text-3xl font-black text-white mb-2">{office.country}</h3>
-                    <p className="text-brand-gold font-bold text-lg">{office.impact}</p>
+                    <p className="text-primary-gold font-bold text-lg">{office.impact}</p>
                   </div>
                 </div>
 
@@ -537,15 +539,15 @@ const ContactPage = () => {
                   <p className="text-gray-700 italic mb-4">"{office.story}"</p>
                   <div className="space-y-2 text-gray-700">
                     <div className="flex items-start gap-2">
-                      <FaMapMarkerAlt className="mt-1 text-royal-blue flex-shrink-0" />
+                      <FaMapMarkerAlt className="mt-1 text-primary-blue flex-shrink-0" />
                       <span>{office.address}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <FaPhone className="text-royal-blue" />
+                      <FaPhone className="text-primary-blue" />
                       <span>{office.phone}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <FaEnvelope className="text-royal-blue" />
+                      <FaEnvelope className="text-primary-blue" />
                       <span>{office.email}</span>
                     </div>
                   </div>
@@ -557,7 +559,7 @@ const ContactPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-holy-fire to-vibrant-orange text-white">
+      <section className="py-20 bg-gradient-to-br from-accent-red to-primary-gold text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -569,7 +571,7 @@ const ContactPage = () => {
             <p className="text-xl text-white/90 mb-8">
               Don't wait—reach out now and let us stand with you in prayer for your transformation
             </p>
-            <button className="bg-white text-holy-fire px-10 py-5 rounded-xl font-black text-xl hover:bg-gray-100 transition-all shadow-2xl">
+            <button className="bg-white text-accent-red px-10 py-5 rounded-xl font-black text-xl hover:bg-gray-100 transition-all shadow-2xl">
               Contact Us Now
             </button>
           </motion.div>

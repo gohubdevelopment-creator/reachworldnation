@@ -30,7 +30,7 @@ const MediaPage = () => {
       transformation: 'Encountered God\'s power through this message, applied deliverance principles',
       after: 'Completely free from addiction, marriage restored, now leads recovery ministry reaching 200+ annually',
       quote: 'I watched this sermon at 3 AM in my darkest hour. By morning, I was a different person. God\'s power broke every chain.',
-      gradient: 'from-accent-purple to-primary-blue',
+      gradient: 'from-primary-blue to-primary-blue-light',
       livesImpacted: '1,800+'
     },
     {
@@ -56,7 +56,7 @@ const MediaPage = () => {
       sermons: 5,
       duration: '4 hours',
       completions: '12,000+',
-      gradient: 'from-primary-blue-light to-accent-purple',
+      gradient: 'from-primary-blue-light to-primary-blue',
       icon: '🌱',
       outcome: 'Sarah from UK: "Went from confusion to clarity. Now leading a small group!"'
     },
@@ -76,7 +76,7 @@ const MediaPage = () => {
       sermons: 10,
       duration: '8 hours',
       completions: '5,200+',
-      gradient: 'from-primary-blue to-accent-purple',
+      gradient: 'from-primary-blue to-primary-blue-dark',
       icon: '👑',
       outcome: 'Pastor James: "These teachings took my church from 30 to 2,000 members."'
     },
@@ -86,7 +86,7 @@ const MediaPage = () => {
       sermons: 6,
       duration: '5 hours',
       completions: '6,800+',
-      gradient: 'from-accent-purple to-accent-red',
+      gradient: 'from-accent-teal to-primary-blue',
       icon: '🔥',
       outcome: 'Grace from Ghana: "Now operating in prophecy, seeing lives transformed weekly."'
     }
@@ -114,7 +114,7 @@ const MediaPage = () => {
       livesChanged: '1,800+',
       category: 'Revelation',
       testimonial: '"God spoke directly to me through this teaching" - Michael C.',
-      gradient: 'from-accent-purple to-primary-gold'
+      gradient: 'from-primary-blue-light to-primary-gold'
     },
     {
       title: 'Faith That Moves Mountains',
@@ -158,7 +158,7 @@ const MediaPage = () => {
       livesChanged: '1,900+',
       category: 'Anointing',
       testimonial: '"Stepped into my calling after this message" - Pastor John A.',
-      gradient: 'from-accent-purple to-primary-blue-light'
+      gradient: 'from-primary-blue to-primary-blue-light'
     }
   ];
 
@@ -350,7 +350,7 @@ const MediaPage = () => {
                       alt={story.name}
                       className="w-full h-64 object-cover rounded-2xl shadow-lg mb-6"
                     />
-                    <div className="bg-gradient-to-r from-primary-blue to-accent-purple text-white p-6 rounded-2xl">
+                    <div className="bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white p-6 rounded-2xl">
                       <h3 className="text-2xl font-black mb-2">{story.name}</h3>
                       <p className="text-white/80 mb-4">{story.location}</p>
                       <div className="pt-4 border-t border-white/30">
@@ -402,7 +402,7 @@ const MediaPage = () => {
                       </div>
 
                       {/* Watch CTA */}
-                      <button className="w-full bg-gradient-to-r from-primary-blue to-accent-purple text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                      <button className="w-full bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
                         <FaPlay />
                         Watch "{story.sermon}" That Transformed {story.name}
                       </button>
@@ -552,7 +552,7 @@ const MediaPage = () => {
 
           {/* Load More */}
           <div className="text-center mt-12">
-            <button className="bg-gradient-to-r from-primary-blue to-accent-purple text-white px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all">
+            <button className="bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all">
               Load More Sermons
             </button>
           </div>
@@ -560,7 +560,7 @@ const MediaPage = () => {
       </section>
 
       {/* Podcast Guest Transformation Stories */}
-      <section className="py-24 bg-gradient-to-br from-primary-blue via-accent-purple to-neutral-dark text-white">
+      <section className="py-24 bg-gradient-to-br from-primary-blue via-primary-blue-dark to-neutral-dark text-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -714,7 +714,7 @@ const MediaPage = () => {
                         <p className="text-gray-900 font-semibold">{album.highlight}</p>
                       </div>
                     </div>
-                    <button className="w-full bg-gradient-to-r from-primary-blue to-accent-purple text-white py-4 rounded-xl font-black hover:shadow-2xl transition-all">
+                    <button className="w-full bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-4 rounded-xl font-black hover:shadow-2xl transition-all">
                       View Full Gallery
                     </button>
                   </div>
@@ -744,7 +744,7 @@ const MediaPage = () => {
                 <FaYoutube className="text-3xl" />
                 Subscribe on YouTube
               </button>
-              <button className="bg-primary-blue text-white px-10 py-5 rounded-xl font-black text-lg hover:bg-accent-purple transition-all shadow-2xl">
+              <button className="bg-primary-blue text-white px-10 py-5 rounded-xl font-black text-lg hover:bg-primary-blue-dark transition-all shadow-2xl">
                 Join Email List
               </button>
             </div>
