@@ -1,4 +1,4 @@
-import LiveServiceIndicator from '../components/home/LiveServiceIndicator';
+import StarryBackground from '../components/StarryBackground';
 import HeroBanner from '../components/home/HeroBanner';
 import WhatWeDo from '../components/home/WhatWeDo';
 import StorySection from '../components/home/StorySection';
@@ -13,9 +13,8 @@ import FoundersMessage from '../components/home/FoundersMessage';
 
 const HomePage = () => {
   return (
-    <div className="min-h-screen">
-      {/* Live Service Indicator - Shows when service is live */}
-      <LiveServiceIndicator />
+    <StarryBackground>
+      <div className="min-h-screen">
 
       {/* Hero Banner - Ministry-focused rotating slides */}
       <HeroBanner />
@@ -49,7 +48,8 @@ const HomePage = () => {
 
       {/* Upcoming Events - Conferences and gatherings */}
       <EventsCarousel />
-    </div>
+      </div>
+    </StarryBackground>
   );
 };
 

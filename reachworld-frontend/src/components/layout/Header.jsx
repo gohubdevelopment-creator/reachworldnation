@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import StarryBackground from '../StarryBackground';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,8 +22,9 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-primary-blue text-neutral-white shadow-lg sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
+    <StarryBackground className="sticky top-0 z-50 shadow-lg">
+      <header className="text-neutral-white">
+        <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <motion.a
@@ -103,8 +105,9 @@ const Header = () => {
             </motion.nav>
           )}
         </AnimatePresence>
-      </div>
-    </header>
+        </div>
+      </header>
+    </StarryBackground>
   );
 };
 

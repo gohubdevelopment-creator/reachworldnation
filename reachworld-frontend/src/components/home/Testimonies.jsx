@@ -118,7 +118,7 @@ const Testimonies = () => {
 
         {/* Share Your Testimony Section */}
         <motion.div
-          className="bg-gradient-to-r from-royal-blue to-blue-900 rounded-2xl p-8 md:p-12 text-white text-center"
+          className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 text-white text-center border border-white/20"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
