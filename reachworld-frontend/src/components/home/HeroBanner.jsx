@@ -66,15 +66,13 @@ const HeroBanner = () => {
         >
           {/* Background Image */}
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center opacity-40"
             style={{
               backgroundImage: `url(${slides[currentSlide].image})`,
             }}
           >
-            {/* Dark Overlay for Text Contrast - 60-30-10 rule: 60% primary blue overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-blue/90 via-primary-blue-dark/85 to-primary-blue/90"></div>
-            {/* Subtle accent overlay - 10% gold accent */}
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-gold/10 via-transparent to-transparent"></div>
+            {/* Light overlay for text contrast while showing starry background */}
+            <div className="absolute inset-0 bg-primary-blue/30"></div>
           </div>
 
           {/* Content */}

@@ -118,15 +118,15 @@ const Testimonies = () => {
 
         {/* Share Your Testimony Section */}
         <motion.div
-          className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 md:p-12 text-white text-center border border-white/20"
+          className="bg-gradient-to-br from-primary-blue to-primary-blue-dark rounded-2xl p-8 md:p-12 text-white text-center border border-primary-gold/50 shadow-2xl"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <FaPrayingHands className="text-5xl text-brand-gold mx-auto mb-4" />
-          <h3 className="text-3xl font-bold mb-4">Has God Done Something Amazing in Your Life?</h3>
-          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+          <h3 className="text-3xl font-bold mb-4 text-white">Has God Done Something Amazing in Your Life?</h3>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Share your testimony and inspire others. Your story could be the encouragement someone needs today!
           </p>
 
@@ -140,42 +140,42 @@ const Testimonies = () => {
             </button>
           ) : (
             <motion.form
-              className="max-w-2xl mx-auto bg-white/10 backdrop-blur-sm rounded-xl p-8"
+              className="max-w-2xl mx-auto bg-white/20 backdrop-blur-sm rounded-xl p-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               onSubmit={handleSubmit}
             >
               <div className="space-y-4 text-left">
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Your Name</label>
+                  <label className="block text-sm font-semibold mb-2 text-white">Your Name</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:border-brand-gold"
+                    className="w-full px-4 py-3 rounded-lg bg-white/30 border border-white/40 text-white placeholder-white/60 focus:outline-none focus:border-brand-gold"
                     placeholder="Enter your name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Email Address</label>
+                  <label className="block text-sm font-semibold mb-2 text-white">Email Address</label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:border-brand-gold"
+                    className="w-full px-4 py-3 rounded-lg bg-white/30 border border-white/40 text-white placeholder-white/60 focus:outline-none focus:border-brand-gold"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2">Your Testimony</label>
+                  <label className="block text-sm font-semibold mb-2 text-white">Your Testimony</label>
                   <textarea
                     required
                     value={formData.testimony}
                     onChange={(e) => setFormData({...formData, testimony: e.target.value})}
                     rows="6"
-                    className="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:outline-none focus:border-brand-gold resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-white/30 border border-white/40 text-white placeholder-white/60 focus:outline-none focus:border-brand-gold resize-none"
                     placeholder="Share your testimony... What did God do? How has your life changed?"
                   ></textarea>
                 </div>

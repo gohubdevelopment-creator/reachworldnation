@@ -129,7 +129,7 @@ const PrayerWorshipActivities = () => {
 
         {/* Quick Prayer Request Section */}
         <motion.div
-          className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-neutral-white border border-white/20"
+          className="bg-gradient-to-br from-primary-blue to-primary-blue-dark rounded-2xl p-8 text-white border border-primary-gold/50 shadow-2xl"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -138,11 +138,11 @@ const PrayerWorshipActivities = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <FaPrayingHands className="text-5xl text-primary-gold mb-4" />
-              <h3 className="text-3xl font-bold mb-4">Need Prayer Right Now?</h3>
-              <p className="text-xl text-neutral-cream mb-6">
+              <h3 className="text-3xl font-bold mb-4 text-white">Need Prayer Right Now?</h3>
+              <p className="text-xl text-white/90 mb-6">
                 Our intercessory team is standing by to pray with you. Share your prayer need and experience God's power.
               </p>
-              <div className="flex items-center space-x-4 text-sm">
+              <div className="flex items-center space-x-4 text-sm text-white/90">
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
                   <span>Online Now</span>
@@ -156,12 +156,12 @@ const PrayerWorshipActivities = () => {
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-neutral-white placeholder-neutral-cream focus:outline-none focus:border-primary-gold"
+                  className="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-primary-gold"
                 />
                 <textarea
                   placeholder="Share your prayer request..."
                   rows="4"
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 text-neutral-white placeholder-neutral-cream focus:outline-none focus:border-primary-gold resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white placeholder-white/60 focus:outline-none focus:border-primary-gold resize-none"
                 ></textarea>
                 <button className="w-full bg-primary-gold text-neutral-dark py-3 rounded-lg font-bold hover:bg-primary-gold-light transition-all duration-300">
                   Submit Prayer Request
