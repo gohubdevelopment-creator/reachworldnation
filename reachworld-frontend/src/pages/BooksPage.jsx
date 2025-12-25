@@ -1,7 +1,44 @@
 import { motion } from 'framer-motion';
 import { FaBook, FaDownload, FaShoppingCart, FaCheckCircle } from 'react-icons/fa';
+import { useState } from 'react';
+import APIService from '../services/api';
 
 const BooksPage = () => {
+  const [processingBookIndex, setProcessingBookIndex] = useState(null);
+  const [error, setError] = useState(null);
+
+  // Handle book purchase
+  const handleBookPurchase = async (bookIndex) => {
+    setProcessingBookIndex(bookIndex);
+    setError(null);
+
+    try {
+      // Product IDs start from 1 (after running init_db.py)
+      // Physical books are IDs 2, 4, 6, etc (even numbers for physical versions)
+      const productId = (bookIndex * 2) + 2; // Maps to physical book IDs
+
+      const response = await APIService.createOrder({
+        items: [{ product_id: productId, quantity: 1 }],
+        email: 'buyer@example.com', // Replace with actual user email
+        fullName: 'Book Buyer', // Replace with actual user name
+        shippingAddress: {
+          shipping_address_line1: '123 Main Street',
+          shipping_city: 'Lagos',
+          shipping_country: 'Nigeria',
+        },
+        callbackUrl: `${window.location.origin}/payment-success`,
+      });
+
+      // Redirect to Paystack payment page
+      if (response.authorization_url) {
+        window.location.href = response.authorization_url;
+      }
+    } catch (err) {
+      setError(err.message);
+      setProcessingBookIndex(null);
+    }
+  };
+
   const readerStories = [
     {
       name: 'Sarah Okonkwo',
@@ -281,8 +318,12 @@ const BooksPage = () => {
                       <button className="bg-gradient-to-r from-royal-blue to-electric-purple text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
                         <FaDownload className="text-sm" /> Free
                       </button>
-                      <button className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                        <FaShoppingCart className="text-sm" /> Buy
+                      <button
+                        onClick={() => handleBookPurchase(index)}
+                        disabled={processingBookIndex === index}
+                        className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <FaShoppingCart className="text-sm" /> {processingBookIndex === index ? 'Processing...' : 'Buy'}
                       </button>
                     </div>
                   </div>

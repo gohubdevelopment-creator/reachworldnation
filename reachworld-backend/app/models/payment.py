@@ -61,7 +61,7 @@ class Payment(Base):
     receipt_number = Column(String, nullable=True)
 
     # Metadata
-    metadata = Column(JSON, nullable=True)  # Store additional gateway-specific data
+    payment_metadata = Column(JSON, nullable=True)  # Store additional gateway-specific data
 
     # Failure details
     failure_code = Column(String, nullable=True)

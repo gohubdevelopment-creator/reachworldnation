@@ -1,7 +1,63 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaTicketAlt, FaCheckCircle, FaQuoteLeft, FaImages, FaUsers } from 'react-icons/fa';
+import APIService from '../services/api';
 
 const EventsPage = () => {
+  const [processingEvent, setProcessingEvent] = useState(null);
+  const [error, setError] = useState(null);
+
+  // Handle event registration
+  const handleEventRegistration = async (eventTitle) => {
+    setProcessingEvent(eventTitle);
+    setError(null);
+
+    try {
+      // Map event titles to product IDs
+      // Product ID 5: Divinity Life Conference 2025
+      // Product ID 6: Global Leadership Summit 2025
+      const eventProductMap = {
+        'Divinity Life Conference 2025': 5,
+        'Global Leadership Summit 2025': 6,
+        'Youth Empowerment Bootcamp 2025': 6 // Using same ID as placeholder
+      };
+
+      const productId = eventProductMap[eventTitle];
+
+      if (!productId) {
+        throw new Error('Event not found');
+      }
+
+      // Create order for event registration
+      const response = await APIService.createOrder({
+        items: [
+          {
+            product_id: productId,
+            quantity: 1
+          }
+        ],
+        email: 'attendee@example.com', // TODO: Replace with actual user input
+        shippingAddress: {
+          street: '123 Main St',
+          city: 'Lagos',
+          state: 'Lagos',
+          postal_code: '100001',
+          country: 'Nigeria'
+        },
+        currency: 'NGN',
+        callbackUrl: `${window.location.origin}/payment-success`,
+      });
+
+      // Redirect to Paystack payment page
+      if (response.authorization_url) {
+        window.location.href = response.authorization_url;
+      }
+    } catch (err) {
+      setError(err.message || 'Failed to process registration');
+      console.error('Registration error:', err);
+      setProcessingEvent(null);
+    }
+  };
   // Past event transformation stories
   const attendeeStories = [
     {
@@ -356,9 +412,13 @@ const EventsPage = () => {
                       </div>
 
                       {/* Register CTA */}
-                      <button className="w-full bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                      <button
+                        onClick={() => handleEventRegistration('Divinity Life Conference 2025')}
+                        disabled={processingEvent === 'Divinity Life Conference 2025'}
+                        className="w-full bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
                         <FaTicketAlt />
-                        Register for 2025 & Experience Your Own Transformation
+                        {processingEvent === 'Divinity Life Conference 2025' ? 'Processing...' : 'Register for 2025 & Experience Your Own Transformation'}
                       </button>
                     </div>
                   </div>
@@ -474,9 +534,13 @@ const EventsPage = () => {
 
                   {/* Registration Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <button className="flex-1 bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3">
+                    <button
+                      onClick={() => handleEventRegistration(event.title)}
+                      disabled={processingEvent === event.title}
+                      className="flex-1 bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
                       <FaTicketAlt />
-                      Register Now
+                      {processingEvent === event.title ? 'Processing...' : 'Register Now'}
                     </button>
                     <button className="px-8 bg-gray-100 text-gray-700 py-5 rounded-xl font-bold text-lg hover:bg-gray-200 transition-all">
                       Learn More
@@ -596,9 +660,13 @@ const EventsPage = () => {
               Don't wait for your life to change—register now and experience the power of God that transforms nations
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-holy-fire px-10 py-5 rounded-xl font-black text-xl hover:bg-gray-100 transition-all shadow-2xl flex items-center justify-center gap-3">
+              <button
+                onClick={() => handleEventRegistration('Divinity Life Conference 2025')}
+                disabled={processingEvent === 'Divinity Life Conference 2025'}
+                className="bg-white text-holy-fire px-10 py-5 rounded-xl font-black text-xl hover:bg-gray-100 transition-all shadow-2xl flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
                 <FaTicketAlt />
-                Register for Next Event
+                {processingEvent === 'Divinity Life Conference 2025' ? 'Processing...' : 'Register for Next Event'}
               </button>
               <button className="bg-royal-blue text-white px-10 py-5 rounded-xl font-black text-xl hover:bg-electric-purple transition-all shadow-2xl flex items-center justify-center gap-3">
                 <FaCalendarAlt />

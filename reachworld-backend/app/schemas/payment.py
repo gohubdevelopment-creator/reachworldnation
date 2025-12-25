@@ -79,6 +79,8 @@ class OrderCreateRequest(BaseModel):
     full_name: Optional[str] = None
     phone: Optional[str] = None
     gateway: PaymentGatewayEnum = Field(default=PaymentGatewayEnum.STRIPE)
+    currency: str = Field(default="USD", description="Currency code")
+    callback_url: Optional[str] = None
 
     # Shipping address (required for physical products)
     shipping_address_line1: Optional[str] = None

@@ -28,54 +28,86 @@ def init_db():
         print("Adding sample products...")
 
         # Sample books (matching BooksPage.jsx)
-        books = [
+        # Each book has digital (free) and physical (paid) versions
+        book_data = [
             {
-                "name": "The Kingdom Mindset",
+                "title": "The Kingdom Mindset",
                 "slug": "the-kingdom-mindset",
                 "description": "Transform your thinking from earthly limitations to heavenly possibilities.",
-                "product_type": ProductType.BOOK_DIGITAL,
-                "price": 0.00,  # Free digital
-                "is_active": True,
-                "author": "Pastor David S. Okeke",
                 "pages": 280,
                 "category": "Mindset",
+                "price": 19.99,
             },
             {
-                "name": "The Kingdom Mindset (Physical)",
-                "slug": "the-kingdom-mindset-physical",
-                "description": "Physical copy with shipping included.",
+                "title": "Breaking Free",
+                "slug": "breaking-free",
+                "description": "Complete deliverance from addiction, bondage, and spiritual strongholds.",
+                "pages": 210,
+                "category": "Deliverance",
+                "price": 17.99,
+            },
+            {
+                "title": "Divine Purpose Unlocked",
+                "slug": "divine-purpose-unlocked",
+                "description": "Stop wandering aimlessly. Discover God's specific calling for your life.",
+                "pages": 320,
+                "category": "Purpose",
+                "price": 21.99,
+            },
+            {
+                "title": "Faith That Moves Mountains",
+                "slug": "faith-that-moves-mountains",
+                "description": "Practical steps to activate supernatural faith. Learn how to pray and receive breakthrough.",
+                "pages": 250,
+                "category": "Faith",
+                "price": 18.99,
+            },
+            {
+                "title": "Kingdom Business Mastery",
+                "slug": "kingdom-business-mastery",
+                "description": "God's blueprint for marketplace success. Biblical principles for building businesses.",
+                "pages": 360,
+                "category": "Business",
+                "price": 24.99,
+            },
+            {
+                "title": "The Power of Declaration",
+                "slug": "the-power-of-declaration",
+                "description": "Master the art of prophetic declarations that shift atmospheres and manifest divine promises.",
+                "pages": 190,
+                "category": "Spiritual Warfare",
+                "price": 16.99,
+            },
+        ]
+
+        books = []
+        for book in book_data:
+            # Digital version (free)
+            books.append({
+                "name": book["title"],
+                "slug": book["slug"],
+                "description": book["description"],
+                "product_type": ProductType.BOOK_DIGITAL,
+                "price": 0.00,
+                "is_active": True,
+                "author": "Pastor David S. Okeke",
+                "pages": book["pages"],
+                "category": book["category"],
+            })
+            # Physical version (paid)
+            books.append({
+                "name": f"{book['title']} (Physical)",
+                "slug": f"{book['slug']}-physical",
+                "description": f"Physical copy with shipping included. {book['description']}",
                 "product_type": ProductType.BOOK_PHYSICAL,
-                "price": 19.99,
+                "price": book["price"],
                 "is_active": True,
                 "requires_shipping": True,
                 "author": "Pastor David S. Okeke",
-                "pages": 280,
-                "category": "Mindset",
+                "pages": book["pages"],
+                "category": book["category"],
                 "weight": 0.5,
-            },
-            {
-                "name": "Breaking Free",
-                "slug": "breaking-free",
-                "description": "Complete deliverance from addiction, bondage, and spiritual strongholds.",
-                "product_type": ProductType.BOOK_DIGITAL,
-                "price": 0.00,
-                "is_active": True,
-                "author": "Pastor David S. Okeke",
-                "pages": 210,
-                "category": "Deliverance",
-            },
-            {
-                "name": "Divine Purpose Unlocked",
-                "slug": "divine-purpose-unlocked",
-                "description": "Stop wandering aimlessly. Discover God's specific calling for your life.",
-                "product_type": ProductType.BOOK_DIGITAL,
-                "price": 0.00,
-                "is_active": True,
-                "author": "Pastor David S. Okeke",
-                "pages": 320,
-                "category": "Purpose",
-            },
-        ]
+            })
 
         # Sample events (matching EventsPage.jsx)
         events = [

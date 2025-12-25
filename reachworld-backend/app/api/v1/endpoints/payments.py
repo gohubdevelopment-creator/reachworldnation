@@ -11,7 +11,7 @@ from app.schemas.payment import (
     PaymentStatusResponse,
 )
 from app.models import User, Payment, Order, OrderItem, Subscription, Product, PaymentStatus, PaymentType, PaymentGateway
-from app.services import StripeService
+from app.services import StripeService, PaystackService
 from typing import List
 import uuid
 from datetime import datetime
@@ -60,7 +60,7 @@ async def create_donation(
                 currency=donation.currency,
                 gateway=PaymentGateway.STRIPE,
                 gateway_payment_id=payment_intent.id,
-                metadata=donation.metadata,
+                payment_metadata=donation.metadata,
             )
             db.add(payment)
             db.commit()
@@ -71,6 +71,47 @@ async def create_donation(
                 amount=donation.amount,
                 currency=donation.currency,
                 gateway="stripe",
+            )
+
+        elif donation.gateway == "paystack":
+            # Generate unique reference
+            reference = f"DON-{uuid.uuid4().hex[:12].upper()}"
+
+            # Initialize Paystack transaction
+            transaction = await PaystackService.initialize_transaction(
+                email=donation.email,
+                amount=donation.amount,
+                currency=donation.currency,
+                reference=reference,
+                callback_url=f"{donation.metadata.get('callback_url')}" if donation.metadata else None,
+                metadata={
+                    "user_id": user.id,
+                    "full_name": user.full_name,
+                    "type": "donation",
+                    **(donation.metadata or {}),
+                },
+            )
+
+            # Create payment record
+            payment = Payment(
+                user_id=user.id,
+                payment_type=PaymentType.ONE_TIME,
+                status=PaymentStatus.PENDING,
+                amount=donation.amount,
+                currency=donation.currency,
+                gateway=PaymentGateway.PAYSTACK,
+                gateway_payment_id=reference,
+                payment_metadata=donation.metadata,
+            )
+            db.add(payment)
+            db.commit()
+
+            return DonationResponse(
+                payment_intent_id=reference,
+                authorization_url=transaction["authorization_url"],
+                amount=donation.amount,
+                currency=donation.currency,
+                gateway="paystack",
             )
 
         else:
@@ -272,7 +313,7 @@ async def create_order(
         db.commit()
         db.refresh(order)
 
-        # Create payment intent
+        # Create payment intent based on gateway
         if order_req.gateway == "stripe":
             payment_intent = await StripeService.create_payment_intent(
                 amount=total_amount,
@@ -310,6 +351,54 @@ async def create_order(
                 status=order.status.value,
                 payment_intent_id=payment_intent.id,
                 client_secret=payment_intent.client_secret,
+            )
+
+        elif order_req.gateway == "paystack":
+            # Generate unique reference
+            reference = f"ORD-{order_number}"
+
+            # Initialize Paystack transaction
+            transaction = await PaystackService.initialize_transaction(
+                email=order_req.email,
+                amount=total_amount,
+                currency=order_req.currency,
+                reference=reference,
+                callback_url=order_req.callback_url,
+                metadata={
+                    "user_id": user.id,
+                    "order_id": order.id,
+                    "order_number": order_number,
+                    "type": "order",
+                },
+            )
+
+            # Create payment record
+            payment = Payment(
+                user_id=user.id,
+                order_id=order.id,
+                payment_type=PaymentType.ONE_TIME,
+                status=PaymentStatus.PENDING,
+                amount=total_amount,
+                currency=order_req.currency,
+                gateway=PaymentGateway.PAYSTACK,
+                gateway_payment_id=reference,
+            )
+            db.add(payment)
+
+            order.payment_method = "paystack"
+            order.payment_intent_id = reference
+            order.currency = order_req.currency
+
+            db.commit()
+
+            return OrderResponse(
+                order_id=order.id,
+                order_number=order.order_number,
+                total_amount=order.total_amount,
+                currency=order.currency,
+                status=order.status.value,
+                payment_intent_id=reference,
+                authorization_url=transaction["authorization_url"],
             )
 
         else:
@@ -357,6 +446,31 @@ async def stripe_webhook(
     try:
         event = StripeService.construct_webhook_event(payload, sig_header)
         result = await StripeService.handle_webhook_event(event, db)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("/webhooks/paystack")
+async def paystack_webhook(
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    """Handle Paystack webhook events"""
+    payload = await request.body()
+    signature = request.headers.get("x-paystack-signature")
+
+    try:
+        # Verify webhook signature
+        if not PaystackService.verify_webhook_signature(payload, signature):
+            raise HTTPException(status_code=400, detail="Invalid signature")
+
+        # Parse event
+        import json
+        event = json.loads(payload)
+
+        # Handle event
+        result = await PaystackService.handle_webhook_event(event, db)
         return result
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))

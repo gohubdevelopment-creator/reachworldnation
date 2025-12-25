@@ -1,7 +1,60 @@
 import { motion } from 'framer-motion';
 import { FaHandsHelping, FaDollarSign, FaGlobe, FaChurch } from 'react-icons/fa';
+import { useState } from 'react';
+import APIService from '../services/api';
 
 const PartnerPage = () => {
+  const [selectedAmount, setSelectedAmount] = useState(null);
+  const [customAmount, setCustomAmount] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [error, setError] = useState(null);
+
+  // Handle donation
+  const handleDonation = async (amount) => {
+    setIsProcessing(true);
+    setError(null);
+
+    try {
+      // For demo, using placeholder email - in production, collect from user
+      const response = await APIService.createDonation({
+        amount: amount,
+        email: 'donor@example.com', // Replace with actual user email
+        fullName: 'Anonymous Donor', // Replace with actual user name
+        currency: 'NGN',
+      });
+
+      // Redirect to Paystack payment page
+      if (response.authorization_url) {
+        window.location.href = response.authorization_url;
+      }
+    } catch (err) {
+      setError(err.message);
+      setIsProcessing(false);
+    }
+  };
+
+  // Handle subscription
+  const handleSubscription = async (tier) => {
+    setIsProcessing(true);
+    setError(null);
+
+    try {
+      const response = await APIService.createSubscription({
+        tier: tier,
+        email: 'partner@example.com', // Replace with actual user email
+        fullName: 'Partnership Supporter', // Replace with actual user name
+      });
+
+      // Redirect to Paystack payment page
+      if (response.authorization_url) {
+        window.location.href = response.authorization_url;
+      }
+    } catch (err) {
+      setError(err.message);
+      setIsProcessing(false);
+    }
+  };
+
   const partnerTransformations = [
     {
       name: 'David & Mary Thompson',
@@ -414,8 +467,12 @@ const PartnerPage = () => {
 
                   {/* CTA */}
                   <div className="p-6 pt-0">
-                    <button className={`w-full bg-gradient-to-r ${tier.gradient} text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105`}>
-                      Become a {tier.tierName}
+                    <button
+                      onClick={() => handleSubscription(tier.tierName === 'Kingdom Partner' ? 'kingdom_partner' : tier.tierName === 'Ambassador' ? 'ambassador' : 'global_influencer')}
+                      disabled={isProcessing}
+                      className={`w-full bg-gradient-to-r ${tier.gradient} text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed`}
+                    >
+                      {isProcessing ? 'Processing...' : `Become a ${tier.tierName}`}
                     </button>
                   </div>
                 </div>
@@ -747,21 +804,60 @@ const PartnerPage = () => {
               viewport={{ once: true }}
               className="bg-white p-8 rounded-2xl shadow-lg"
             >
+              {error && (
+                <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-xl">
+                  {error}
+                </div>
+              )}
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                {['$25', '$50', '$100', '$250', '$500', '$1000', 'Custom'].map((amount) => (
+                {[
+                  { label: '$25', value: 20000 },
+                  { label: '$50', value: 40000 },
+                  { label: '$100', value: 80000 },
+                  { label: '$250', value: 200000 },
+                  { label: '$500', value: 400000 },
+                  { label: '$1000', value: 800000 },
+                ].map((item) => (
                   <button
-                    key={amount}
-                    className="bg-gray-50 border-2 border-gray-200 py-4 rounded-xl font-bold hover:border-royal-blue hover:bg-royal-blue hover:text-white transition-all"
+                    key={item.label}
+                    onClick={() => setSelectedAmount(item.value)}
+                    className={`border-2 py-4 rounded-xl font-bold transition-all ${
+                      selectedAmount === item.value
+                        ? 'border-royal-blue bg-royal-blue text-white'
+                        : 'bg-gray-50 border-gray-200 hover:border-royal-blue hover:bg-royal-blue hover:text-white'
+                    }`}
+                    disabled={isProcessing}
                   >
-                    {amount}
+                    {item.label}
+                    <div className="text-xs opacity-75">₦{item.value.toLocaleString()}</div>
                   </button>
                 ))}
+                <div className="relative">
+                  <input
+                    type="number"
+                    placeholder="Custom (₦)"
+                    value={customAmount}
+                    onChange={(e) => {
+                      setCustomAmount(e.target.value);
+                      setSelectedAmount(null);
+                    }}
+                    className="w-full border-2 border-gray-200 py-4 px-3 rounded-xl font-bold focus:border-royal-blue focus:outline-none"
+                    disabled={isProcessing}
+                  />
+                </div>
               </div>
-              <button className="w-full bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all">
-                Donate Now
+
+              <button
+                onClick={() => handleDonation(selectedAmount || parseInt(customAmount) || 0)}
+                disabled={isProcessing || (!selectedAmount && !customAmount)}
+                className="w-full bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isProcessing ? 'Processing...' : 'Donate Now'}
               </button>
+
               <p className="text-center text-gray-500 text-sm mt-4">
-                Secure payment via Flutterwave, Paystack, PayPal & Stripe
+                Secure payment via Paystack
               </p>
             </motion.div>
           </div>

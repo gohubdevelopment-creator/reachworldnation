@@ -2,6 +2,7 @@
 fastapi==0.115.6
 uvicorn[standard]==0.34.0
 pydantic==2.10.6
+pydantic[email]==2.10.6
 pydantic-settings==2.7.1
 python-multipart==0.0.20
 
@@ -12,7 +13,7 @@ psycopg2-binary==2.9.10
 
 # Payment Gateways
 stripe==11.3.0
-# paystack==1.5.1  # Will add after testing Stripe
+pypaystack2==2.0.0  # Paystack for African payments
 # flutterwave==1.0.0  # Will add later
 
 # Authentication & Security
@@ -25,7 +26,7 @@ python-dotenv==1.0.1
 emails==0.6
 
 # HTTP Client
-httpx==0.28.1
+httpx>=0.24.0,<0.25.0
 requests==2.32.3
 
 # Utilities

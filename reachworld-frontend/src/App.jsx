@@ -16,6 +16,7 @@ import BlogPage from './pages/BlogPage';
 import EventsPage from './pages/EventsPage';
 import ContactPage from './pages/ContactPage';
 import CommunityPage from './pages/CommunityPage';
+import PaymentSuccessPage from './pages/PaymentSuccessPage';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/events" element={<EventsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/community" element={<CommunityPage />} />
+            <Route path="/payment-success" element={<PaymentSuccessPage />} />
           </Routes>
         </main>
         <Footer />
