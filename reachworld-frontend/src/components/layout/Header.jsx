@@ -35,13 +35,13 @@ const Header = () => {
             transition={{ duration: 0.5 }}
           >
             <img
-              src="/logo-white-black.png"
+              src="/ReachworldLogo.jpg"
               alt="ReachworldNation Logo"
-              className="h-12 w-auto object-contain rounded-xl"
+              className="h-16 w-auto object-contain rounded-xl"
             />
             <div>
               <h1 className="text-xl font-bold text-neutral-white">ReachworldNation</h1>
-              <p className="text-xs text-primary-gold">Transforming Lives Globally</p>
+              <p className="text-xs text-primary-gold">Transform people. Transform cities.</p>
             </div>
           </motion.a>
 

@@ -10,7 +10,7 @@ const LoadingSpinner = () => {
           <div className="logo-wrapper-custom">
             <img
               className="logo-image-custom logo-masked-custom rounded-xl"
-              src="/logo-white-black.png"
+              src="/ReachworldLogo.jpg"
               alt="ReachworldNation Logo"
             />
           </div>
@@ -24,7 +24,7 @@ const LoadingSpinner = () => {
           transition={{ delay: 0.5 }}
         >
           <h2 className="text-2xl font-bold text-royal-blue mb-2">ReachworldNation</h2>
-          <p className="text-brand-gold font-semibold">Transforming Lives Globally</p>
+          <p className="text-brand-gold font-semibold">Transform people. Transform cities.</p>
         </motion.div>
 
         {/* Loading Dots */}

@@ -52,13 +52,13 @@ const Footer = () => {
             >
               <div className="flex items-center space-x-3 mb-4">
                 <img
-                  src="/logo-white-black.png"
+                  src="/ReachworldLogo.jpg"
                   alt="ReachworldNation Logo"
-                  className="h-12 w-auto object-contain rounded-xl"
+                  className="h-16 w-auto object-contain rounded-xl"
                 />
                 <div>
                   <h3 className="text-xl font-bold">ReachworldNation</h3>
-                  <p className="text-sm text-brand-gold">Transforming Lives Globally</p>
+                  <p className="text-sm text-brand-gold">Transform people. Transform cities.</p>
                 </div>
               </div>
               <p className="text-gray-400 mb-6">
