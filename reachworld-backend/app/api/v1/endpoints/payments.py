@@ -11,7 +11,7 @@ from app.schemas.payment import (
     PaymentStatusResponse,
 )
 from app.models import User, Payment, Order, OrderItem, Subscription, Product, PaymentStatus, PaymentType, PaymentGateway
-from app.services import StripeService, PaystackService
+from app.services import StripeService, PaystackService, FlutterwaveService
 from typing import List
 import uuid
 from datetime import datetime
@@ -112,6 +112,48 @@ async def create_donation(
                 amount=donation.amount,
                 currency=donation.currency,
                 gateway="paystack",
+            )
+
+        elif donation.gateway == "flutterwave":
+            # Generate unique reference
+            tx_ref = f"DON-{uuid.uuid4().hex[:12].upper()}"
+
+            # Initialize Flutterwave payment
+            transaction = await FlutterwaveService.initialize_payment(
+                email=donation.email,
+                amount=donation.amount,
+                currency=donation.currency,
+                tx_ref=tx_ref,
+                redirect_url=donation.metadata.get("callback_url") if donation.metadata else None,
+                customer_name=donation.full_name,
+                customer_phone=donation.phone,
+                meta={
+                    "user_id": user.id,
+                    "type": "donation",
+                    **(donation.metadata or {}),
+                },
+            )
+
+            # Create payment record
+            payment = Payment(
+                user_id=user.id,
+                payment_type=PaymentType.ONE_TIME,
+                status=PaymentStatus.PENDING,
+                amount=donation.amount,
+                currency=donation.currency,
+                gateway=PaymentGateway.FLUTTERWAVE,
+                gateway_payment_id=tx_ref,
+                payment_metadata=donation.metadata,
+            )
+            db.add(payment)
+            db.commit()
+
+            return DonationResponse(
+                payment_intent_id=tx_ref,
+                authorization_url=transaction["authorization_url"],
+                amount=donation.amount,
+                currency=donation.currency,
+                gateway="flutterwave",
             )
 
         else:
@@ -401,6 +443,56 @@ async def create_order(
                 authorization_url=transaction["authorization_url"],
             )
 
+        elif order_req.gateway == "flutterwave":
+            # Generate unique reference
+            tx_ref = f"ORD-{order_number}"
+
+            # Initialize Flutterwave payment
+            transaction = await FlutterwaveService.initialize_payment(
+                email=order_req.email,
+                amount=total_amount,
+                currency=order_req.currency,
+                tx_ref=tx_ref,
+                redirect_url=order_req.callback_url,
+                customer_name=order_req.full_name,
+                customer_phone=order_req.phone,
+                meta={
+                    "user_id": user.id,
+                    "order_id": order.id,
+                    "order_number": order_number,
+                    "type": "order",
+                },
+            )
+
+            # Create payment record
+            payment = Payment(
+                user_id=user.id,
+                order_id=order.id,
+                payment_type=PaymentType.ONE_TIME,
+                status=PaymentStatus.PENDING,
+                amount=total_amount,
+                currency=order_req.currency,
+                gateway=PaymentGateway.FLUTTERWAVE,
+                gateway_payment_id=tx_ref,
+            )
+            db.add(payment)
+
+            order.payment_method = "flutterwave"
+            order.payment_intent_id = tx_ref
+            order.currency = order_req.currency
+
+            db.commit()
+
+            return OrderResponse(
+                order_id=order.id,
+                order_number=order.order_number,
+                total_amount=order.total_amount,
+                currency=order.currency,
+                status=order.status.value,
+                payment_intent_id=tx_ref,
+                authorization_url=transaction["authorization_url"],
+            )
+
         else:
             raise HTTPException(
                 status_code=400,
@@ -471,6 +563,31 @@ async def paystack_webhook(
 
         # Handle event
         result = await PaystackService.handle_webhook_event(event, db)
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("/webhooks/flutterwave")
+async def flutterwave_webhook(
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    """Handle Flutterwave webhook events"""
+    payload = await request.body()
+    signature = request.headers.get("verif-hash")
+
+    try:
+        # Verify webhook signature (optional but recommended)
+        if signature and not FlutterwaveService.verify_webhook_signature(payload, signature):
+            raise HTTPException(status_code=400, detail="Invalid signature")
+
+        # Parse event
+        import json
+        event = json.loads(payload)
+
+        # Handle event
+        result = await FlutterwaveService.handle_webhook_event(event, db)
         return result
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
