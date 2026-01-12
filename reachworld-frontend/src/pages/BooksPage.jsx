@@ -1,37 +1,62 @@
 import { motion } from 'framer-motion';
-import { FaBook, FaDownload, FaShoppingCart, FaCheckCircle } from 'react-icons/fa';
+import { FaBook, FaDownload, FaShoppingCart, FaCheckCircle, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
 import APIService from '../services/api';
 
 const BooksPage = () => {
   const [processingBookIndex, setProcessingBookIndex] = useState(null);
   const [error, setError] = useState(null);
+  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+  const [selectedBookIndex, setSelectedBookIndex] = useState(null);
+  const [formData, setFormData] = useState({
+    email: '',
+    fullName: '',
+    phone: '',
+    address: '',
+    city: '',
+    country: 'Nigeria',
+  });
 
-  // Handle book purchase
-  const handleBookPurchase = async (bookIndex) => {
-    setProcessingBookIndex(bookIndex);
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const openPurchaseModal = (bookIndex) => {
+    setSelectedBookIndex(bookIndex);
+    setShowPurchaseModal(true);
+    setError(null);
+  };
+
+  // Handle book purchase with Flutterwave
+  const handleBookPurchase = async (e) => {
+    e.preventDefault();
+    setProcessingBookIndex(selectedBookIndex);
     setError(null);
 
     try {
-      // Product IDs start from 1 (after running init_db.py)
-      // Physical books are IDs 2, 4, 6, etc (even numbers for physical versions)
-      const productId = (bookIndex * 2) + 2; // Maps to physical book IDs
+      // Product IDs: Digital=1,3,5... Physical=2,4,6...
+      const productId = (selectedBookIndex * 2) + 2; // Maps to physical book IDs
 
       const response = await APIService.createOrder({
         items: [{ product_id: productId, quantity: 1 }],
-        email: 'buyer@example.com', // Replace with actual user email
-        fullName: 'Book Buyer', // Replace with actual user name
+        email: formData.email,
+        fullName: formData.fullName,
+        phone: formData.phone,
         shippingAddress: {
-          shipping_address_line1: '123 Main Street',
-          shipping_city: 'Lagos',
-          shipping_country: 'Nigeria',
+          shipping_address_line1: formData.address,
+          shipping_city: formData.city,
+          shipping_country: formData.country,
         },
+        currency: 'NGN',
+        gateway: 'flutterwave', // Use Flutterwave for redirect-based payment
         callbackUrl: `${window.location.origin}/payment-success`,
       });
 
-      // Redirect to Paystack payment page
+      // Redirect to Flutterwave payment page
       if (response.authorization_url) {
         window.location.href = response.authorization_url;
+      } else {
+        throw new Error('Payment initialization failed');
       }
     } catch (err) {
       setError(err.message);
@@ -319,11 +344,10 @@ const BooksPage = () => {
                         <FaDownload className="text-sm" /> Free
                       </button>
                       <button
-                        onClick={() => handleBookPurchase(index)}
-                        disabled={processingBookIndex === index}
-                        className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        onClick={() => openPurchaseModal(index)}
+                        className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2"
                       >
-                        <FaShoppingCart className="text-sm" /> {processingBookIndex === index ? 'Processing...' : 'Buy'}
+                        <FaShoppingCart className="text-sm" /> Buy
                       </button>
                     </div>
                   </div>
@@ -397,6 +421,153 @@ const BooksPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Purchase Modal */}
+      {showPurchaseModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
+          >
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-2xl font-black text-gray-900">
+                  Buy: {selectedBookIndex !== null && books[selectedBookIndex]?.title}
+                </h3>
+                <button
+                  onClick={() => {
+                    setShowPurchaseModal(false);
+                    setProcessingBookIndex(null);
+                    setError(null);
+                  }}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <FaTimes className="text-xl" />
+                </button>
+              </div>
+
+              {error && (
+                <div className="bg-red-100 text-red-700 p-3 rounded-lg mb-4">
+                  {error}
+                </div>
+              )}
+
+              <form onSubmit={handleBookPurchase} className="space-y-4">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent"
+                    placeholder="Enter your email"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent"
+                    placeholder="e.g. +234 801 234 5678"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Shipping Address *
+                  </label>
+                  <input
+                    type="text"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent"
+                    placeholder="Street address"
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">
+                      City *
+                    </label>
+                    <input
+                      type="text"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent"
+                      placeholder="City"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">
+                      Country *
+                    </label>
+                    <select
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-gold focus:border-transparent"
+                    >
+                      <option value="Nigeria">Nigeria</option>
+                      <option value="Ghana">Ghana</option>
+                      <option value="Kenya">Kenya</option>
+                      <option value="South Africa">South Africa</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="United States">United States</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={processingBookIndex !== null}
+                    className="w-full bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-4 rounded-xl font-black text-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {processingBookIndex !== null ? 'Processing...' : 'Proceed to Payment'}
+                  </button>
+                </div>
+
+                <p className="text-xs text-gray-500 text-center">
+                  You will be redirected to Flutterwave to complete your payment securely.
+                </p>
+              </form>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };
