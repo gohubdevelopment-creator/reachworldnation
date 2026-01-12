@@ -61,6 +61,7 @@ class APIService {
         full_name: fullName,
         phone,
         gateway,
+        callback_url: window.location.origin + '/payment-success',
       }),
     });
 
