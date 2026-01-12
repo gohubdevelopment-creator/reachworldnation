@@ -50,6 +50,7 @@ class SubscriptionCreateRequest(BaseModel):
     phone: Optional[str] = None
     gateway: PaymentGatewayEnum = Field(default=PaymentGatewayEnum.STRIPE)
     payment_method_id: Optional[str] = None  # For Stripe
+    callback_url: Optional[str] = None  # For Paystack/Flutterwave redirect
 
 
 class SubscriptionResponse(BaseModel):

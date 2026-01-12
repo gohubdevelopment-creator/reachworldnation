@@ -191,6 +191,13 @@ async def create_subscription(
         if not amount:
             raise HTTPException(status_code=400, detail="Invalid subscription tier")
 
+        # Tier names for display
+        tier_names = {
+            "kingdom_partner": "Kingdom Partner",
+            "ambassador": "Ambassador",
+            "global_influencer": "Global Influencer",
+        }
+
         # Create subscription based on gateway
         if subscription_req.gateway == "stripe":
             # Create or get Stripe customer
@@ -202,11 +209,6 @@ async def create_subscription(
             )
 
             # Create or get price
-            tier_names = {
-                "kingdom_partner": "Kingdom Partner",
-                "ambassador": "Ambassador",
-                "global_influencer": "Global Influencer",
-            }
             price = await StripeService.create_price(
                 amount=amount,
                 currency="usd",
@@ -263,6 +265,124 @@ async def create_subscription(
                 current_period_start=subscription.current_period_start,
                 current_period_end=subscription.current_period_end,
                 client_secret=client_secret,
+            )
+
+        elif subscription_req.gateway == "paystack":
+            # Get NGN amount from Paystack pricing
+            amount_ngn = PaystackService.SUBSCRIPTION_PRICES_NGN.get(subscription_req.tier)
+            if not amount_ngn:
+                raise HTTPException(status_code=400, detail="Invalid subscription tier")
+
+            # Generate unique reference
+            reference = f"SUB-{uuid.uuid4().hex[:12].upper()}"
+
+            # Create subscription record first (pending status)
+            subscription = Subscription(
+                user_id=user.id,
+                tier=subscription_req.tier,
+                status="pending",
+                amount=amount,
+                currency="USD",
+            )
+            db.add(subscription)
+            db.flush()
+
+            # Initialize Paystack transaction for the first payment
+            transaction = await PaystackService.initialize_transaction(
+                email=user.email,
+                amount=amount_ngn,
+                currency="NGN",
+                reference=reference,
+                callback_url=f"{subscription_req.callback_url or 'https://reachworldnation.vercel.app/payment-success'}",
+                metadata={
+                    "user_id": user.id,
+                    "subscription_id": subscription.id,
+                    "tier": subscription_req.tier,
+                    "type": "subscription",
+                },
+            )
+
+            # Create payment record
+            payment = Payment(
+                user_id=user.id,
+                payment_type=PaymentType.SUBSCRIPTION,
+                status=PaymentStatus.PENDING,
+                amount=amount_ngn,
+                currency="NGN",
+                gateway=PaymentGateway.PAYSTACK,
+                gateway_payment_id=reference,
+            )
+            db.add(payment)
+            db.commit()
+            db.refresh(subscription)
+
+            return SubscriptionResponse(
+                subscription_id=subscription.id,
+                tier=subscription.tier.value,
+                status=subscription.status.value,
+                amount=amount,
+                currency="USD",
+                authorization_url=transaction["authorization_url"],
+            )
+
+        elif subscription_req.gateway == "flutterwave":
+            # Get NGN amount from Flutterwave pricing
+            amount_ngn = FlutterwaveService.SUBSCRIPTION_PRICES_NGN.get(subscription_req.tier)
+            if not amount_ngn:
+                raise HTTPException(status_code=400, detail="Invalid subscription tier")
+
+            # Generate unique reference
+            tx_ref = f"SUB-{uuid.uuid4().hex[:12].upper()}"
+
+            # Create subscription record first (pending status)
+            subscription = Subscription(
+                user_id=user.id,
+                tier=subscription_req.tier,
+                status="pending",
+                amount=amount,
+                currency="USD",
+            )
+            db.add(subscription)
+            db.flush()
+
+            # Initialize Flutterwave payment for the first payment
+            transaction = await FlutterwaveService.initialize_payment(
+                email=user.email,
+                amount=amount_ngn,
+                currency="NGN",
+                tx_ref=tx_ref,
+                redirect_url=subscription_req.callback_url or "https://reachworldnation.vercel.app/payment-success",
+                customer_name=user.full_name,
+                customer_phone=user.phone,
+                meta={
+                    "user_id": user.id,
+                    "subscription_id": subscription.id,
+                    "tier": subscription_req.tier,
+                    "type": "subscription",
+                },
+            )
+
+            # Create payment record
+            payment = Payment(
+                user_id=user.id,
+                payment_type=PaymentType.SUBSCRIPTION,
+                status=PaymentStatus.PENDING,
+                amount=amount_ngn,
+                currency="NGN",
+                gateway=PaymentGateway.FLUTTERWAVE,
+                gateway_payment_id=tx_ref,
+            )
+            db.add(payment)
+            db.commit()
+            db.refresh(subscription)
+
+            return SubscriptionResponse(
+                subscription_id=subscription.id,
+                tier=subscription.tier.value,
+                status=subscription.status.value,
+                amount=amount,
+                currency="USD",
+                authorization_url=transaction["authorization_url"],
             )
 
         else:
