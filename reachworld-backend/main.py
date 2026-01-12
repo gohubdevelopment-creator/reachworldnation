@@ -118,6 +118,96 @@ async def health_check():
     return {"status": "healthy"}
 
 
+@app.post("/init-db")
+async def init_database():
+    """Initialize database with sample products (one-time use)"""
+    from app.db import SessionLocal
+    from app.models import Product, ProductType
+
+    db = SessionLocal()
+
+    try:
+        # Check if products already exist
+        existing_products = db.query(Product).count()
+        if existing_products > 0:
+            return {"status": "skipped", "message": f"Database already has {existing_products} products"}
+
+        # Sample books
+        book_data = [
+            {"title": "The Kingdom Mindset", "slug": "the-kingdom-mindset", "description": "Transform your thinking from earthly limitations to heavenly possibilities.", "pages": 280, "category": "Mindset", "price": 19.99},
+            {"title": "Breaking Free", "slug": "breaking-free", "description": "Complete deliverance from addiction, bondage, and spiritual strongholds.", "pages": 210, "category": "Deliverance", "price": 17.99},
+            {"title": "Divine Purpose Unlocked", "slug": "divine-purpose-unlocked", "description": "Stop wandering aimlessly. Discover God's specific calling for your life.", "pages": 320, "category": "Purpose", "price": 21.99},
+            {"title": "Faith That Moves Mountains", "slug": "faith-that-moves-mountains", "description": "Practical steps to activate supernatural faith.", "pages": 250, "category": "Faith", "price": 18.99},
+            {"title": "Kingdom Business Mastery", "slug": "kingdom-business-mastery", "description": "God's blueprint for marketplace success.", "pages": 360, "category": "Business", "price": 24.99},
+            {"title": "The Power of Declaration", "slug": "the-power-of-declaration", "description": "Master the art of prophetic declarations.", "pages": 190, "category": "Spiritual Warfare", "price": 16.99},
+        ]
+
+        products_added = []
+        for book in book_data:
+            # Digital version (free)
+            digital = Product(
+                name=book["title"],
+                slug=book["slug"],
+                description=book["description"],
+                product_type=ProductType.BOOK_DIGITAL,
+                price=0.00,
+                is_active=True,
+                author="Pastor David S. Okeke",
+                pages=book["pages"],
+                category=book["category"],
+            )
+            db.add(digital)
+            products_added.append(book["title"] + " (Digital)")
+
+            # Physical version (paid)
+            physical = Product(
+                name=f"{book['title']} (Physical)",
+                slug=f"{book['slug']}-physical",
+                description=f"Physical copy. {book['description']}",
+                product_type=ProductType.BOOK_PHYSICAL,
+                price=book["price"],
+                is_active=True,
+                requires_shipping=True,
+                author="Pastor David S. Okeke",
+                pages=book["pages"],
+                category=book["category"],
+                weight=0.5,
+            )
+            db.add(physical)
+            products_added.append(book["title"] + " (Physical)")
+
+        # Sample events
+        events = [
+            {"name": "Divinity Life Conference 2025", "slug": "divinity-life-conference-2025", "description": "Three days that will change your life forever.", "price": 50.00, "location": "Lagos, Nigeria", "venue": "Eko Convention Center"},
+            {"name": "Global Leadership Summit 2025", "slug": "global-leadership-summit-2025", "description": "Empowering leaders to transform their spheres.", "price": 150.00, "location": "London, UK", "venue": "Excel London"},
+        ]
+
+        for event in events:
+            product = Product(
+                name=event["name"],
+                slug=event["slug"],
+                description=event["description"],
+                product_type=ProductType.EVENT_TICKET,
+                price=event["price"],
+                is_active=True,
+                event_location=event["location"],
+                event_venue=event["venue"],
+                max_attendees=10000,
+            )
+            db.add(product)
+            products_added.append(event["name"])
+
+        db.commit()
+
+        return {"status": "success", "message": f"Added {len(products_added)} products", "products": products_added}
+
+    except Exception as e:
+        db.rollback()
+        return {"status": "error", "message": str(e)}
+    finally:
+        db.close()
+
+
 if __name__ == "__main__":
     import uvicorn
 
