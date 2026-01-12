@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FaHandsHelping, FaDollarSign, FaGlobe, FaChurch } from 'react-icons/fa';
 import { useState } from 'react';
 import APIService from '../services/api';
+import { PaymentModal } from '../components/payment';
 
 const PartnerPage = () => {
   const [selectedAmount, setSelectedAmount] = useState(null);
@@ -9,50 +10,64 @@ const PartnerPage = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState(null);
 
-  // Handle donation
-  const handleDonation = async (amount) => {
+  // Modal state
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [paymentType, setPaymentType] = useState('donation');
+  const [selectedTier, setSelectedTier] = useState(null);
+  const [donationAmount, setDonationAmount] = useState(null);
+
+  // Subscription tier amounts in USD
+  const tierAmounts = {
+    kingdom_partner: 50,
+    ambassador: 100,
+    global_influencer: 250,
+  };
+
+  // Handle payment submission from modal
+  const handlePaymentSubmit = async ({ fullName, email, phone, gateway }) => {
     setIsProcessing(true);
-    setError(null);
 
     try {
-      // For demo, using placeholder email - in production, collect from user
-      const response = await APIService.createDonation({
-        amount: amount,
-        email: 'donor@example.com', // Replace with actual user email
-        fullName: 'Anonymous Donor', // Replace with actual user name
-        currency: 'NGN',
-      });
-
-      // Redirect to Paystack payment page
-      if (response.authorization_url) {
-        window.location.href = response.authorization_url;
+      if (paymentType === 'subscription') {
+        const response = await APIService.createSubscription({
+          tier: selectedTier,
+          email,
+          fullName,
+          phone,
+          gateway,
+        });
+        setIsProcessing(false);
+        return response;
+      } else {
+        const response = await APIService.createDonation({
+          amount: donationAmount,
+          email,
+          fullName,
+          phone,
+          currency: gateway === 'stripe' ? 'USD' : 'NGN',
+          gateway,
+        });
+        setIsProcessing(false);
+        return response;
       }
     } catch (err) {
-      setError(err.message);
       setIsProcessing(false);
+      throw err;
     }
   };
 
-  // Handle subscription
-  const handleSubscription = async (tier) => {
-    setIsProcessing(true);
-    setError(null);
+  // Open donation modal
+  const handleDonation = (amount) => {
+    setPaymentType('donation');
+    setDonationAmount(amount);
+    setShowPaymentModal(true);
+  };
 
-    try {
-      const response = await APIService.createSubscription({
-        tier: tier,
-        email: 'partner@example.com', // Replace with actual user email
-        fullName: 'Partnership Supporter', // Replace with actual user name
-      });
-
-      // Redirect to Paystack payment page
-      if (response.authorization_url) {
-        window.location.href = response.authorization_url;
-      }
-    } catch (err) {
-      setError(err.message);
-      setIsProcessing(false);
-    }
+  // Open subscription modal
+  const handleSubscription = (tier) => {
+    setPaymentType('subscription');
+    setSelectedTier(tier);
+    setShowPaymentModal(true);
   };
 
   const partnerTransformations = [
@@ -857,7 +872,7 @@ const PartnerPage = () => {
               </button>
 
               <p className="text-center text-gray-500 text-sm mt-4">
-                Secure payment via Paystack
+                Secure payment via Stripe or Paystack
               </p>
             </motion.div>
           </div>
@@ -878,16 +893,33 @@ const PartnerPage = () => {
               Join thousands of partners who are transforming nations and experiencing personal breakthrough
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <button className="bg-brand-gold text-royal-blue px-8 py-4 rounded-xl font-black text-lg hover:bg-white transition-all shadow-lg">
+              <button
+                onClick={() => handleSubscription('kingdom_partner')}
+                className="bg-brand-gold text-royal-blue px-8 py-4 rounded-xl font-black text-lg hover:bg-white transition-all shadow-lg"
+              >
                 Become a Monthly Partner
               </button>
-              <button className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-xl font-black text-lg hover:bg-white hover:text-royal-blue transition-all">
+              <button
+                onClick={() => handleDonation(50)}
+                className="bg-white/10 backdrop-blur-sm border-2 border-white text-white px-8 py-4 rounded-xl font-black text-lg hover:bg-white hover:text-royal-blue transition-all"
+              >
                 Give One-Time Gift
               </button>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        type={paymentType}
+        amount={paymentType === 'subscription' ? tierAmounts[selectedTier] : donationAmount}
+        tier={selectedTier}
+        onSubmit={handlePaymentSubmit}
+        isProcessing={isProcessing}
+      />
     </div>
   );
 };

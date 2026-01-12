@@ -4,8 +4,15 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000
 class APIService {
   /**
    * Create a one-time donation
+   * @param {Object} params
+   * @param {number} params.amount - Amount to donate
+   * @param {string} params.email - Donor email
+   * @param {string} params.fullName - Donor full name
+   * @param {string} [params.phone] - Donor phone
+   * @param {string} [params.currency] - Currency (USD for Stripe, NGN for Paystack/Flutterwave)
+   * @param {string} [params.gateway] - Payment gateway ('stripe', 'paystack', or 'flutterwave')
    */
-  static async createDonation({ amount, email, fullName, phone, currency = 'NGN' }) {
+  static async createDonation({ amount, email, fullName, phone, currency = 'USD', gateway = 'stripe' }) {
     const response = await fetch(`${API_BASE_URL}/v1/payments/donations`, {
       method: 'POST',
       headers: {
@@ -16,8 +23,8 @@ class APIService {
         email,
         full_name: fullName,
         phone,
-        currency,
-        gateway: 'paystack',
+        currency: gateway === 'stripe' ? 'usd' : currency,
+        gateway,
         metadata: {
           source: 'partner_page',
           callback_url: window.location.origin + '/payment-success',
@@ -35,8 +42,14 @@ class APIService {
 
   /**
    * Create a monthly subscription
+   * @param {Object} params
+   * @param {string} params.tier - Subscription tier ('kingdom_partner', 'ambassador', 'global_influencer')
+   * @param {string} params.email - Subscriber email
+   * @param {string} params.fullName - Subscriber full name
+   * @param {string} [params.phone] - Subscriber phone
+   * @param {string} [params.gateway] - Payment gateway ('stripe', 'paystack', or 'flutterwave')
    */
-  static async createSubscription({ tier, email, fullName, phone }) {
+  static async createSubscription({ tier, email, fullName, phone, gateway = 'stripe' }) {
     const response = await fetch(`${API_BASE_URL}/v1/payments/subscriptions`, {
       method: 'POST',
       headers: {
@@ -47,7 +60,7 @@ class APIService {
         email,
         full_name: fullName,
         phone,
-        gateway: 'paystack',
+        gateway,
       }),
     });
 
@@ -61,6 +74,16 @@ class APIService {
 
   /**
    * Create an order (for books or event tickets)
+   * @param {Object} params
+   * @param {Array} params.items - Order items [{product_id, quantity}]
+   * @param {string} params.email - Customer email
+   * @param {string} params.fullName - Customer full name
+   * @param {string} [params.phone] - Customer phone
+   * @param {Object} [params.shippingAddress] - Shipping address
+   * @param {string} [params.customerNotes] - Order notes
+   * @param {string} [params.currency] - Currency
+   * @param {string} [params.callbackUrl] - Callback URL
+   * @param {string} [params.gateway] - Payment gateway ('stripe', 'paystack', or 'flutterwave')
    */
   static async createOrder({
     items,
@@ -69,8 +92,9 @@ class APIService {
     phone,
     shippingAddress,
     customerNotes,
-    currency = 'NGN',
+    currency = 'USD',
     callbackUrl,
+    gateway = 'stripe',
   }) {
     const response = await fetch(`${API_BASE_URL}/v1/payments/orders`, {
       method: 'POST',
@@ -82,9 +106,9 @@ class APIService {
         email,
         full_name: fullName,
         phone,
-        gateway: 'paystack',
-        currency,
-        callback_url: callbackUrl,
+        gateway,
+        currency: gateway === 'stripe' ? 'usd' : currency,
+        callback_url: callbackUrl || window.location.origin + '/payment-success',
         // Flatten shipping address fields
         shipping_address_line1: shippingAddress?.shipping_address_line1 || shippingAddress?.street,
         shipping_address_line2: shippingAddress?.shipping_address_line2,
@@ -106,6 +130,7 @@ class APIService {
 
   /**
    * Get payment status
+   * @param {number} paymentId - Payment ID
    */
   static async getPaymentStatus(paymentId) {
     const response = await fetch(`${API_BASE_URL}/v1/payments/payments/${paymentId}`, {
