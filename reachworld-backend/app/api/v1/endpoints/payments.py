@@ -10,7 +10,7 @@ from app.schemas.payment import (
     OrderResponse,
     PaymentStatusResponse,
 )
-from app.models import User, Payment, Order, OrderItem, Subscription, Product, PaymentStatus, PaymentType, PaymentGateway
+from app.models import User, Payment, Order, OrderItem, Subscription, Product, PaymentStatus, PaymentType, PaymentGateway, SubscriptionStatus
 from app.services import StripeService, PaystackService, FlutterwaveService
 from typing import List
 import uuid
@@ -276,11 +276,11 @@ async def create_subscription(
             # Generate unique reference
             reference = f"SUB-{uuid.uuid4().hex[:12].upper()}"
 
-            # Create subscription record first (pending status)
+            # Create subscription record first (incomplete status until payment confirmed)
             subscription = Subscription(
                 user_id=user.id,
                 tier=subscription_req.tier,
-                status="pending",
+                status=SubscriptionStatus.INCOMPLETE,
                 amount=amount,
                 currency="USD",
             )
@@ -334,11 +334,11 @@ async def create_subscription(
             # Generate unique reference
             tx_ref = f"SUB-{uuid.uuid4().hex[:12].upper()}"
 
-            # Create subscription record first (pending status)
+            # Create subscription record first (incomplete status until payment confirmed)
             subscription = Subscription(
                 user_id=user.id,
                 tier=subscription_req.tier,
-                status="pending",
+                status=SubscriptionStatus.INCOMPLETE,
                 amount=amount,
                 currency="USD",
             )
