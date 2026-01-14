@@ -9,6 +9,7 @@ const Header = () => {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Our Arms', path: '/our-arms' },
+    { name: 'Books', path: '/books' },
     { name: 'Media', path: '/media' },
     { name: 'Programs & Events', path: '/events' },
     { name: 'Impact', path: '/impact' },
@@ -46,12 +47,12 @@ const Header = () => {
           </motion.a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden xl:flex items-center space-x-4">
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
                 href={link.path}
-                className="text-neutral-cream hover:text-primary-gold transition-colors duration-300 font-medium"
+                className="text-neutral-cream hover:text-primary-gold transition-colors duration-300 font-medium text-sm whitespace-nowrap"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -61,7 +62,7 @@ const Header = () => {
             ))}
             <motion.a
               href="/community"
-              className="bg-primary-gold text-neutral-dark px-6 py-2 rounded-lg font-semibold hover:bg-primary-gold-light transition-all duration-300"
+              className="bg-primary-gold text-neutral-dark px-4 py-2 rounded-lg font-semibold text-sm hover:bg-primary-gold-light transition-all duration-300 whitespace-nowrap"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
@@ -72,7 +73,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-2xl focus:outline-none"
+            className="xl:hidden text-2xl focus:outline-none"
             onClick={toggleMenu}
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
@@ -83,7 +84,7 @@ const Header = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav
-              className="lg:hidden mt-4 pb-4"
+              className="xl:hidden mt-4 pb-4"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
