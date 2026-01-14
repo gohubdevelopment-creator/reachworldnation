@@ -12,7 +12,7 @@ const OurArmsPage = () => {
       title: 'Spiritual Formation & Kingdom Life',
       description: 'This arm focuses on spiritual growth, Christ-centered teachings, discipleship, prayer gatherings, and conferences designed to establish believers in truth and identity.',
       items: [
-        'Teachings & Sermons',
+        'Teachings',
         'Discipleship Programs',
         'Prayer meetings',
         'Conferences & Retreats'

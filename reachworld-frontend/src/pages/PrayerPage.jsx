@@ -231,7 +231,7 @@ const PrayerPage = () => {
           >
             <h2 className="text-5xl md:text-6xl font-black mb-6">Your Prayer Journey</h2>
             <p className="text-2xl text-white/80 max-w-4xl mx-auto">
-              Here's what happens when you submit a prayer request to ReachworldNation
+              Here's what happens when you submit a prayer request to Reachworld Nation
             </p>
           </motion.div>
 

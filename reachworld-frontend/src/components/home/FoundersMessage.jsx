@@ -81,7 +81,7 @@ const FoundersMessage = () => {
 
             {/* Heading */}
             <h2 className="text-4xl md:text-5xl font-bold text-deep-charcoal">
-              Welcome to ReachworldNation
+              Welcome to Reachworld Nation
             </h2>
 
             {/* Founder Info */}

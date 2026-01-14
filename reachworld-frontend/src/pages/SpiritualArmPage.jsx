@@ -8,7 +8,7 @@ const SpiritualArmPage = () => {
   const programs = [
     {
       icon: FaBible,
-      title: 'Teachings & Sermons',
+      title: 'Teachings',
       description: 'Christ-centered biblical teachings that establish believers in truth, identity, and kingdom principles.',
       features: ['Weekly messages', 'Topical series', 'Verse-by-verse studies', 'Audio & video archives']
     },

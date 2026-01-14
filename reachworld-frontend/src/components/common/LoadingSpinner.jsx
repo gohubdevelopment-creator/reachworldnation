@@ -11,7 +11,7 @@ const LoadingSpinner = () => {
             <img
               className="logo-image-custom logo-masked-custom rounded-xl"
               src="/ReachworldLogo.jpg"
-              alt="ReachworldNation Logo"
+              alt="Reachworld Nation Logo"
             />
           </div>
         </div>
@@ -23,7 +23,7 @@ const LoadingSpinner = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <h2 className="text-2xl font-bold text-royal-blue mb-2">ReachworldNation</h2>
+          <h2 className="text-2xl font-bold text-royal-blue mb-2">Reachworld Nation</h2>
           <p className="text-brand-gold font-semibold">Transform people. Transform cities.</p>
         </motion.div>
 

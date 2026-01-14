@@ -37,11 +37,11 @@ const Header = () => {
           >
             <img
               src="/ReachworldLogo.jpg"
-              alt="ReachworldNation Logo"
+              alt="Reachworld Nation Logo"
               className="h-16 w-auto object-contain rounded-xl"
             />
             <div>
-              <h1 className="text-xl font-bold text-neutral-white">ReachworldNation</h1>
+              <h1 className="text-xl font-bold text-neutral-white">Reachworld Nation</h1>
               <p className="text-xs text-primary-gold">Transform people. Transform cities.</p>
             </div>
           </motion.a>

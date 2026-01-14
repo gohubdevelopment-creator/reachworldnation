@@ -751,7 +751,7 @@ const PartnerPage = () => {
                 percentage: '20%',
                 category: 'Media Production',
                 project: '2024 Project: Digital Ministry Expansion',
-                story: 'Produced 200 sermons, 50 podcasts, 20 courses. Reached 5M+ people monthly. 10,000 online salvations.',
+                story: 'Produced 200 teachings, 50 podcasts, 20 courses. Reached 5M+ people monthly. 10,000 online salvations.',
                 image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800',
                 color: 'from-holy-fire to-vibrant-orange'
               },

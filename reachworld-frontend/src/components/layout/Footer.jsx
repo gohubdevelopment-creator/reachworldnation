@@ -13,7 +13,7 @@ const Footer = () => {
     ],
     resources: [
       { name: 'Books', path: '/books' },
-      { name: 'Sermons', path: '/media/sermons' },
+      { name: 'Teachings', path: '/media/teachings' },
       { name: 'Podcasts', path: '/media/podcasts' },
       { name: 'Blog', path: '/blog' }
     ],
@@ -53,11 +53,11 @@ const Footer = () => {
               <div className="flex items-center space-x-3 mb-4">
                 <img
                   src="/ReachworldLogo.jpg"
-                  alt="ReachworldNation Logo"
+                  alt="Reachworld Nation Logo"
                   className="h-16 w-auto object-contain rounded-xl"
                 />
                 <div>
-                  <h3 className="text-xl font-bold">ReachworldNation</h3>
+                  <h3 className="text-xl font-bold">Reachworld Nation</h3>
                   <p className="text-sm text-brand-gold">Transform people. Transform cities.</p>
                 </div>
               </div>
@@ -200,7 +200,7 @@ const Footer = () => {
       <div className="bg-black/50 py-4">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>© {currentYear} ReachworldNation. All rights reserved.</p>
+            <p>© {currentYear} Reachworld Nation. All rights reserved.</p>
             <div className="flex space-x-4 mt-2 md:mt-0">
               {footerLinks.legal.map((link, index) => (
                 <a

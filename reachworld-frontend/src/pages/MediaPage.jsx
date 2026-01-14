@@ -3,20 +3,20 @@ import { FaPlay, FaVideo, FaHeadphones, FaPodcast, FaImages, FaYoutube, FaCheckC
 import { useState } from 'react';
 
 const MediaPage = () => {
-  const [activeTab, setActiveTab] = useState('sermons');
+  const [activeTab, setActiveTab] = useState('teachings');
 
-  // Teaching transformation stories - how sermons changed lives
+  // Teaching transformation stories - how teachings changed lives
   const teachingStories = [
     {
       name: 'Sarah Okonkwo',
       location: 'Lagos, Nigeria',
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800',
-      sermon: 'Kingdom Mindset for Business',
+      teaching: 'Kingdom Mindset for Business',
       watchedDate: 'January 2024',
       before: 'Business failing, ₦5M in debt, losing hope',
-      transformation: 'Watched sermon series on kingdom principles, applied faith-based strategies',
+      transformation: 'Watched teaching series on kingdom principles, applied faith-based strategies',
       after: 'Revenue increased 400% in 6 months, debt cleared, now employs 15 people',
-      quote: 'That sermon didn\'t just teach me—it transformed my entire approach to business. I went from survival to thriving.',
+      quote: 'That teaching didn\'t just teach me—it transformed my entire approach to business. I went from survival to thriving.',
       gradient: 'from-primary-gold to-primary-gold-light',
       livesImpacted: '2,400+'
     },
@@ -24,12 +24,12 @@ const MediaPage = () => {
       name: 'Michael Chen',
       location: 'Singapore',
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800',
-      sermon: 'Breaking Free from Bondage',
+      teaching: 'Breaking Free from Bondage',
       watchedDate: 'March 2023',
       before: '12 years battling addiction, broken relationships, lost career',
       transformation: 'Encountered God\'s power through this message, applied deliverance principles',
       after: 'Completely free from addiction, marriage restored, now leads recovery ministry reaching 200+ annually',
-      quote: 'I watched this sermon at 3 AM in my darkest hour. By morning, I was a different person. God\'s power broke every chain.',
+      quote: 'I watched this teaching at 3 AM in my darkest hour. By morning, I was a different person. God\'s power broke every chain.',
       gradient: 'from-primary-blue to-primary-blue-light',
       livesImpacted: '1,800+'
     },
@@ -37,7 +37,7 @@ const MediaPage = () => {
       name: 'Grace Mensah',
       location: 'Accra, Ghana',
       image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800',
-      sermon: 'Divine Purpose & Calling',
+      teaching: 'Divine Purpose & Calling',
       watchedDate: 'June 2024',
       before: 'Dead-end job, living paycheck to paycheck, no vision',
       transformation: 'Message revealed her kingdom calling, shifted from employee to entrepreneur mindset',
@@ -48,12 +48,12 @@ const MediaPage = () => {
     }
   ];
 
-  // Spiritual journey paths - curated sermon playlists with outcomes
+  // Spiritual journey paths - curated teaching playlists with outcomes
   const journeyPaths = [
     {
       title: 'New Believer Journey',
       description: 'Start your walk with Christ with foundational teachings',
-      sermons: 5,
+      teachings: 5,
       duration: '4 hours',
       completions: '12,000+',
       gradient: 'from-primary-blue-light to-primary-blue',
@@ -63,7 +63,7 @@ const MediaPage = () => {
     {
       title: 'Faith Breakthrough Path',
       description: 'Overcome doubt and step into supernatural faith',
-      sermons: 7,
+      teachings: 7,
       duration: '6 hours',
       completions: '8,500+',
       gradient: 'from-primary-gold to-primary-gold-light',
@@ -73,7 +73,7 @@ const MediaPage = () => {
     {
       title: 'Leadership Development',
       description: 'Transform from follower to kingdom leader',
-      sermons: 10,
+      teachings: 10,
       duration: '8 hours',
       completions: '5,200+',
       gradient: 'from-primary-blue to-primary-blue-dark',
@@ -83,7 +83,7 @@ const MediaPage = () => {
     {
       title: 'Prophetic & Spiritual Gifts',
       description: 'Activate and operate in your spiritual gifts',
-      sermons: 6,
+      teachings: 6,
       duration: '5 hours',
       completions: '6,800+',
       gradient: 'from-accent-teal to-primary-blue',
@@ -92,8 +92,8 @@ const MediaPage = () => {
     }
   ];
 
-  // Featured sermons with transformation data
-  const sermons = [
+  // Featured teachings with transformation data
+  const teachings = [
     {
       title: 'The Power of Kingdom Authority',
       date: 'March 15, 2025',
@@ -124,7 +124,7 @@ const MediaPage = () => {
       thumbnail: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800',
       livesChanged: '3,100+',
       category: 'Faith',
-      testimonial: '"My impossible situation became possible after this sermon" - Grace M.',
+      testimonial: '"My impossible situation became possible after this teaching" - Grace M.',
       gradient: 'from-primary-gold to-accent-red'
     },
     {
@@ -173,7 +173,7 @@ const MediaPage = () => {
       guest: 'Michael Chen',
       guestImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
       journey: 'Michael shares his 12-year battle with addiction and the divine encounter that set him free',
-      breakthrough: 'Discusses the exact moment watching Pastor David\'s sermon that broke every chain',
+      breakthrough: 'Discusses the exact moment watching Pastor David\'s teaching that broke every chain',
       now: 'Leading recovery ministry in Singapore reaching 200+ people annually',
       quote: '"I went from hopeless addict to hope dealer in one supernatural encounter."'
     },
@@ -199,7 +199,7 @@ const MediaPage = () => {
       guest: 'Grace Mensah',
       guestImage: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400',
       journey: 'From dead-end job to divine purpose—Grace shares her transformation',
-      breakthrough: 'How one sermon unlocked her entrepreneurial calling',
+      breakthrough: 'How one teaching unlocked her entrepreneurial calling',
       now: 'Consulting firm impacting 50+ African businesses, training next generation',
       quote: '"I went from surviving to thriving when I discovered my kingdom assignment."'
     }
@@ -271,7 +271,7 @@ const MediaPage = () => {
               Watch <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-gold via-primary-gold-light to-primary-gold animate-glow">Lives Change</span>
             </motion.h1>
             <p className="text-2xl md:text-3xl text-white/90 mb-8">
-              Every sermon, every podcast, every message—designed to transform your life
+              Every teaching, every podcast, every message—designed to transform your life
             </p>
 
             {/* Teaching impact stats */}
@@ -326,7 +326,7 @@ const MediaPage = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Sermons That Changed Everything</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Teachings That Changed Everything</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
               These aren't just viewers—they're lives forever transformed by the power of God's word
             </p>
@@ -355,12 +355,12 @@ const MediaPage = () => {
                       <p className="text-white/80 mb-4">{story.location}</p>
                       <div className="pt-4 border-t border-white/30">
                         <p className="text-sm font-semibold text-white/70 mb-1">WATCHED</p>
-                        <p className="text-lg font-bold mb-1">"{story.sermon}"</p>
+                        <p className="text-lg font-bold mb-1">"{story.teaching}"</p>
                         <p className="text-sm text-white/60">{story.watchedDate}</p>
                       </div>
                       <div className="mt-4 pt-4 border-t border-white/30">
                         <p className="text-3xl font-black text-primary-gold">{story.livesImpacted}</p>
-                        <p className="text-sm text-white/70">Lives impacted by this sermon</p>
+                        <p className="text-sm text-white/70">Lives impacted by this teaching</p>
                       </div>
                     </div>
                   </div>
@@ -404,7 +404,7 @@ const MediaPage = () => {
                       {/* Watch CTA */}
                       <button className="w-full bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-3">
                         <FaPlay />
-                        Watch "{story.sermon}" That Transformed {story.name}
+                        Watch "{story.teaching}" That Transformed {story.name}
                       </button>
                     </div>
                   </div>
@@ -426,7 +426,7 @@ const MediaPage = () => {
           >
             <h2 className="text-5xl md:text-6xl font-black text-primary-blue mb-6">Your Transformation Journey</h2>
             <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
-              Curated sermon paths designed to take you from where you are to where God wants you to be
+              Curated teaching paths designed to take you from where you are to where God wants you to be
             </p>
           </motion.div>
 
@@ -447,8 +447,8 @@ const MediaPage = () => {
 
                   <div className="flex gap-6 mb-6">
                     <div>
-                      <div className="text-3xl font-black">{path.sermons}</div>
-                      <div className="text-sm text-white/70">Sermons</div>
+                      <div className="text-3xl font-black">{path.teachings}</div>
+                      <div className="text-sm text-white/70">Teachings</div>
                     </div>
                     <div>
                       <div className="text-3xl font-black">{path.duration}</div>
@@ -476,7 +476,7 @@ const MediaPage = () => {
         </div>
       </section>
 
-      {/* Recent Sermons with Transformation Data */}
+      {/* Recent Teachings with Transformation Data */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
@@ -490,7 +490,7 @@ const MediaPage = () => {
           </motion.div>
 
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sermons.map((sermon, index) => (
+            {teachings.map((teaching, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -500,11 +500,11 @@ const MediaPage = () => {
                 className="group cursor-pointer"
               >
                 <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
-                  {/* Sermon Thumbnail */}
+                  {/* Teaching Thumbnail */}
                   <div className="relative h-56 overflow-hidden">
                     <img
-                      src={sermon.thumbnail}
-                      alt={sermon.title}
+                      src={teaching.thumbnail}
+                      alt={teaching.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
@@ -514,27 +514,27 @@ const MediaPage = () => {
                       </div>
                     </div>
                     <div className="absolute top-4 right-4 bg-primary-gold text-neutral-dark px-3 py-1 rounded-full text-sm font-bold">
-                      {sermon.category}
+                      {teaching.category}
                     </div>
                   </div>
 
-                  {/* Sermon Details */}
+                  {/* Teaching Details */}
                   <div className="p-6">
                     <h3 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-primary-blue transition-colors">
-                      {sermon.title}
+                      {teaching.title}
                     </h3>
 
                     <div className="flex items-center justify-between text-sm text-gray-600 mb-4">
-                      <span>{sermon.date}</span>
-                      <span>{sermon.duration}</span>
+                      <span>{teaching.date}</span>
+                      <span>{teaching.duration}</span>
                     </div>
 
                     <div className="mb-4 pb-4 border-b border-gray-200">
                       <div className="flex items-center justify-between">
-                        <span className="text-gray-500">{sermon.views} views</span>
+                        <span className="text-gray-500">{teaching.views} views</span>
                         <div className="flex items-center gap-2">
                           <FaCheckCircle className="text-green-500" />
-                          <span className="text-green-600 font-bold">{sermon.livesChanged}</span>
+                          <span className="text-green-600 font-bold">{teaching.livesChanged}</span>
                         </div>
                       </div>
                       <p className="text-xs text-gray-500 mt-1">Lives transformed by this message</p>
@@ -542,7 +542,7 @@ const MediaPage = () => {
 
                     {/* Testimonial */}
                     <div className="bg-gray-50 rounded-xl p-4">
-                      <p className="text-sm italic text-gray-700">{sermon.testimonial}</p>
+                      <p className="text-sm italic text-gray-700">{teaching.testimonial}</p>
                     </div>
                   </div>
                 </div>
@@ -553,7 +553,7 @@ const MediaPage = () => {
           {/* Load More */}
           <div className="text-center mt-12">
             <button className="bg-gradient-to-r from-primary-blue to-primary-blue-dark text-white px-10 py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all">
-              Load More Sermons
+              Load More Teachings
             </button>
           </div>
         </div>
