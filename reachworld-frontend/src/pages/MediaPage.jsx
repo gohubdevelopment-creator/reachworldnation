@@ -308,7 +308,7 @@ const MediaPage = () => {
           >
             <div className="flex items-center gap-3">
               <div className="w-4 h-4 bg-white rounded-full animate-pulse"></div>
-              <p className="text-xl font-bold">LIVE STREAM: Sunday Service at 9:00 AM WAT</p>
+              <p className="text-xl font-bold">LIVE STREAM: at 9:00 AM WAT</p>
             </div>
             <button className="bg-white text-accent-red px-6 py-2 rounded-full font-bold hover:bg-neutral-cream transition-all">
               Watch Live

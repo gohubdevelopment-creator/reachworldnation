@@ -140,7 +140,7 @@ const MinistryMoments = () => {
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            Join Us This Sunday
+            Join Us
           </motion.button>
         </motion.div>
       </div>

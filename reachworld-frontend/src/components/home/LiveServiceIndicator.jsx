@@ -38,7 +38,7 @@ const LiveServiceIndicator = () => {
           <div className="flex items-center space-x-3">
             <FaPrayingHands className="text-brand-gold text-xl" />
             <div>
-              <p className="font-semibold">Next Service: Sunday 9:00 AM WAT</p>
+              <p className="font-semibold">Next Service: 9:00 AM WAT</p>
               <p className="text-sm text-gray-300">Join us for powerful worship and teaching</p>
             </div>
           </div>
@@ -67,7 +67,7 @@ const LiveServiceIndicator = () => {
             <span className="font-bold text-lg">LIVE NOW</span>
           </motion.div>
           <div className="hidden md:block">
-            <p className="font-semibold">Sunday Worship Service</p>
+            <p className="font-semibold">Worship Service</p>
             <p className="text-sm">{viewerCount.toLocaleString()} watching now</p>
           </div>
         </div>
