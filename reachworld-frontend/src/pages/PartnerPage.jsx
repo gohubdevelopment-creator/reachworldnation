@@ -26,6 +26,7 @@ const PartnerPage = () => {
   // Handle payment submission from modal
   const handlePaymentSubmit = async ({ fullName, email, phone, gateway }) => {
     setIsProcessing(true);
+    const callbackUrl = window.location.origin + '/partner?payment=success';
 
     try {
       if (paymentType === 'subscription') {
@@ -35,6 +36,7 @@ const PartnerPage = () => {
           fullName,
           phone,
           gateway,
+          callbackUrl,
         });
         setIsProcessing(false);
         return response;
@@ -46,6 +48,7 @@ const PartnerPage = () => {
           phone,
           currency: gateway === 'stripe' ? 'USD' : 'NGN',
           gateway,
+          callbackUrl,
         });
         setIsProcessing(false);
         return response;

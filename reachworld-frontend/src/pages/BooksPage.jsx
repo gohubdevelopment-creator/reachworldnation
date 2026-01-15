@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaBook, FaDownload, FaShoppingCart, FaCheckCircle, FaTimes } from 'react-icons/fa';
+import { FaBook, FaDownload, FaShoppingCart, FaCheckCircle, FaTimes, FaCreditCard, FaUniversity, FaGlobe } from 'react-icons/fa';
 import { useState } from 'react';
 import APIService from '../services/api';
 
@@ -8,6 +8,7 @@ const BooksPage = () => {
   const [error, setError] = useState(null);
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
   const [selectedBookIndex, setSelectedBookIndex] = useState(null);
+  const [gateway, setGateway] = useState('flutterwave');
   const [formData, setFormData] = useState({
     email: '',
     fullName: '',
@@ -27,7 +28,7 @@ const BooksPage = () => {
     setError(null);
   };
 
-  // Handle book purchase with Flutterwave
+  // Handle book purchase with selected gateway
   const handleBookPurchase = async (e) => {
     e.preventDefault();
     setProcessingBookIndex(selectedBookIndex);
@@ -47,14 +48,18 @@ const BooksPage = () => {
           shipping_city: formData.city,
           shipping_country: formData.country,
         },
-        currency: 'NGN',
-        gateway: 'flutterwave', // Use Flutterwave for redirect-based payment
-        callbackUrl: `${window.location.origin}/payment-success`,
+        currency: gateway === 'stripe' ? 'USD' : 'NGN',
+        gateway: gateway,
+        callbackUrl: `${window.location.origin}/books?payment=success`,
       });
 
-      // Redirect to Flutterwave payment page
+      // Redirect to payment page
       if (response.authorization_url) {
         window.location.href = response.authorization_url;
+      } else if (response.client_secret) {
+        // For Stripe, we'd need to handle client-side payment
+        // For now, show error as we don't have Stripe Elements here
+        throw new Error('Stripe payments require card details. Please select Paystack or Flutterwave.');
       } else {
         throw new Error('Payment initialization failed');
       }
@@ -454,6 +459,84 @@ const BooksPage = () => {
               )}
 
               <form onSubmit={handleBookPurchase} className="space-y-4">
+                {/* Gateway Selection */}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Payment Method
+                  </label>
+                  <div className="grid grid-cols-3 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setGateway('stripe')}
+                      className={`p-3 rounded-xl border-2 transition-all flex flex-col items-center gap-1 ${
+                        gateway === 'stripe'
+                          ? 'border-royal-blue bg-royal-blue/5'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <FaCreditCard
+                        className={`text-xl ${
+                          gateway === 'stripe' ? 'text-royal-blue' : 'text-gray-400'
+                        }`}
+                      />
+                      <span
+                        className={`font-semibold text-xs ${
+                          gateway === 'stripe' ? 'text-royal-blue' : 'text-gray-600'
+                        }`}
+                      >
+                        Stripe
+                      </span>
+                      <span className="text-[10px] text-gray-500">International</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setGateway('paystack')}
+                      className={`p-3 rounded-xl border-2 transition-all flex flex-col items-center gap-1 ${
+                        gateway === 'paystack'
+                          ? 'border-green-600 bg-green-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <FaUniversity
+                        className={`text-xl ${
+                          gateway === 'paystack' ? 'text-green-600' : 'text-gray-400'
+                        }`}
+                      />
+                      <span
+                        className={`font-semibold text-xs ${
+                          gateway === 'paystack' ? 'text-green-600' : 'text-gray-600'
+                        }`}
+                      >
+                        Paystack
+                      </span>
+                      <span className="text-[10px] text-gray-500">Nigeria</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setGateway('flutterwave')}
+                      className={`p-3 rounded-xl border-2 transition-all flex flex-col items-center gap-1 ${
+                        gateway === 'flutterwave'
+                          ? 'border-orange-500 bg-orange-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <FaGlobe
+                        className={`text-xl ${
+                          gateway === 'flutterwave' ? 'text-orange-500' : 'text-gray-400'
+                        }`}
+                      />
+                      <span
+                        className={`font-semibold text-xs ${
+                          gateway === 'flutterwave' ? 'text-orange-500' : 'text-gray-600'
+                        }`}
+                      >
+                        Flutterwave
+                      </span>
+                      <span className="text-[10px] text-gray-500">Africa</span>
+                    </button>
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1">
                     Full Name *
@@ -561,7 +644,7 @@ const BooksPage = () => {
                 </div>
 
                 <p className="text-xs text-gray-500 text-center">
-                  You will be redirected to Flutterwave to complete your payment securely.
+                  You will be redirected to {gateway === 'stripe' ? 'Stripe' : gateway === 'paystack' ? 'Paystack' : 'Flutterwave'} to complete your payment securely.
                 </p>
               </form>
             </div>

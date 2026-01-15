@@ -11,8 +11,9 @@ class APIService {
    * @param {string} [params.phone] - Donor phone
    * @param {string} [params.currency] - Currency (USD for Stripe, NGN for Paystack/Flutterwave)
    * @param {string} [params.gateway] - Payment gateway ('stripe', 'paystack', or 'flutterwave')
+   * @param {string} [params.callbackUrl] - Callback URL after payment
    */
-  static async createDonation({ amount, email, fullName, phone, currency = 'USD', gateway = 'stripe' }) {
+  static async createDonation({ amount, email, fullName, phone, currency = 'USD', gateway = 'stripe', callbackUrl }) {
     const response = await fetch(`${API_BASE_URL}/v1/payments/donations`, {
       method: 'POST',
       headers: {
@@ -27,7 +28,7 @@ class APIService {
         gateway,
         metadata: {
           source: 'partner_page',
-          callback_url: window.location.origin + '/payment-success',
+          callback_url: callbackUrl || window.location.origin + '/payment-success',
         },
       }),
     });
@@ -48,8 +49,9 @@ class APIService {
    * @param {string} params.fullName - Subscriber full name
    * @param {string} [params.phone] - Subscriber phone
    * @param {string} [params.gateway] - Payment gateway ('stripe', 'paystack', or 'flutterwave')
+   * @param {string} [params.callbackUrl] - Callback URL after payment
    */
-  static async createSubscription({ tier, email, fullName, phone, gateway = 'stripe' }) {
+  static async createSubscription({ tier, email, fullName, phone, gateway = 'stripe', callbackUrl }) {
     const response = await fetch(`${API_BASE_URL}/v1/payments/subscriptions`, {
       method: 'POST',
       headers: {
@@ -61,7 +63,7 @@ class APIService {
         full_name: fullName,
         phone,
         gateway,
-        callback_url: window.location.origin + '/payment-success',
+        callback_url: callbackUrl || window.location.origin + '/payment-success',
       }),
     });
 
