@@ -42,7 +42,7 @@ const QuickAccessButtons = () => {
     },
     {
       icon: FaUsers,
-      title: 'Join Reachworld Nation',
+      title: 'Join Reachworld Nation Ministries',
       description: 'Become Part of Us',
       story: 'Global community awaits',
       link: '/community',

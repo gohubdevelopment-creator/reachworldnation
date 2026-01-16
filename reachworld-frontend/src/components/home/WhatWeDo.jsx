@@ -46,7 +46,7 @@ const WhatWeDo = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-primary-blue mb-4">What We Do</h2>
           <div className="w-24 h-1 bg-primary-gold mx-auto mb-6"></div>
           <p className="text-lg md:text-xl text-neutral-gray max-w-3xl mx-auto leading-relaxed">
-            Reachworld Nation operates through three strategic arms designed to transform lives
+            Reachworld Nation Ministries operates through three strategic arms designed to transform lives
             spiritually, intellectually, and socially—raising a people grounded in Christ, truth, and impact.
           </p>
         </motion.div>

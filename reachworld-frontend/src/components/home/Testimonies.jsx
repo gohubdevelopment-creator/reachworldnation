@@ -60,7 +60,7 @@ const Testimonies = () => {
             Lives Being Transformed
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See how God is moving powerfully through Reachworld Nation ministry
+            See how God is moving powerfully through Reachworld Nation Ministries ministry
           </p>
         </motion.div>
 

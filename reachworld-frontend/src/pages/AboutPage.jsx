@@ -140,7 +140,7 @@ const AboutPage = () => {
                 year: '2005',
                 title: 'The Commission',
                 subtitle: 'Sent to the Nations',
-                story: 'God spoke clearly: "You will reach nations with My word." That year, Reachworld Nation was born. The first international outreach to Ghana saw 10,000 salvations in one crusade. The mandate was undeniable.',
+                story: 'God spoke clearly: "You will reach nations with My word." That year, Reachworld Nation Ministries was born. The first international outreach to Ghana saw 10,000 salvations in one crusade. The mandate was undeniable.',
                 image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800',
                 gradient: 'from-primary-gold to-primary-gold-light',
                 icon: '🌍'
@@ -287,7 +287,7 @@ const AboutPage = () => {
                   name: 'Pastor John Adeyemi',
                   location: 'Ibadan, Nigeria',
                   before: 'Leading small church of 30 members, limited vision for growth',
-                  after: 'Trained at Reachworld Nation Leadership Summit. Church grew to 2,000 members. Planted 15 daughter churches across Nigeria. Impacting 10,000+ lives weekly.',
+                  after: 'Trained at Reachworld Nation Ministries Leadership Summit. Church grew to 2,000 members. Planted 15 daughter churches across Nigeria. Impacting 10,000+ lives weekly.',
                   quote: '"I learned that God\'s vision for me wasn\'t just my city—it was nations. This belief expanded my territory beyond imagination."',
                   image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800',
                   timeline: '3 years ago'
@@ -370,7 +370,7 @@ const AboutPage = () => {
           >
             <h2 className="text-5xl md:text-6xl font-black mb-6">Transforming Nations, One Life at a Time</h2>
             <p className="text-2xl text-white/80 max-w-4xl mx-auto">
-              From the streets of Lagos to the villages of India, here's how Reachworld Nation is changing the world
+              From the streets of Lagos to the villages of India, here's how Reachworld Nation Ministries is changing the world
             </p>
           </motion.div>
 
@@ -470,7 +470,7 @@ const AboutPage = () => {
           >
             <p className="text-2xl mb-8">Want to see transformation in your nation?</p>
             <button className="bg-primary-gold text-primary-blue px-10 py-5 rounded-xl font-black text-xl hover:bg-white transition-all duration-300 shadow-2xl">
-              Bring Reachworld Nation to Your City
+              Bring Reachworld Nation Ministries to Your City
             </button>
           </motion.div>
         </div>
@@ -645,7 +645,7 @@ const AboutPage = () => {
                 journey: {
                   before: 'Academic success but no spiritual depth',
                   transformation: 'Mentored by Pastor David, discovered leadership calling',
-                  now: 'Training 1,000+ leaders annually through Reachworld Nation Institute'
+                  now: 'Training 1,000+ leaders annually through Reachworld Nation Ministries Institute'
                 },
                 image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600',
                 quote: '"Leaders aren\'t born—they\'re forged through transformation."',

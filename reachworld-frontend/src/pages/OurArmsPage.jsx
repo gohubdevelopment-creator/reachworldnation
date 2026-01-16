@@ -64,7 +64,7 @@ const OurArmsPage = () => {
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Our Mission Arms</h1>
             <div className="w-24 h-1 bg-primary-gold mx-auto mb-8"></div>
             <p className="text-xl md:text-2xl leading-relaxed text-neutral-cream">
-              Reachworld Nation operates through three strategic arms designed to transform lives
+              Reachworld Nation Ministries operates through three strategic arms designed to transform lives
               spiritually, intellectually, and socially, raising a people grounded in Christ, truth, and impact.
             </p>
           </motion.div>

@@ -27,14 +27,12 @@ class PaystackService:
     # Using approximate conversion: 1 USD = 800 NGN
     SUBSCRIPTION_PRICES_NGN = {
         SubscriptionTierEnum.KINGDOM_PARTNER: 40000,  # ~$50
-        SubscriptionTierEnum.AMBASSADOR: 80000,  # ~$100
         SubscriptionTierEnum.GLOBAL_INFLUENCER: 200000,  # ~$250
     }
 
     # Also support USD
     SUBSCRIPTION_PRICES_USD = {
         SubscriptionTierEnum.KINGDOM_PARTNER: 50.00,
-        SubscriptionTierEnum.AMBASSADOR: 100.00,
         SubscriptionTierEnum.GLOBAL_INFLUENCER: 250.00,
     }
 

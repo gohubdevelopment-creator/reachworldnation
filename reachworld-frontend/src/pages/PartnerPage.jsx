@@ -19,7 +19,6 @@ const PartnerPage = () => {
   // Subscription tier amounts in USD
   const tierAmounts = {
     kingdom_partner: 50,
-    ambassador: 100,
     global_influencer: 250,
   };
 
@@ -93,11 +92,11 @@ const PartnerPage = () => {
       name: 'Grace Mensah',
       location: 'Accra, Ghana',
       image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800',
-      level: 'Ambassador ($100/month)',
+      level: 'Global Influencer ($250+/month)',
       journey: {
         before: 'Struggling entrepreneur, living paycheck to paycheck',
         shift: 'Started as Kingdom Partner ($50/month) despite financial struggles',
-        after: 'Within 6 months, business revenue increased 400%. Upgraded to Ambassador level. Now employs 15 people and mentors 50+ young entrepreneurs.',
+        after: 'Within 6 months, business revenue increased 400%. Upgraded to Global Influencer level. Now employs 15 people and mentors 50+ young entrepreneurs.',
         impact: 'Funded 500 books distributed, 50+ lives changed'
       },
       quote: 'I gave out of obedience when I had nothing. God multiplied it back. Now my partnership is funding the same transformation in others that I experienced.',
@@ -150,20 +149,6 @@ const PartnerPage = () => {
       },
       gradient: 'from-sky-blue to-electric-purple',
       icon: '📚'
-    },
-    {
-      tier: '$100/month',
-      tierName: 'Ambassador',
-      annualGiving: '$1,200/year',
-      enables: 'Plants 2 churches annually',
-      story: {
-        title: 'Two Churches Born in Rural Ghana',
-        location: 'Tamale, Ghana',
-        narrative: 'Ambassador partnerships funded the planting of 2 churches in rural villages. 350 people now worship weekly. 120 salvations in the first year. Village transformation includes new school and community center.',
-        image: 'https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=800'
-      },
-      gradient: 'from-royal-blue to-electric-purple',
-      icon: '⛪'
     },
     {
       tier: '$250+/month',
@@ -232,62 +217,6 @@ const PartnerPage = () => {
     }
   ];
 
-  const ambassadorProfiles = [
-    {
-      name: 'Ambassador David Thompson',
-      location: 'London, United Kingdom',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
-      journey: {
-        before: 'Successful businessman, spiritually empty',
-        became: 'Kingdom Partner → Ambassador → UK Chapter Leader',
-        now: 'Leading UK chapter reaching 3,000 weekly, organized 5 conferences'
-      },
-      impact: {
-        souls: '500+ led to Christ',
-        chapters: '3 new chapters started',
-        partners: 'Recruited 50+ Kingdom Partners',
-        churches: 'Funded 12 church plants in Africa'
-      },
-      quote: 'Being an Ambassador isn\'t about status—it\'s about stewarding influence for kingdom impact.',
-      gradient: 'from-brand-gold to-vibrant-orange'
-    },
-    {
-      name: 'Ambassador Grace Mensah',
-      location: 'Accra, Ghana',
-      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800',
-      journey: {
-        before: 'Struggling entrepreneur, paycheck to paycheck',
-        became: 'Kingdom Partner → Ambassador → Business Mentor',
-        now: 'Mentoring 50+ entrepreneurs, leading Ghana business network'
-      },
-      impact: {
-        souls: '200+ led to Christ',
-        chapters: '2 business chapters started',
-        partners: 'Recruited 30+ Kingdom Partners',
-        training: 'Trained 100+ in kingdom business principles'
-      },
-      quote: 'God transformed my business when I became a partner. Now I\'m transforming nations through kingdom entrepreneurship.',
-      gradient: 'from-royal-blue to-electric-purple'
-    },
-    {
-      name: 'Ambassador Pastor John Adeyemi',
-      location: 'Ibadan, Nigeria',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800',
-      journey: {
-        before: 'Small church pastor, limited vision',
-        became: 'Kingdom Partner → Ambassador → Regional Leader',
-        now: 'Overseeing 15 churches, training 100+ pastors annually'
-      },
-      impact: {
-        souls: '10,000+ weekly reach',
-        chapters: '15 daughter churches planted',
-        partners: 'Recruited 75+ Kingdom Partners',
-        training: 'Trained 100+ pastors in Nigeria'
-      },
-      quote: 'Partnership gave me the vision and network to multiply beyond my local church. I\'m now planting churches across Nigeria.',
-      gradient: 'from-holy-fire to-vibrant-orange'
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -486,7 +415,7 @@ const PartnerPage = () => {
                   {/* CTA */}
                   <div className="p-6 pt-0">
                     <button
-                      onClick={() => handleSubscription(tier.tierName === 'Kingdom Partner' ? 'kingdom_partner' : tier.tierName === 'Ambassador' ? 'ambassador' : 'global_influencer')}
+                      onClick={() => handleSubscription(tier.tierName === 'Kingdom Partner' ? 'kingdom_partner' : 'global_influencer')}
                       disabled={isProcessing}
                       className={`w-full bg-gradient-to-r ${tier.gradient} text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
@@ -607,110 +536,6 @@ const PartnerPage = () => {
             <p className="text-2xl mb-8">Your partnership can plant the next church that transforms a nation</p>
             <button className="bg-brand-gold text-royal-blue px-10 py-5 rounded-xl font-black text-xl hover:bg-white transition-all duration-300 shadow-2xl">
               Plant a Church Today
-            </button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Ambassador Showcase */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Ambassador Success Stories</h2>
-            <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
-              Ambassadors aren't just giving financially—they're leading movements in their nations
-            </p>
-          </motion.div>
-
-          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
-            {ambassadorProfiles.map((ambassador, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="group"
-              >
-                <div className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500">
-                  {/* Image */}
-                  <div className="relative h-80 overflow-hidden">
-                    <img
-                      src={ambassador.image}
-                      alt={ambassador.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <h3 className="text-2xl font-black text-white mb-1">{ambassador.name}</h3>
-                      <p className="text-white/90">{ambassador.location}</p>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-8">
-                    {/* Journey */}
-                    <div className="mb-6 space-y-3">
-                      <div>
-                        <p className="text-xs font-bold text-red-600 mb-1">BEFORE</p>
-                        <p className="text-gray-600 text-sm">{ambassador.journey.before}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-yellow-600 mb-1">JOURNEY</p>
-                        <p className="text-gray-700 text-sm font-semibold">{ambassador.journey.became}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold text-green-600 mb-1">TODAY</p>
-                        <p className="text-gray-900 text-sm font-bold">{ambassador.journey.now}</p>
-                      </div>
-                    </div>
-
-                    {/* Impact Stats */}
-                    <div className={`bg-gradient-to-br ${ambassador.gradient} rounded-2xl p-6 mb-6`}>
-                      <p className="text-white/80 text-xs font-bold mb-4">AMBASSADOR IMPACT</p>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-2xl font-black text-white">{ambassador.impact.souls.split(' ')[0]}</p>
-                          <p className="text-white/80 text-xs">{ambassador.impact.souls.split(' ').slice(1).join(' ')}</p>
-                        </div>
-                        <div>
-                          <p className="text-2xl font-black text-white">{ambassador.impact.chapters.split(' ')[0]}</p>
-                          <p className="text-white/80 text-xs">{ambassador.impact.chapters.split(' ').slice(1).join(' ')}</p>
-                        </div>
-                        <div>
-                          <p className="text-2xl font-black text-white">{ambassador.impact.partners.split(' ')[0]}</p>
-                          <p className="text-white/80 text-xs">{ambassador.impact.partners.split(' ').slice(1).join(' ')}</p>
-                        </div>
-                        <div>
-                          <p className="text-2xl font-black text-white">{ambassador.impact.training?.split(' ')[0] || ambassador.impact.churches?.split(' ')[0]}</p>
-                          <p className="text-white/80 text-xs">{(ambassador.impact.training || ambassador.impact.churches)?.split(' ').slice(1).join(' ')}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Quote */}
-                    <blockquote className="text-gray-700 italic text-sm leading-relaxed border-l-4 border-royal-blue pl-4">
-                      "{ambassador.quote}"
-                    </blockquote>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mt-16"
-          >
-            <button className="bg-gradient-to-r from-royal-blue to-electric-purple text-white px-10 py-5 rounded-xl font-black text-xl hover:shadow-2xl transition-all duration-300">
-              Apply to Become an Ambassador
             </button>
           </motion.div>
         </div>

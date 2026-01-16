@@ -164,7 +164,7 @@ const CommunityPage = () => {
         training: '250+ leaders trained',
         youth: 'Youth revival movement in 20 universities'
       },
-      story: 'American believers hungry for authentic kingdom teaching. From coast to coast, 25 cities now have thriving Reachworld Nation chapters.',
+      story: 'American believers hungry for authentic kingdom teaching. From coast to coast, 25 cities now have thriving Reachworld Nation Ministries chapters.',
       gradient: 'from-sky-blue to-accent-blue'
     },
     {
