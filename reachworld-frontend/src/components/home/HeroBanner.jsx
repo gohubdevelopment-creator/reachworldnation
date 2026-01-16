@@ -7,7 +7,7 @@ const HeroBanner = () => {
 
   const slides = [
     {
-      title: 'Join Us in Worship',
+      title: 'Join The Gathering',
       subtitle: 'Experience God\'s presence through powerful praise and worship',
       image: 'https://images.unsplash.com/photo-1510674485131-d4b499a30f4b?w=1920&h=1080&fit=crop',
       cta: 'Join Live Service'
