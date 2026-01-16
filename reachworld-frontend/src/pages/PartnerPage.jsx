@@ -19,6 +19,7 @@ const PartnerPage = () => {
   // Subscription tier amounts in USD
   const tierAmounts = {
     kingdom_partner: 50,
+    partner: 100,
     global_influencer: 250,
   };
 
@@ -147,8 +148,22 @@ const PartnerPage = () => {
         narrative: 'Maria received a free copy of "Kingdom Mindset" through a Kingdom Partner\'s giving. The book helped her overcome depression and discover her purpose. Today, she leads a thriving youth ministry reaching 500 teenagers.',
         image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800'
       },
-      gradient: 'from-sky-blue to-electric-purple',
+      gradient: 'from-sky-500 to-purple-600',
       icon: '📚'
+    },
+    {
+      tier: '$100/month',
+      tierName: 'Partner',
+      annualGiving: '$1,200/year',
+      enables: 'Sponsors 2 outreach events annually',
+      story: {
+        title: 'The Outreach That Transformed a Village',
+        location: 'Kumasi, Ghana',
+        narrative: 'Partner giving sponsored a community outreach in rural Ghana. 200 people attended, 50 gave their lives to Christ. A house fellowship was started that grew into a church of 150 members within one year.',
+        image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800'
+      },
+      gradient: 'from-purple-600 to-blue-700',
+      icon: '🤝'
     },
     {
       tier: '$250+/month',
@@ -214,6 +229,40 @@ const PartnerPage = () => {
       impact: '300 students, 5 missionaries sent globally, campus-wide transformation',
       partnershipCost: '$4,000 total',
       gradient: 'from-vibrant-orange to-brand-gold'
+    }
+  ];
+
+  // Partner profiles for the Partner Showcase section
+  const partnerProfiles = [
+    {
+      name: 'Michael & Jennifer Osei',
+      location: 'Toronto, Canada',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
+      role: 'Business Owners & Ministry Partners',
+      partnerSince: '2022',
+      story: 'Started as Kingdom Partners, upgraded to Partner tier after experiencing business breakthrough. Now funding 4 outreach events annually across West Africa.',
+      impact: '8 outreach events funded, 400+ salvations',
+      quote: 'The Partner tier allows us to make a significant impact while staying connected to the ministry\'s heartbeat.'
+    },
+    {
+      name: 'Dr. Amara Nwosu',
+      location: 'Houston, USA',
+      image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=800',
+      role: 'Physician & Partner',
+      partnerSince: '2023',
+      story: 'Joined as a Partner after attending the Divinity Life Conference. Her monthly giving sponsors medical outreaches in underserved communities.',
+      impact: '3 medical outreaches funded, 500+ patients served',
+      quote: 'Being a Partner means my profession extends beyond the hospital walls to communities in need.'
+    },
+    {
+      name: 'The Adeleke Family',
+      location: 'London, UK',
+      image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800',
+      role: 'Family Partnership',
+      partnerSince: '2021',
+      story: 'This family of five partners together, teaching their children the value of generosity. Their giving has sponsored youth camps across Europe.',
+      impact: '5 youth camps sponsored, 200+ youth impacted',
+      quote: 'Partnership is a family value we\'re passing to the next generation.'
     }
   ];
 
@@ -415,13 +464,79 @@ const PartnerPage = () => {
                   {/* CTA */}
                   <div className="p-6 pt-0">
                     <button
-                      onClick={() => handleSubscription(tier.tierName === 'Kingdom Partner' ? 'kingdom_partner' : 'global_influencer')}
+                      onClick={() => handleSubscription(tier.tierName === 'Kingdom Partner' ? 'kingdom_partner' : tier.tierName === 'Partner' ? 'partner' : 'global_influencer')}
                       disabled={isProcessing}
                       className={`w-full bg-gradient-to-r ${tier.gradient} text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {isProcessing ? 'Processing...' : `Become a ${tier.tierName}`}
                     </button>
                   </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partner Showcase Section */}
+      <section className="py-24 bg-gradient-to-br from-electric-purple/10 to-royal-blue/10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-5xl md:text-6xl font-black text-royal-blue mb-6">Meet Our Partners</h2>
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto">
+              Partners at the $100/month level making extraordinary impact
+            </p>
+          </motion.div>
+
+          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            {partnerProfiles.map((profile, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500"
+              >
+                <div className="relative">
+                  <img
+                    src={profile.image}
+                    alt={profile.name}
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <h3 className="text-2xl font-black text-white">{profile.name}</h3>
+                    <p className="text-white/80">{profile.location}</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="bg-electric-purple/10 text-electric-purple px-3 py-1 rounded-full text-sm font-semibold">
+                      Partner since {profile.partnerSince}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 mb-4">{profile.story}</p>
+                  <div className="border-t border-gray-100 pt-4 mb-4">
+                    <p className="text-sm text-gray-500 font-semibold mb-1">IMPACT</p>
+                    <p className="text-royal-blue font-bold">{profile.impact}</p>
+                  </div>
+                  <blockquote className="italic text-gray-700 border-l-4 border-electric-purple pl-4">
+                    "{profile.quote}"
+                  </blockquote>
+                </div>
+                <div className="p-6 pt-0">
+                  <button
+                    onClick={() => handleSubscription('partner')}
+                    disabled={isProcessing}
+                    className="w-full bg-gradient-to-r from-electric-purple to-royal-blue text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all disabled:opacity-50"
+                  >
+                    {isProcessing ? 'Processing...' : 'Become a Partner ($100/month)'}
+                  </button>
                 </div>
               </motion.div>
             ))}
