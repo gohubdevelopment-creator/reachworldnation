@@ -194,6 +194,7 @@ async def create_subscription(
         # Tier names for display
         tier_names = {
             "kingdom_partner": "Kingdom Partner",
+            "partner": "Partner",
             "global_influencer": "Global Influencer",
         }
 

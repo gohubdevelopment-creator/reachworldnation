@@ -16,6 +16,7 @@ class StripeService:
     # Subscription tier pricing (monthly in USD)
     SUBSCRIPTION_PRICES = {
         SubscriptionTierEnum.KINGDOM_PARTNER: 50.00,
+        SubscriptionTierEnum.PARTNER: 100.00,
         SubscriptionTierEnum.GLOBAL_INFLUENCER: 250.00,
     }
 

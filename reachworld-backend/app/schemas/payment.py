@@ -12,6 +12,7 @@ class PaymentGatewayEnum(str, Enum):
 
 class SubscriptionTierEnum(str, Enum):
     KINGDOM_PARTNER = "kingdom_partner"  # $50/month
+    PARTNER = "partner"  # $100/month
     GLOBAL_INFLUENCER = "global_influencer"  # $250+/month
 
 
