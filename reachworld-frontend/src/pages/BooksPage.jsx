@@ -7,6 +7,7 @@ const BooksPage = () => {
   const [processingBookIndex, setProcessingBookIndex] = useState(null);
   const [error, setError] = useState(null);
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+  const [showDetailModal, setShowDetailModal] = useState(false);
   const [selectedBookIndex, setSelectedBookIndex] = useState(null);
   const [gateway, setGateway] = useState('flutterwave');
   const [formData, setFormData] = useState({
@@ -101,58 +102,185 @@ const BooksPage = () => {
 
   const books = [
     {
-      title: 'The Kingdom Mindset',
-      description: 'Transform your thinking from earthly limitations to heavenly possibilities. Learn to operate from God\'s perspective in business, relationships, and life.',
-      gradient: 'from-brand-gold to-vibrant-orange',
-      category: 'Mindset',
-      pages: 280,
-      transformed: '50K+ Readers',
-      keyBenefit: 'Break mental barriers and unlock divine strategies'
-    },
-    {
-      title: 'Breaking Free',
-      description: 'Complete deliverance from addiction, bondage, and spiritual strongholds. Discover the power of the Holy Spirit to set captives free.',
-      gradient: 'from-holy-fire to-vibrant-orange',
-      category: 'Deliverance',
-      pages: 210,
-      transformed: '30K+ Readers',
-      keyBenefit: 'Experience instant freedom from chains'
-    },
-    {
-      title: 'Divine Purpose Unlocked',
-      description: 'Stop wandering aimlessly. This book reveals God\'s specific calling for your life and how to walk in it with confidence and authority.',
+      title: 'Life by Design',
+      description: 'You were never meant to live by trial and error. You were meant to live by design — God\'s design. Learn how to build your life with intention and align your daily habits with divine purpose.',
+      fullDescription: `LIFE BY DESIGN — Living Intentionally, Not Accidentally
+
+You were never meant to live by trial and error.
+You were meant to live by design — God's design.
+
+Life by Design is a powerful and revealing book that helps you discover how to live with purpose, clarity, and direction in a world that celebrates busyness over meaning. It teaches you how to build your life with intention, align your daily habits with divine purpose, and become the person God designed you to be.
+
+In this book, you'll learn:
+• How to uncover God's blueprint for your life.
+• The power of identity, vision, and purpose in shaping destiny.
+• How to stop reacting to life and start creating your future with wisdom.
+• The spiritual and practical systems that lead to lasting growth.
+• How to make daily decisions that move you toward your purpose, not away from it.
+
+Each chapter is filled with depth, truth, and practical wisdom that will awaken your mind and spirit. It's not about chasing success — it's about becoming the kind of person success finds.
+
+Your life is not random.
+Your calling is not a coincidence.
+Everything about you was designed with intention.
+
+This book will help you rediscover that design and empower you to live it out with faith, focus, and fulfillment.`,
+      image: '/books/Life-by-design.jpeg',
       gradient: 'from-royal-blue to-electric-purple',
       category: 'Purpose',
-      pages: 320,
+      price: 10000,
+      transformed: '30K+ Readers',
+      keyBenefit: 'Build the future God already imagined for you'
+    },
+    {
+      title: '100 Days Journey into the Finished Works of Christ',
+      description: 'A life-transforming devotional designed to help you rediscover who you are, what you have, and what you can do — because of Jesus. Walk in the victory Christ secured.',
+      fullDescription: `100 DAYS JOURNEY INTO THE FINISHED WORKS OF CHRIST — Living From What Christ Has Already Done
+
+You were not called to struggle for what Christ has already finished.
+You were called to live in the victory He secured.
+
+100 Days Journey into the Finished Works of Christ is a life-transforming devotional designed to help you rediscover who you are, what you have, and what you can do — because of Jesus. For 100 days, you'll walk through powerful truths about grace, righteousness, healing, provision, and identity in Christ.
+
+This devotional is more than daily reading; it's a spiritual awakening.
+
+Each day includes:
+• A short, revelatory teaching rooted in Scripture.
+• A reflection to renew your mindset.
+• A prayer to align your heart with God's truth.
+• A declaration to help you live by faith, not fear.
+
+You'll learn how to:
+• Rest in what Jesus has already accomplished on the Cross.
+• Live with peace, power, and divine confidence.
+• Break free from guilt, shame, and self-effort.
+• Walk daily in victory, not defeat.
+• See yourself the way God sees you — complete in Christ.
+
+This journey will shift you from trying to earn God's favor to enjoying it. From chasing blessings to walking in them. From striving for victory to living from victory.
+
+The Cross is not a beginning of your effort — it's the end of your struggle.
+
+Now, walk in it.`,
+      image: '/books/reachworld-devotional.jpeg',
+      gradient: 'from-brand-gold to-vibrant-orange',
+      category: 'Devotional',
+      price: 6000,
+      transformed: '50K+ Readers',
+      keyBenefit: 'Experience freedom, peace, and power every single day'
+    },
+    {
+      title: 'Reasons for Your Limitations',
+      description: 'A confronting, enlightening, and liberating book that exposes the real causes of stagnation, delay, and underachievement — both spiritual and practical.',
+      fullDescription: `REASONS FOR YOUR LIMITATIONS — Breaking the Barriers That Hold You Back
+
+Before God lifts a man, He opens his eyes.
+Many people pray for elevation, yet remain bound by invisible walls within.
+
+Reasons for Your Limitations is a confronting, enlightening, and liberating book that exposes the real causes of stagnation, delay, and underachievement — both spiritual and practical. It reveals that limitations are rarely external; they are mostly internal, built from beliefs, fears, habits, and ignorance.
+
+In this powerful book, you'll learn:
+• Why some people never rise despite great potential.
+• The hidden roots of repeated failure and how to uproot them.
+• How your mindset, choices, and associations shape your limits.
+• The role of faith, obedience, and personal discipline in breakthrough.
+• How to rebuild your inner system for success and divine progress.
+
+Every chapter is filled with truth, light, and wisdom to help you confront the real enemy — not people, not systems, but the patterns that limit your greatness from within.
+
+This is not a book of excuses; it's a book of awakening. It calls you to take responsibility for your destiny and partner with God for transformation.
+
+When understanding comes, freedom begins.
+When truth enters, limits fall.`,
+      image: '/books/Reasons-for-your-limitations.jpeg',
+      gradient: 'from-purple-600 to-blue-700',
+      category: 'Breakthrough',
+      price: 8000,
       transformed: '75K+ Readers',
-      keyBenefit: 'Discover your unique kingdom assignment'
+      keyBenefit: 'Step into clarity, courage, and breakthrough'
     },
     {
-      title: 'Faith That Moves Mountains',
-      description: 'Practical steps to activate supernatural faith. Learn how to pray, declare, and receive breakthrough in impossible situations.',
-      gradient: 'from-electric-purple to-sky-blue',
-      category: 'Faith',
-      pages: 250,
-      transformed: '100K+ Readers',
-      keyBenefit: 'See miracles manifest in your circumstances'
-    },
-    {
-      title: 'Kingdom Business Mastery',
-      description: 'God\'s blueprint for marketplace success. Biblical principles for building businesses that honor God and impact nations.',
-      gradient: 'from-vibrant-orange to-brand-gold',
-      category: 'Business',
-      pages: 360,
-      transformed: '40K+ Readers',
-      keyBenefit: 'Build profitable, God-glorifying enterprises'
-    },
-    {
-      title: 'The Power of Declaration',
-      description: 'Words create worlds. Master the art of prophetic declarations that shift atmospheres and manifest divine promises.',
-      gradient: 'from-sky-blue to-royal-blue',
-      category: 'Spiritual Warfare',
-      pages: 190,
+      title: 'The Divine Man',
+      description: 'A journey into the life of divinity — a revelation of what happens when a man rises beyond flesh, ego, and brokenness...',
+      fullDescription: `THE DIVINE MAN — A Journey into the Life of Divinity
+
+Before man was called to lead, he was called to be like God.
+
+The true measure of manhood is not strength, success, or status — it is divinity expressed through humanity.
+
+The Divine Man is not just a book about men. It is a journey into the life of divinity — a revelation of what happens when a man rises beyond flesh, ego, and brokenness to walk in his original image: the likeness of God.
+
+This book calls every man back to his source — to rediscover the divine life that flows from fellowship, purity, purpose, and authority in Christ. It's for men who want to live beyond survival and power, to become vessels of wisdom, love, and kingdom dominion.
+
+Inside, you'll learn:
+• The mystery of divine identity — understanding who you are in God.
+• How to live from your spirit, not your struggles.
+• The systems that build inner strength, purity, and discipline.
+• The link between divine presence, purpose, and power.
+• How to lead with character, humility, and spiritual authority.
+
+Every page is a call to rise — to embrace your divine nature and express heaven's character on earth.
+
+The Divine Man is not about perfection; it's about transformation.
+
+It's about becoming a man who reflects the God who formed him.
+
+You were never meant to live ordinary.
+You were meant to live divine.`,
+      image: '/books/The-divine-man.jpeg',
+      gradient: 'from-blue-600 to-indigo-700',
+      category: 'Identity',
+      price: 10000,
       transformed: '60K+ Readers',
-      keyBenefit: 'Speak life and watch transformation happen'
+      keyBenefit: 'Think like Christ, walk like Christ, rule with His wisdom'
+    },
+    {
+      title: 'Pray in This Manner',
+      description: 'Master the art of effective prayer. Learn the patterns and principles Jesus taught His disciples for prayers that move heaven.',
+      fullDescription: `PRAY IN THIS MANNER — The Art of Effective Prayer
+
+Prayer is not just talking to God — it's partnering with Him.
+
+Pray in This Manner is a comprehensive guide to understanding and practicing the prayer life Jesus modeled for His disciples. This book breaks down the Lord's Prayer and reveals the depths of each phrase, teaching you how to pray with power, authority, and results.
+
+In this book, you'll discover:
+• The true meaning behind each line of the Lord's Prayer.
+• How to approach God with confidence and reverence.
+• The keys to answered prayer that Jesus Himself revealed.
+• How to pray for provision, protection, and deliverance.
+• The connection between forgiveness, faith, and breakthrough.
+
+This is not about religious formulas — it's about relationship and revelation. When you understand how Jesus taught us to pray, your prayer life will never be the same.`,
+      image: '/books/Pray-in-this-manner.jpeg',
+      gradient: 'from-sky-500 to-purple-600',
+      category: 'Prayer',
+      price: 8000,
+      transformed: '100K+ Readers',
+      keyBenefit: 'Experience answered prayers consistently'
+    },
+    {
+      title: 'Spiritual Authority and Dominion',
+      description: 'Walk in the authority Christ has given you. Understand your position in the spirit realm and exercise dominion over every situation.',
+      fullDescription: `SPIRITUAL AUTHORITY AND DOMINION — Walking in Your God-Given Power
+
+You were created to reign, not to be ruled.
+
+Spiritual Authority and Dominion is a powerful revelation of the believer's position in Christ and the authority we carry in the spirit realm. This book exposes the enemy's tactics and equips you to stand firm, take charge, and exercise the dominion God has given you.
+
+In this book, you'll learn:
+• The biblical foundation of spiritual authority.
+• How to identify and overcome spiritual attacks.
+• The keys to walking in consistent victory.
+• How to release the power of God in every situation.
+• Your rights and responsibilities as a son of God.
+
+You are not a victim — you are a victor. It's time to take your place and walk in the authority that is rightfully yours in Christ Jesus.`,
+      image: '/books/Spiritual-Authority-and-Dominion.jpeg',
+      gradient: 'from-amber-600 to-orange-600',
+      category: 'Spiritual Warfare',
+      price: 8000,
+      transformed: '40K+ Readers',
+      keyBenefit: 'Take charge of your spiritual environment'
     }
   ];
 
@@ -315,24 +443,37 @@ const BooksPage = () => {
                 className="group"
               >
                 <div className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all h-full flex flex-col">
-                  <div className={`bg-gradient-to-br ${book.gradient} h-64 flex items-center justify-center relative overflow-hidden`}>
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHptMC0xMGMwLTIuMjEtMS43OS00LTQtNHMtNCAxLjc5LTQgNCAxLjc5IDQgNCA0IDQtMS43OSA0LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+                  <div
+                    className="h-72 relative overflow-hidden cursor-pointer"
+                    onClick={() => { setSelectedBookIndex(index); setShowDetailModal(true); }}
+                  >
+                    <img
+                      src={book.image}
+                      alt={book.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${book.gradient} opacity-20`} />
+                    <div className="absolute top-4 right-4 bg-white text-royal-blue px-3 py-1 rounded-full font-black text-lg shadow-lg">
+                      ₦{book.price.toLocaleString()}
                     </div>
-                    <FaBook className="text-8xl text-white relative z-10 group-hover:scale-110 transition-transform" />
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col">
                     <span className="inline-block bg-royal-blue text-white px-3 py-1 rounded-full text-sm font-semibold mb-3 self-start">
                       {book.category}
                     </span>
-                    <h3 className="text-2xl font-black text-gray-900 mb-3">{book.title}</h3>
-                    <p className="text-gray-600 mb-4 flex-1">{book.description}</p>
+                    <h3
+                      className="text-2xl font-black text-gray-900 mb-3 cursor-pointer hover:text-royal-blue transition-colors"
+                      onClick={() => { setSelectedBookIndex(index); setShowDetailModal(true); }}
+                    >
+                      {book.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 flex-1 line-clamp-3">{book.description}</p>
 
                     <div className="bg-gray-50 rounded-xl p-4 mb-4">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm text-gray-600">Pages:</span>
-                        <span className="font-bold text-gray-900">{book.pages}</span>
+                        <span className="text-sm text-gray-600">Price:</span>
+                        <span className="font-black text-royal-blue text-xl">₦{book.price.toLocaleString()}</span>
                       </div>
                       <div className="border-t border-gray-200 pt-2">
                         <div className="text-sm text-green-600 font-bold">{book.transformed}</div>
@@ -345,8 +486,11 @@ const BooksPage = () => {
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
-                      <button className="bg-gradient-to-r from-royal-blue to-electric-purple text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2">
-                        <FaDownload className="text-sm" /> Free
+                      <button
+                        onClick={() => { setSelectedBookIndex(index); setShowDetailModal(true); }}
+                        className="bg-gradient-to-r from-royal-blue to-electric-purple text-white py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                      >
+                        <FaBook className="text-sm" /> Details
                       </button>
                       <button
                         onClick={() => openPurchaseModal(index)}
@@ -426,6 +570,82 @@ const BooksPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Book Detail Modal */}
+      {showDetailModal && selectedBookIndex !== null && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+          >
+            <div className="relative">
+              <img
+                src={books[selectedBookIndex].image}
+                alt={books[selectedBookIndex].title}
+                className="w-full h-64 object-cover"
+              />
+              <div className={`absolute inset-0 bg-gradient-to-t ${books[selectedBookIndex].gradient} opacity-30`} />
+              <button
+                onClick={() => setShowDetailModal(false)}
+                className="absolute top-4 right-4 bg-white/90 hover:bg-white text-gray-700 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all"
+              >
+                <FaTimes className="text-xl" />
+              </button>
+              <div className="absolute bottom-4 left-4 right-4">
+                <span className="inline-block bg-royal-blue text-white px-3 py-1 rounded-full text-sm font-semibold mb-2">
+                  {books[selectedBookIndex].category}
+                </span>
+                <h2 className="text-3xl font-black text-white drop-shadow-lg">
+                  {books[selectedBookIndex].title}
+                </h2>
+              </div>
+            </div>
+
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <span className="text-3xl font-black text-royal-blue">
+                    ₦{books[selectedBookIndex].price.toLocaleString()}
+                  </span>
+                  <span className="text-gray-500 ml-2 text-sm">{books[selectedBookIndex].transformed}</span>
+                </div>
+                <button
+                  onClick={() => {
+                    setShowDetailModal(false);
+                    openPurchaseModal(selectedBookIndex);
+                  }}
+                  className="bg-gradient-to-r from-brand-gold to-vibrant-orange text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-all flex items-center gap-2"
+                >
+                  <FaShoppingCart /> Buy Now
+                </button>
+              </div>
+
+              <div className="bg-brand-gold/10 rounded-xl p-4 mb-6">
+                <p className="font-semibold text-gray-900 text-center">{books[selectedBookIndex].keyBenefit}</p>
+              </div>
+
+              <div className="prose prose-lg max-w-none">
+                <div className="whitespace-pre-line text-gray-700 leading-relaxed">
+                  {books[selectedBookIndex].fullDescription}
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <button
+                  onClick={() => {
+                    setShowDetailModal(false);
+                    openPurchaseModal(selectedBookIndex);
+                  }}
+                  className="w-full bg-gradient-to-r from-brand-gold to-vibrant-orange text-white py-4 rounded-xl font-black text-lg hover:shadow-2xl transition-all flex items-center justify-center gap-2"
+                >
+                  <FaShoppingCart /> Purchase This Book - ₦{books[selectedBookIndex].price.toLocaleString()}
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       {/* Purchase Modal */}
       {showPurchaseModal && (
