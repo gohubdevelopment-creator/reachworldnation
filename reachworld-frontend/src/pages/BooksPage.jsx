@@ -517,7 +517,7 @@ You are not a victim — you are a victor. It's time to take your place and walk
               viewport={{ once: true }}
             >
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800"
+                src="/profile-img/profile-image.jpg"
                 alt="Pastor David S. Okeke"
                 className="rounded-2xl shadow-2xl"
               />
